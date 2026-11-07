@@ -193,6 +193,8 @@ section.view{padding-block:20px 48px;display:flex;flex-direction:column;gap:26px
 /* covers */
 .cov{position:relative;aspect-ratio:16/10.4;max-width:100%;border-radius:22px;overflow:hidden;container-type:inline-size;color:var(--cover-ink);background:radial-gradient(120% 90% at 85% 70%,color-mix(in srgb,var(--a) 34%,transparent),transparent 55%),linear-gradient(160deg,var(--b1),var(--b2))}
 .cov .art{position:absolute;right:0;bottom:0;width:64%;height:92%;z-index:1}
+.cov .phc{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;z-index:0}
+.cov.photo::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,var(--ov) 0%,color-mix(in srgb,var(--ov) 82%,transparent) 30%,color-mix(in srgb,var(--ov) 20%,transparent) 62%,transparent 80%),linear-gradient(0deg,color-mix(in srgb,var(--ov) 70%,transparent) 0%,transparent 35%)}
 .cov .ttl{position:absolute;left:6%;top:25%;z-index:2;display:flex;flex-direction:column;text-shadow:0 2px 14px rgba(0,0,0,.45)}
 .cov .ttl b{font:400 15.5cqw/.9 var(--cond);letter-spacing:-.005em;text-transform:uppercase;white-space:nowrap}
 .cov .ttl b.sm{font-size:12cqw}
@@ -620,15 +622,15 @@ const TEACHERS=[
 const C=(o)=>o;
 const COURSES=[
   C({id:"capcut",st:"now",cat:"video",tid:"t1",p:13500,dur:"1 semèn",tag:"Videyo",t:"Montaj videyo: CapCut + kreyasyon kontni",d:"Aprann monte videyo pwofesyonèl ak CapCut sou telefòn ou, epi kreye kontni ki atire moun sou rezo sosyal.",
-    learn:["Koupe, ranje ak koulè videyo","Tèks, soutit ak mizik","Kontni pou TikTok, Reels ak YouTube"],cv:{l:["MONTAJ","VIDEYO"],s:"CapCut + kontni",a:"#f07a2a",b1:"#16120f",b2:"#2a1a10",art:"video"}}),
+    learn:["Koupe, ranje ak koulè videyo","Tèks, soutit ak mizik","Kontni pou TikTok, Reels ak YouTube"],cv:{l:["MONTAJ","VIDEYO"],s:"CapCut + kontni",a:"#f07a2a",b1:"#16120f",b2:"#2a1a10",art:"video",img:"img/kou-capcut.webp",ov:"#160f33"}}),
   C({id:"grafik",st:"now",cat:"dizay",tid:"t2",p:13500,dur:"1 semèn",tag:"Dizay",t:"Grafik dizay",d:"Kreye vizyèl pwofesyonèl pou mak, biznis ak rezo sosyal.",
-    learn:["Prensip koulè ak tipografi","Logo, flyer ak afich","Vizyèl pou rezo sosyal"],cv:{l:["GRAFIK","DIZAY"],s:"Kreyasyon vizyèl",a:"#f07a2a",b1:"#0b1530",b2:"#14213f",art:"design"}}),
+    learn:["Prensip koulè ak tipografi","Logo, flyer ak afich","Vizyèl pou rezo sosyal"],cv:{l:["GRAFIK","DIZAY"],s:"Kreyasyon vizyèl",a:"#f07a2a",b1:"#0b1530",b2:"#14213f",art:"design",img:"img/kou-grafik.webp",pos:"70% 50%",ov:"#0b0d14"}}),
   C({id:"sitphone",st:"now",cat:"mobil",tid:"t3",p:13500,dur:"3 mwa",tag:"Mobil",t:"Kreye sit ak telefòn ou",d:"Bati sit entènèt dirèkteman sou telefòn ou, san òdinatè.",
-    learn:["Chwazi zouti ak modèl","Paj, imaj ak bouton","Pibliye sit ou sou entènèt"],cv:{l:["SIT AK","PHONE"],s:"Kreye san òdinatè",a:"#ff8a3d",b1:"#0b1530",b2:"#1a1f33",art:"builder"}}),
+    learn:["Chwazi zouti ak modèl","Paj, imaj ak bouton","Pibliye sit ou sou entènèt"],cv:{l:["SIT AK","PHONE"],s:"Kreye san òdinatè",a:"#ff8a3d",b1:"#0b1530",b2:"#1a1f33",art:"builder",img:"img/kou-sitphone.webp",pos:"75% 50%",ov:"#0b1530"}}),
   C({id:"biznis",st:"now",cat:"biznis",tid:"t2",p:5000,dur:"3 jou",tag:"Biznis",t:"Biznis anliy",d:"Aprann jwenn yon kat vityèl, achte sou entènèt, epi vann pwodui w anliy.",
-    learn:["Kat vityèl ak peman anliy","Achte sou sit etranje","Mete yon ti boutik anliy"],cv:{l:["BIZNIS","ANLIY"],s:"Vann sou entènèt",a:"#f0a35a",b1:"#0b1020",b2:"#171c2c",art:"chart"}}),
+    learn:["Kat vityèl ak peman anliy","Achte sou sit etranje","Mete yon ti boutik anliy"],cv:{l:["BIZNIS","ANLIY"],s:"Vann sou entènèt",a:"#f0a35a",b1:"#0b1020",b2:"#171c2c",art:"chart",img:"img/kou-biznis.webp",pos:"70% 40%",ov:"#0b0812"}}),
   C({id:"wordpress",st:"now",cat:"dizay",tid:"t2",p:13500,dur:"3 mwa",tag:"Dizay",t:"Web dizay: WordPress",d:"Aprann kreye tout kalite sit entènèt ak WordPress, depi blog rive boutik.",
-    learn:["Enstale ak konfigire WordPress","Tèm, paj ak meni","Boutik ak WooCommerce"],cv:{l:["WEB","DESIGN"],s:"WordPress",a:"#ff7a3a",b1:"#0b1530",b2:"#121a33",art:"web"}}),
+    learn:["Enstale ak konfigire WordPress","Tèm, paj ak meni","Boutik ak WooCommerce"],cv:{l:["WEB","DESIGN"],s:"WordPress",a:"#ff7a3a",b1:"#0b1530",b2:"#121a33",art:"web",img:"img/kou-wordpress.webp",pos:"70% 50%",ov:"#0b1220"}}),
   C({id:"feyton",st:"soon",cat:"iadev",tid:"t1",p:10000,dep:2500,dur:"3 jou",lvl:2,t:"Kreye feyton ak entèlijans atifisyèl (IA)",d:"Ekri, kreye epi pibliye pwòp seri ou ak entèlijans atifisyèl.",
     learn:["Ekri istwa ak pèsonaj ak IA","Kreye imaj ak videyo sèn yo","Pibliye epizòd ou yo"],cv:{l:["FEYTON","<em>+ IA</em>"],s:"Seri ak entèlijans atifisyèl",a:"#e8402a",b1:"#111214",b2:"#2b120c",art:"episodes"}}),
   C({id:"flutter",st:"soon",cat:"iadev",tid:"t3",p:13500,dep:2500,dur:"3 mwa",lvl:3,t:"Kreye aplikasyon mobil ak Flutter",d:"Bati aplikasyon pou Android ak iPhone ak yon sèl kòd.",
@@ -677,7 +679,8 @@ function cover(c){
   const top=c.st=="now"
     ?`<div class="tops"><span class="tp"><svg class="i"><use href="#i-clock"/></svg>${c.dur}</span><span class="tp w">${c.tag}</span><span class="tp st">Disponib</span></div><div class="brand">FÒMASYON LEKÒL ANLIY</div>`
     :`<div class="eye">LEKÒL ANLIY</div><div class="date">${promoLabel}</div>`;
-  return `<div class="cov" style="--a:${v.a};--b1:${v.b1};--b2:${v.b2}">${top}<div class="ttl">${lines}<span>${v.s}</span></div><svg class="art" viewBox="0 0 220 170" preserveAspectRatio="xMaxYMax meet" aria-hidden="true">${ART[v.art](v.a)}</svg></div>`;
+  const media=v.img?`<img class="phc" src="${v.img}" alt="" loading="lazy" decoding="async" style="object-position:${v.pos||"50% 50%"}">`:`<svg class="art" viewBox="0 0 220 170" preserveAspectRatio="xMaxYMax meet" aria-hidden="true">${ART[v.art](v.a)}</svg>`;
+  return `<div class="cov ${v.img?"photo":""}" style="--a:${v.a};--b1:${v.b1};--b2:${v.b2};--ov:${v.ov||v.b1}">${top}<div class="ttl">${lines}<span>${v.s}</span></div>${media}</div>`;
 }
 function bars(n){return `<span class="bars">${[1,2,3].map(i=>`<i class="${i<=n?"on":""}"></i>`).join("")}</span>`}
 function card(c){
