@@ -669,6 +669,69 @@ td.r,th.r{text-align:right}
 .ro svg.i{width:18px;height:18px}
 @media (max-width:819px){.chat{grid-template-columns:1fr;height:calc(100dvh - 230px);min-height:460px}.chat.open .thl{display:none}.chat:not(.open) .cv{display:none}.cvh .back{display:flex}.thl{border-right:0}.mrow{max-width:88%}}
 
+/* teacher promo */
+.tpromo{position:relative;overflow:hidden;border-radius:30px;background:var(--hero);color:var(--hero-ink);display:grid;grid-template-columns:1.15fr 1fr;gap:10px;box-shadow:0 20px 50px rgba(5,7,13,.2)}
+.tpromo::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:30px 30px;-webkit-mask-image:radial-gradient(ellipse 70% 80% at 80% 30%,#000,transparent 75%);mask-image:radial-gradient(ellipse 70% 80% at 80% 30%,#000,transparent 75%);pointer-events:none}
+.tpromo > *{position:relative;z-index:1;min-width:0}
+.tpl{padding:30px 26px;display:flex;flex-direction:column;gap:16px}
+.tchip{display:inline-flex;align-items:center;gap:8px;width:fit-content;border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:7px 14px;color:var(--gold);font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:12px}
+.tchip svg.i{width:16px;height:16px}
+.tpromo h2{font:800 clamp(30px,6.4vw,46px)/1.02 var(--display);letter-spacing:-.035em}
+.tpromo h2 em{font-style:normal;color:var(--gold);display:block}
+.tpl > p{color:var(--hero-muted);max-width:46ch}
+.calc{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:22px;padding:16px;display:flex;flex-direction:column;gap:12px;backdrop-filter:blur(6px)}
+.calc .ch2 b{display:block;font-size:16px}
+.calc .ch2 small{color:var(--hero-muted);font-size:13px}
+.pchips{display:flex;gap:8px;flex-wrap:wrap}
+.pchips button{border:1px solid rgba(255,255,255,.16);background:transparent;color:#fff;border-radius:999px;padding:7px 13px;font:700 13px var(--body);cursor:pointer;font-variant-numeric:tabular-nums}
+.pchips button.on{background:var(--gold);color:var(--gold-ink);border-color:var(--gold)}
+.slab{display:flex;justify-content:space-between;align-items:baseline;color:var(--hero-muted);font-size:13px;font-weight:600}
+.slab b{color:#fff;font:800 20px var(--display)}
+#tcStu{width:100%;accent-color:var(--gold);height:24px}
+.res{display:grid;grid-template-columns:1fr 1.3fr;gap:10px}
+.res > div{background:rgba(255,255,255,.06);border-radius:14px;padding:10px 12px;min-width:0}
+.res small{color:var(--hero-muted);font-size:12px;display:block}
+.res b{font:800 18px var(--display);font-variant-numeric:tabular-nums;white-space:nowrap}
+.res .big{background:linear-gradient(135deg,color-mix(in srgb,#2fe39a 22%,transparent),rgba(255,255,255,.04));border:1px solid color-mix(in srgb,#2fe39a 35%,transparent)}
+.res .big b{font-size:clamp(20px,5.5vw,26px);color:#2fe39a}
+.sbar{display:flex;height:10px;border-radius:5px;overflow:hidden;background:#5b6170}
+.sbar i{display:block;height:100%;transition:width .5s cubic-bezier(.2,.8,.2,1)}
+#tcBarT{background:#2fe39a}#tcBarS{background:var(--gold)}
+.sleg{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--hero-muted)}
+.sleg span{display:flex;align-items:center;gap:6px}
+.sleg i{width:9px;height:9px;border-radius:3px}
+.sleg b{color:#fff}
+.tsteps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.tsteps li{display:flex;flex-direction:column;gap:8px;min-width:0}
+.tsteps span{width:32px;height:32px;border-radius:10px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--gold)}
+.tsteps b{font-size:14px;display:block}
+.tsteps small{color:var(--hero-muted);font-size:12px}
+.tcta{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.tcta .btn{padding:15px 24px}
+.tlink{color:#fff;font-weight:700;text-decoration:underline;text-underline-offset:4px;text-decoration-color:rgba(255,255,255,.35)}
+.tpr{position:relative;min-height:420px}
+.arch{position:absolute;right:8%;bottom:0;width:78%;height:88%;border-radius:999px 999px 0 0;overflow:hidden;background:#c80213;box-shadow:inset 0 0 0 6px rgba(255,255,255,.06)}
+.arch::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(5,7,13,.35),transparent 40%)}
+.arch img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 20%;max-width:none;animation:kb 14s ease-in-out infinite alternate}
+.ncard{position:absolute;display:flex;gap:10px;align-items:center;background:rgba(255,255,255,.96);color:#14161c;border-radius:16px;padding:9px 14px 9px 9px;box-shadow:0 14px 30px rgba(0,0,0,.3);z-index:2;animation:nfloat 4s ease-in-out infinite alternate}
+.ncard small{display:block;color:#646a78;font-size:11px;white-space:nowrap}
+.ncard b{font:800 15px var(--display);white-space:nowrap}
+.ni{width:34px;height:34px;border-radius:10px;color:#fff;display:flex;align-items:center;justify-content:center;flex:none}
+.ni svg.i{width:18px;height:18px}
+.n1{left:0;top:16%;animation-delay:-1s}
+.n2{right:0;top:44%;animation-delay:-2.5s}
+.n3{left:6%;bottom:9%;animation-delay:-.2s}
+@keyframes nfloat{from{transform:translateY(-6px)}to{transform:translateY(8px)}}
+.sp1,.sp2{position:absolute;background:var(--gold);clip-path:polygon(50% 0,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 40%);animation:spin 9s linear infinite}
+.sp1{width:26px;height:26px;right:6%;top:8%}
+.sp2{width:16px;height:16px;left:30%;top:6%;animation-duration:6s;opacity:.7}
+.tpromo.in .ncard{animation:pin .6s cubic-bezier(.3,1.5,.5,1) both,nfloat 4s ease-in-out infinite alternate}
+.tpromo.in .n1{animation-delay:.3s,1s}.tpromo.in .n2{animation-delay:.55s,1.3s}.tpromo.in .n3{animation-delay:.8s,1.6s}
+@keyframes pin{from{opacity:0;transform:scale(.5) translateY(20px)}to{opacity:1;transform:none}}
+@media (max-width:860px){.tpromo{grid-template-columns:1fr}.tpr{order:-1;min-height:330px}.tpl{padding:4px 20px 26px}.arch{right:12%;width:70%}}
+@media (max-width:420px){.tsteps{grid-template-columns:1fr}.tsteps li{flex-direction:row;align-items:center}}
+@media (prefers-reduced-motion:reduce){.tpromo *{animation:none!important}}
+
 /* checkout */
 #v-peye{max-width:640px;margin:0 auto;width:100%;gap:18px}
 .ck-hero{background:var(--hero);color:var(--hero-ink);border-radius:28px;padding:24px 22px 28px;position:relative;overflow:hidden;display:flex;flex-direction:column;gap:16px;align-items:flex-start}
@@ -892,14 +955,30 @@ nav.tabs a.on{background:var(--gold-soft);color:var(--gold)}
     <button class="wa" id="waBtn"><svg class="i"><use href="#i-wa"/></svg><span id="waNum"></span></button>
   </div>
 
-  <div class="promo">
-    <div>
-      <span class="eyebrow">Pou pwofesè</span>
-      <h2 style="margin-top:6px">Anseye sa w konnen, touche chak 15 jou.</h2>
-      <p class="muted" style="margin-top:8px">Pou yon fòmasyon 13,500 HTG ki vann, apre 3% frè peman:</p>
-      <div class="split3"><span><b>9,167 HTG</b>pou pwofesè (70%)</span><span><b>3,929 HTG</b>pou lekòl la (30%)</span></div>
+  <div class="tpromo" id="tpromo">
+    <div class="tpl">
+      <span class="tchip"><svg class="i"><use href="#i-board"/></svg>Pou pwofesè</span>
+      <h2>Anseye sa w konnen.<em>Touche chak 15 jou.</em></h2>
+      <p>Mete konesans ou sou Lekòl Anliy. Nou okipe peman yo, piblisite a ak etidyan yo. Ou menm, ou anseye.</p>
+      <div class="calc">
+        <div class="ch2"><b>Kalkile sa w ka touche</b><small>Chwazi pri kou a ak kantite etidyan</small></div>
+        <div class="pchips" id="tcPrices"></div>
+        <label for="tcStu" class="slab"><span>Etidyan</span><b id="tcStuN">20</b></label>
+        <input type="range" id="tcStu" min="1" max="60" value="20">
+        <div class="res"><div><small>Pou chak etidyan</small><b id="tcOne"></b></div><div class="big"><small>Total pou ou</small><b id="tcTot"></b></div></div>
+        <div class="sbar"><i id="tcBarT"></i><i id="tcBarS"></i></div>
+        <div class="sleg"><span><i style="background:#2fe39a"></i>Ou menm <b id="tcPct1"></b></span><span><i style="background:var(--gold)"></i>Lekòl la <b id="tcPct2"></b></span><span><i style="background:#5b6170"></i>Frè <b id="tcPct3"></b></span></div>
+      </div>
+      <ol class="tsteps"><li><span>1</span><div><b>Kreye kont ou</b><small>Chwazi "Mwen vle anseye"</small></div></li><li><span>2</span><div><b>Pwopoze kou ou</b><small>Admin nan revize l</small></div></li><li><span>3</span><div><b>Anseye epi touche</b><small>MonCash, NatCash oswa bank</small></div></li></ol>
+      <div class="tcta"><a class="btn gold" href="#enskri" data-teachcta="1">Vin anseye <svg class="i" style="width:18px;height:18px"><use href="#i-arrow"/></svg></a><a class="tlink" href="#pwofese">Mwen deja pwofesè</a></div>
     </div>
-    <a class="btn dark" href="#pwofese">Vin anseye <svg class="i" style="width:18px;height:18px"><use href="#i-arrow"/></svg></a>
+    <div class="tpr" aria-hidden="true">
+      <div class="arch"><img src="img/pwofese-wouj.webp" alt="" loading="lazy"></div>
+      <div class="ncard n1"><span class="ni" style="background:#d71f26"><svg class="i"><use href="#i-wallet"/></svg></span><div><small>Peman resevwa · MonCash</small><b>+9,167 HTG</b></div></div>
+      <div class="ncard n2"><span class="ni" style="background:#6d5fd8"><svg class="i"><use href="#i-users"/></svg></span><div><small>Nouvo etidyan</small><b>Grafik dizay</b></div></div>
+      <div class="ncard n3"><span class="ni" style="background:#1f9d5c"><svg class="i"><use href="#i-check"/></svg></span><div><small>Kou apwouve</small><b>An liy!</b></div></div>
+      <span class="sp1"></span><span class="sp2"></span>
+    </div>
   </div>
 </section>
 
@@ -1638,6 +1717,16 @@ document.addEventListener("change",async e=>{if(e.target.id!="chFile")return;con
 function renderKlas(){const u=me(),v=$("v-klas");if(!u)return;
   v.innerHTML=`<div class="khead"><a class="back2" href="#kont"><svg class="i"><use href="#i-left"/></svg>Espas mwen</a><div><h2>Klas mwen</h2><p class="muted">Leson, foto ak videyo pwofesè yo, ak mesaj prive ou.</p></div></div><div id="sChat"></div>`;
   renderChat($("sChat"),{kind:"s",email:u.email})}
+/* teacher promo calculator */
+let tcP=13500;
+function tcRender(){const n=+$("tcStu").value,x=split(tcP);$("tcPrices").innerHTML=[5000,10000,13500,20000].map(v=>`<button class="${v==tcP?"on":""}" data-tcp="${v}">${fmt(v)} HTG</button>`).join("");
+  $("tcStuN").textContent=n;$("tcOne").textContent=fmt(x.tp)+" HTG";$("tcTot").textContent=fmt(x.tp*n)+" HTG";
+  const pt=x.tp/tcP*100,ps=x.sp/tcP*100;$("tcBarT").style.width=pt+"%";$("tcBarS").style.width=ps+"%";$("tcPct1").textContent=Math.round(pt)+"%";$("tcPct2").textContent=Math.round(ps)+"%";$("tcPct3").textContent=ST.rules.fee+"%"}
+document.addEventListener("input",e=>{if(e.target.id=="tcStu")tcRender()});
+document.addEventListener("click",e=>{const b=e.target.closest("[data-tcp]");if(b){tcP=+b.dataset.tcp;tcRender();return}
+  if(e.target.closest("[data-teachcta]")){auTab="signup";auRole="teach";auDone=null;auPre=null;if(location.hash=="#enskri")renderAuth()}});
+try{new IntersectionObserver((es,o)=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add("in");o.disconnect()}}),{threshold:.25}).observe($("tpromo"))}catch(_){$("tpromo").classList.add("in")}
+
 /* ---------- admin ---------- */
 let aTab="apesi",aQ="",aF="all",aRange=14;
 const ost=o=>o.paid>=o.total?"full":o.plan=="dep"?"dep":"part";
@@ -1765,7 +1854,7 @@ document.addEventListener("click",e=>{
 document.addEventListener("input",e=>{if(e.target.id=="aQ"){aQ=e.target.value;aList()}});
 applyExtras();
 
-function render(){renderCourses();renderTeacher();renderAdmin();updUser();updBadges()}
+function render(){renderCourses();renderTeacher();renderAdmin();updUser();updBadges();tcRender()}
 function route(){
   const v0=(location.hash||"#akey").slice(1);if((v0=="kont"||v0=="klas")&&!me()){auTab="login";location.replace("#enskri");return}
   const v=v0,ok=["akey","kou","peye","enskri","kont","klas","pwofese","admin"].includes(v)?v:"akey";
