@@ -12,7 +12,7 @@
 /* Layout: trust strip + sticky header w/ search, dark gold hero slider, category rail, course cards with drawn covers, hash-routed views, mobile bottom tab bar. */
 :root{
   --bg:#f2f2f4; --surface:#ffffff; --ink:#14161c; --muted:#646a78; --line:#e2e3e8;
-  --gold:#e8a93a; --gold-ink:#1d1300; --gold-soft:#fbf1dc;
+  --gold:#e8a93a; --gold-ink:#1d1300; --gold-soft:#fbf1dc; --gold-text:#9a6100;
   --hero:#0a0f1c; --hero-ink:#ffffff; --hero-muted:#c3c8d4;
   --soft:#f4f4f6; --ok:#1f9d5c; --warn:#b7791f; --bad:#c0392b;
   --c1:#fdf3dd; --c2:#eef0ff; --c3:#e6f6ee; --c4:#fde9e4; --c5:#e7f2fb; --c6:#f6e9fb;
@@ -23,13 +23,13 @@
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#0c0e13; --surface:#151821; --ink:#eef0f4; --muted:#9aa1b0; --line:#262a35;
-  --gold:#f0b44a; --gold-ink:#1d1300; --gold-soft:#2b2312;
+  --gold:#f0b44a; --gold-ink:#1d1300; --gold-soft:#2b2312; --gold-text:#f0b44a;
   --hero:#05070d; --hero-ink:#ffffff; --hero-muted:#b4bac8;
   --soft:#1b1f2a; --ok:#3ccf8e; --warn:#e9b35a; --bad:#ef6f61;
   --c1:#2b2312; --c2:#1d2038; --c3:#13281e; --c4:#2c1a16; --c5:#142231; --c6:#261a2e; color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#0c0e13; --surface:#151821; --ink:#eef0f4; --muted:#9aa1b0; --line:#262a35;
-  --gold:#f0b44a; --gold-ink:#1d1300; --gold-soft:#2b2312;
+  --gold:#f0b44a; --gold-ink:#1d1300; --gold-soft:#2b2312; --gold-text:#f0b44a;
   --hero:#05070d; --hero-ink:#ffffff; --hero-muted:#b4bac8;
   --soft:#1b1f2a; --ok:#3ccf8e; --warn:#e9b35a; --bad:#ef6f61;
   --c1:#2b2312; --c2:#1d2038; --c3:#13281e; --c4:#2c1a16; --c5:#142231; --c6:#261a2e; color-scheme:dark}
@@ -227,6 +227,97 @@ td.r,th.r{text-align:right}
 @media (max-width:900px){.foot .wrap{grid-template-columns:1fr 1fr}.foot .wrap > :first-child{grid-column:1/-1}}
 @media (max-width:480px){.foot .wrap{grid-template-columns:1fr}}
 
+/* checkout */
+#v-peye{max-width:640px;margin:0 auto;width:100%;gap:18px}
+.ck-hero{background:var(--hero);color:var(--hero-ink);border-radius:28px;padding:24px 22px 28px;position:relative;overflow:hidden;display:flex;flex-direction:column;gap:16px;align-items:flex-start}
+.ck-hero::after{content:"";position:absolute;left:30%;bottom:-140px;width:420px;height:300px;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--gold) 30%,transparent),transparent 65%);pointer-events:none}
+.ck-hero > *{position:relative;z-index:1}
+.ck-hero h1{font-size:clamp(32px,7.5vw,46px);font-weight:800;letter-spacing:-.03em;line-height:1.05}
+.ck-hero h1 em{font-style:normal;color:var(--gold)}
+.ck-hero p{color:var(--hero-muted);font-size:17px}
+.back{border:1px solid rgba(255,255,255,.2);color:#fff;border-radius:999px;padding:9px 16px;display:inline-flex;align-items:center;gap:8px;text-decoration:none;font:600 15px var(--body)}
+.back svg.i{width:18px;height:18px}
+.chipd{border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:9px 16px;color:var(--gold);letter-spacing:.14em;font-weight:700;font-size:13px;display:inline-flex;align-items:center;gap:8px;text-transform:uppercase}
+.chipd svg.i{width:18px;height:18px}
+.stepper{display:flex;align-items:center;gap:10px}
+.stepper span{width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center;font-weight:700}
+.stepper span.on{background:var(--gold);color:var(--gold-ink);border-color:var(--gold);box-shadow:0 0 0 6px color-mix(in srgb,var(--gold) 25%,transparent)}
+.stepper span.done{background:var(--ok);border-color:var(--ok);color:#fff}
+.stepper span svg.i{width:18px;height:18px}
+.stepper i{width:22px;height:2px;background:rgba(255,255,255,.28)}
+.ck-card{background:var(--surface);border:1px solid var(--line);border-radius:26px;padding:22px 18px;display:flex;flex-direction:column;gap:16px;box-shadow:0 10px 30px rgba(10,15,28,.05)}
+.ck-card.slim{padding:18px;gap:12px;border-radius:22px}
+.ck-card h2{font-size:24px}
+.ck-card > div > p{margin-top:6px}
+.opts{display:flex;flex-direction:column;gap:12px}
+.opt{display:flex;gap:14px;align-items:flex-start;border:1.5px solid var(--line);background:var(--soft);border-radius:18px;padding:16px;cursor:pointer;text-align:left;font:inherit;color:var(--ink);width:100%;position:relative}
+.opt.on{border-color:var(--gold);background:var(--gold-soft);box-shadow:0 0 0 1px var(--gold)}
+.radio{width:24px;height:24px;border-radius:50%;border:2px solid var(--line);flex:none;display:flex;align-items:center;justify-content:center;margin-top:2px;background:var(--surface)}
+.opt.on .radio{border-color:var(--gold);background:var(--gold)}
+.opt.on .radio::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--gold-ink)}
+.ot{display:flex;flex-direction:column;gap:3px;min-width:0;flex:1}
+.ot b{font-size:17px;line-height:1.3}
+.k{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:700;display:flex;align-items:center;gap:8px}
+.k svg.i{width:18px;height:18px}
+.opt .pr{font-weight:800;color:var(--gold-text);font-variant-numeric:tabular-nums;white-space:nowrap}
+.plan{flex-direction:column;gap:10px;padding:18px}
+.plan .pic{width:52px;height:52px;border-radius:15px;background:var(--surface);display:flex;align-items:center;justify-content:center;border:1px solid var(--line)}
+.plan.on .pic{background:var(--gold);color:var(--gold-ink);border-color:var(--gold)}
+.plan .tag{position:absolute;top:14px;right:14px;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;border-radius:999px;background:var(--line);color:var(--muted)}
+.plan.on .tag{background:var(--gold);color:var(--gold-ink)}
+.plan b{font-size:18px}
+.plan .amt{font:800 26px var(--display);color:var(--gold-text);font-variant-numeric:tabular-nums}
+.plan small{color:var(--muted);font-size:14px}
+.fld{display:flex;flex-direction:column;gap:8px}
+.fld > span{display:flex;align-items:center;gap:8px;font-weight:700;font-size:13px;letter-spacing:.1em;text-transform:uppercase}
+.fld > span svg.i{width:19px;height:19px}
+.fld i{color:var(--bad);font-style:normal}
+.fld input,.promo-in input{font:17px var(--body);padding:15px 18px;border-radius:16px;border:1.5px solid var(--line);background:var(--soft);color:var(--ink);width:100%}
+.fld input:focus,.promo-in input:focus{outline:none;border-color:var(--gold)}
+.fld input.bad{border-color:var(--bad)}
+.ckerr{color:var(--bad);font-size:14px;font-weight:600}
+.recap{border-top:4px solid var(--gold)}
+.rtitle{font-weight:800;letter-spacing:.16em;text-transform:uppercase;font-size:14px}
+.rrow{display:flex;justify-content:space-between;gap:16px;align-items:baseline}
+.rrow span{color:var(--muted)}
+.rrow b{text-align:right;font-variant-numeric:tabular-nums;min-width:0;overflow-wrap:anywhere}
+.rrow s{color:var(--muted);font-weight:500;margin-right:6px}
+.promo-in{display:flex;flex-direction:column;gap:10px}
+.promo-in .row2{display:flex;gap:10px}
+.promo-in input{text-transform:uppercase;letter-spacing:.06em;flex:1;min-width:0}
+.apply{border:0;border-radius:16px;padding:0 20px;background:var(--ink);color:var(--surface);font:700 16px var(--body);cursor:pointer}
+.small{font-size:13px}
+.totrow{display:flex;justify-content:space-between;align-items:center;gap:12px;border-top:1px solid var(--line);padding-top:16px}
+.totrow span{letter-spacing:.14em;text-transform:uppercase;font-weight:700;font-size:13px;color:var(--muted)}
+.totrow b{font:800 34px var(--display);color:var(--gold-text);font-variant-numeric:tabular-nums}
+.totrow b small{font-size:16px;color:var(--muted)}
+.paybtn{border:0;border-radius:999px;padding:18px;background:var(--gold);color:var(--gold-ink);font:700 18px var(--body);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;width:100%;box-shadow:0 10px 26px color-mix(in srgb,var(--gold) 35%,transparent)}
+.paybtn.off{opacity:.55;box-shadow:none}
+.paybtn:disabled{opacity:.7;cursor:progress}
+.secure{display:flex;align-items:center;justify-content:center;gap:6px;color:var(--muted);font-size:13px;text-align:center}
+.secure svg.i{width:15px;height:15px}
+.ck-dark{background:var(--hero);color:var(--hero-ink);border-radius:26px;padding:22px;display:flex;flex-direction:column;gap:10px;align-items:flex-start}
+.ck-dark h2{font-size:26px}
+.ck-dark p{color:var(--hero-muted)}
+.stepchip{background:color-mix(in srgb,var(--gold) 18%,transparent);color:var(--gold);border-radius:999px;padding:6px 14px;font-weight:800;letter-spacing:.14em;font-size:12px;text-transform:uppercase;display:flex;gap:8px;align-items:center}
+.stepchip svg.i{width:16px;height:16px}
+.crow{display:flex;gap:10px;align-items:flex-start;font-size:18px}
+.linkbtn{background:none;border:0;color:var(--gold-text);font:700 15px var(--body);cursor:pointer;align-self:flex-start;padding:4px 0}
+.paynow{background:var(--hero);color:var(--hero-ink);border-radius:26px;padding:22px 24px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.paynow span{display:block;color:var(--gold);letter-spacing:.14em;text-transform:uppercase;font-weight:800;font-size:13px}
+.paynow b{font:800 clamp(34px,8vw,44px)/1.1 var(--display);font-variant-numeric:tabular-nums}
+.paynow svg.i{width:46px;height:46px;color:var(--gold)}
+.meths{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.meth{border:2px solid var(--line);background:var(--surface);color:var(--ink);border-radius:20px;padding:14px;display:flex;flex-direction:column;align-items:flex-start;gap:6px;cursor:pointer;font:inherit;text-align:left;min-width:0}
+.meth.on{border-color:var(--ink);background:var(--soft)}
+.meth .mic{width:40px;height:40px;border-radius:11px;color:#fff;display:flex;align-items:center;justify-content:center;margin-bottom:4px}
+.meth b{font-size:16px}
+.meth small{color:var(--muted);font-size:13px}
+@media (max-width:340px){.meths{grid-template-columns:1fr 1fr}}
+.okic{width:64px;height:64px;border-radius:50%;background:var(--ok);display:flex;align-items:center;justify-content:center;color:#fff;box-shadow:0 0 0 10px color-mix(in srgb,var(--ok) 25%,transparent)}
+.okic svg.i{width:34px;height:34px;stroke-width:2.6}
+.next{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px}
+
 /* chat, toast, tabs */
 .chatbtn{position:fixed;right:max(18px,calc(env(safe-area-inset-right,0px) + 18px));bottom:calc(92px + env(safe-area-inset-bottom,0px));width:60px;height:60px;border-radius:50%;background:var(--hero);color:var(--hero-ink);border:0;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:15;box-shadow:0 10px 26px rgba(5,7,13,.3)}
 .chatbtn svg.i{width:28px;height:28px}
@@ -272,6 +363,12 @@ nav.tabs a.on{background:var(--gold-soft);color:var(--gold)}
   <symbol id="i-yt" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="3.5"/><path d="m10.5 9.5 4 2.5-4 2.5z"/></symbol>
   <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
   <symbol id="i-tel" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></symbol>
+  <symbol id="i-wallet" viewBox="0 0 24 24"><path d="M4 7a2 2 0 0 1 2-2h11v4"/><rect x="4" y="7" width="16" height="13" rx="2"/><path d="M20 11h-4a2 2 0 0 0 0 4h4"/></symbol>
+  <symbol id="i-card" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18M7 15h4"/></symbol>
+  <symbol id="i-tag" viewBox="0 0 24 24"><path d="M3 12V4h8l9 9-8 8z"/><circle cx="7.5" cy="8.5" r="1.3"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></symbol>
+  <symbol id="i-left" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></symbol>
   <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
 </svg>
 
@@ -346,6 +443,8 @@ nav.tabs a.on{background:var(--gold-soft);color:var(--gold)}
   <div class="chips" id="chips"></div>
   <div class="plist" id="allList"></div>
 </section>
+
+<section class="view" id="v-peye" hidden></section>
 
 <section class="view" id="v-pwofese" hidden>
   <div class="head">
@@ -599,9 +698,7 @@ document.addEventListener("click",e=>{
   const ch=e.target.closest("[data-chip]");if(ch){filterCat=ch.dataset.chip||null;renderCourses()}
   const vw=e.target.closest("[data-view]");if(vw)openCourse(course(vw.dataset.view));
   const b=e.target.closest("[data-buy]");
-  if(b){const c=course(b.dataset.buy),amt=c.st=="soon"?c.dep:c.p;
-    ST.sales.unshift({id:"s"+Date.now(),cid:c.id,at:Date.now(),amt,kind:c.st=="soon"?"Rezèvasyon":"Enskripsyon"});ST.cart=(ST.cart||0)+1;save();
-    toast(c.st=="soon"?`Plas ou rezève! ${fmt(split(amt).tp)} HTG ale bay ${teacher(c.tid).name}`:`Enskri! ${fmt(split(amt).tp)} HTG ale bay ${teacher(c.tid).name}`);render()}
+  if(b)startCheckout(b.dataset.buy);
   if(e.target.closest("[data-mclose]"))$("modal").hidden=true;
   if(e.target.closest("[data-close]")||e.target.closest(".drawer .sheet a"))$("drawer").hidden=true;
   if(e.target.closest("[data-focus]"))setTimeout(()=>$("q").focus(),50);
@@ -614,6 +711,117 @@ $("chatBtn").addEventListener("click",()=>$("chatbox").hidden=!$("chatbox").hidd
 $("chatX").addEventListener("click",()=>$("chatbox").hidden=true);
 $("waNum").textContent="WhatsApp "+PHONE;$("ftel").textContent=PHONE;
 $("waBtn").addEventListener("click",()=>{const t="WhatsApp "+PHONE;(navigator.clipboard?navigator.clipboard.writeText(PHONE):Promise.reject()).then(()=>toast("Nimewo a kopye."),()=>toast(t))});
+
+/* ---------- checkout (3 etap) ---------- */
+const RATE=131, PROMOS={LEKOL10:10,BYENVENI:15};
+const METHODS=[{id:"moncash",t:"MonCash",s:"Digicel",bg:"#d71f26",ic:"i-wallet"},{id:"natcash",t:"NatCash",s:"Natcom",bg:"#ef7d1a",ic:"i-wallet"},{id:"card",t:"Kat",s:"USD",bg:"#14161c",ic:"i-card"}];
+const CK={cid:null,plan:null,promo:"",pct:0,step:1,method:"moncash",name:"",wa:"",email:"",busy:false,last:null,tried:false};
+const esc=s=>String(s).replace(/[&<>"]/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[ch]));
+const usd=n=>(n/RATE).toFixed(2);
+const mname=()=>METHODS.find(m=>m.id==CK.method).t;
+function ckCourse(){return course(CK.cid)||COURSES.find(c=>c.st=="now")}
+function ckPrice(c){return Math.round(c.p*(1-CK.pct/100))}
+function ckPlans(c){const P=ckPrice(c),h=Math.ceil(P/2);
+  const full={id:"full",t:"1 sèl peman",tag:"Rekòmande",ic:"i-wallet",today:P,later:0,note:"Ou peye tout kounye a."};
+  if(c.st=="now")return[full,{id:"two",t:"2 versman (50/50)",tag:"Fleksib",ic:"i-card",today:h,later:P-h,note:`Jodi a ${fmt(h)} · pita ${fmt(P-h)}`}];
+  const dep=Math.min(c.dep,P);
+  return[{id:"dep",t:"Rezève plas ou",tag:"Rekòmande",ic:"i-tag",today:dep,later:P-dep,note:`Jodi a ${fmt(dep)} · rès la anvan ${promoLabel}`},{...full,tag:"Yon sèl fwa"}];
+}
+function ckPlan(){const ps=ckPlans(ckCourse());return ps.find(p=>p.id==CK.plan)||ps[0]}
+function ckProblems(){const e=[];
+  if(CK.name.trim().length<2)e.push(["ckName","non konplè ou"]);
+  if(CK.wa.replace(/\D/g,"").length<8)e.push(["ckWa","yon nimewo WhatsApp ki gen omwen 8 chif"]);
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(CK.email.trim()))e.push(["ckEmail","yon imèl ki valab"]);
+  return e}
+function startCheckout(id){const c=course(id);CK.cid=id;CK.plan=c.st=="now"?"full":"dep";CK.step=1;CK.busy=false;CK.tried=false;
+  if(location.hash=="#peye"){renderCheckout();scrollTo(0,0)}else location.hash="#peye"}
+function stepper(n){return `<div class="stepper">${[1,2,3].map(i=>`<span class="${i<n?"done":i==n?"on":""}">${i<n?'<svg class="i"><use href="#i-check"/></svg>':i}</span>`).join("<i></i>")}</div>`}
+function promoBox(){return `<div class="promo-in"><span class="k"><svg class="i"><use href="#i-tag"/></svg>Kòd pwomo</span>
+  <div class="row2"><input id="ckPromo" placeholder="ANTRE KÒD OU" value="${esc(CK.promo)}" autocomplete="off"><button class="apply" id="ckApply">Aplike</button></div>
+  <p class="muted small" id="ckPromoMsg">${CK.pct?`Kòd ${esc(CK.promo)} aplike: −${CK.pct}% sou pri a.`:"Nan demo a, eseye kòd LEKOL10."}</p></div>`}
+function ckUpdate(){
+  const c=ckCourse(),P=ckPrice(c),p=ckPlan();
+  $("ckPlans").innerHTML=ckPlans(c).map(x=>`<button class="opt plan ${x.id==p.id?"on":""}" data-ckp="${x.id}"><span class="tag">${x.tag}</span><span class="pic"><svg class="i"><use href="#${x.ic}"/></svg></span><b>${x.t}</b><span class="amt">${x.later?fmt(x.today)+" HTG"+(x.id=="two"?" × 2":""):fmt(x.today)+" HTG"}</span><small>${x.note}</small></button>`).join("");
+  $("ckRecap").innerHTML=`<div class="rrow"><span>Fòmasyon</span><b>${c.t}</b></div>
+    <div class="rrow"><span>Pri total</span><b>${CK.pct?`<s>${fmt(c.p)}</s>`:""}${fmt(P)} HTG</b></div>
+    <div class="rrow"><span>Plan</span><b>${p.t}</b></div>${p.later?`<div class="rrow"><span>Pou peye pita</span><b>${fmt(p.later)} HTG</b></div>`:""}`;
+  $("ckToday").innerHTML=`${fmt(p.today)} <small>HTG</small>`;
+  const probs=ckProblems();$("ckNext").classList.toggle("off",probs.length>0);
+  ["ckName","ckWa","ckEmail"].forEach(id=>$(id).classList.toggle("bad",CK.tried&&probs.some(x=>x[0]==id)));
+  const er=$("ckErr");er.hidden=!(CK.tried&&probs.length);if(probs.length)er.textContent="Tanpri mete "+probs.map(x=>x[1]).join(", ")+".";
+}
+function renderCheckout(){
+  const c=ckCourse();CK.cid=c.id;const v=$("v-peye");
+  if(CK.step==1){
+    const list=COURSES.filter(x=>x.st=="now"||x.id==c.id);
+    v.innerHTML=`<div class="ck-hero">
+      <a class="back" href="#akey"><svg class="i"><use href="#i-left"/></svg>Retounen lakay</a>
+      <span class="chipd"><svg class="i"><use href="#i-cal"/></svg>Klas yo kòmanse ${promoLabel}</span>
+      <h1>Peye fòmasyon w <em>an 3 etap.</em></h1>
+      <p>Chwazi yon sèl peman oswa peye an 2 fwa (50% + 50%). Klas yo kòmanse ${promoLabel}</p>
+      ${stepper(1)}</div>
+    <div class="ck-card"><div><h2>Fòmasyon ou chwazi</h2><p class="muted">Ou ka chanje fòmasyon an anvan ou peye.</p></div>
+      <div class="opts">${list.map(x=>`<button class="opt ${x.id==c.id?"on":""}" data-ckc="${x.id}"><span class="radio"></span><span class="ot"><span class="k">${CATLABEL[x.cat]} · ${x.dur}${x.st=="soon"?" · Rezèvasyon":""}</span><b>${x.t}</b></span><span class="pr">${fmt(x.p)}</span></button>`).join("")}</div></div>
+    <div class="ck-card"><div><h2>Chwazi fason pou peye</h2><p class="muted">Si w peye an 2 fwa, ou peye rès la nan espas etidyan w anvan klas yo kòmanse.</p></div><div class="opts" id="ckPlans"></div></div>
+    <div class="ck-card"><div><h2>Enfòmasyon ou</h2><p class="muted">Nou sèvi ak imèl ou pou kreye kont etidyan w apre peman an.</p></div>
+      <label class="fld" for="ckName"><span><svg class="i"><use href="#i-user"/></svg>Non konplè <i>*</i></span><input id="ckName" autocomplete="name" placeholder="Egzanp: Marie Joseph" value="${esc(CK.name)}"></label>
+      <label class="fld" for="ckWa"><span><svg class="i"><use href="#i-tel"/></svg>Nimewo WhatsApp <i>*</i></span><input id="ckWa" type="tel" inputmode="tel" autocomplete="tel" placeholder="+509 3XXX XXXX" value="${esc(CK.wa)}"></label>
+      <label class="fld" for="ckEmail"><span><svg class="i"><use href="#i-mail"/></svg>Imèl <i>*</i></span><input id="ckEmail" type="email" autocomplete="email" placeholder="non@imel.com" value="${esc(CK.email)}"></label>
+      <p class="ckerr" id="ckErr" hidden></p></div>
+    <div class="ck-card recap"><span class="rtitle">Rezime</span><div id="ckRecap" style="display:flex;flex-direction:column;gap:12px"></div>
+      ${promoBox()}
+      <div class="totrow"><span>Pou peye jodi a</span><b id="ckToday"></b></div>
+      <button class="paybtn" id="ckNext">Kontinye <svg class="i"><use href="#i-arrow"/></svg></button>
+      <p class="secure"><svg class="i"><use href="#i-lock"/></svg>Peman an sekirite ak MonCash, NatCash oswa kat</p></div>`;
+    ckUpdate();
+  } else if(CK.step==2){
+    const p=ckPlan(),P=ckPrice(c);
+    v.innerHTML=`<div class="ck-dark"><span class="stepchip"><svg class="i"><use href="#i-card"/></svg>Etap 2 sou 3</span><h2>Konfime peman ou</h2><p>Verifye enfòmasyon yo epi peze "Peye". W ap ale sou paj ${CK.method=="card"?"peman kat la":mname()} pou fini peman an.</p></div>
+    <div class="ck-card slim"><div class="rrow"><span>Non</span><b>${esc(CK.name)}</b></div><div class="rrow"><span>Imèl</span><b>${esc(CK.email)}</b></div><div class="rrow"><span>WhatsApp</span><b>${esc(CK.wa)}</b></div><button class="linkbtn" data-ckstep="1">Modifye</button></div>
+    <div class="ck-card slim"><span class="rtitle">Fòmasyon ou</span><div class="crow"><svg class="i" style="color:var(--gold-text)"><use href="#i-check"/></svg><b>${c.t}</b></div><p class="muted">${CATLABEL[c.cat]} · ${c.dur} · Pri total ${fmt(P)} HTG</p></div>
+    <div class="ck-card slim">${promoBox()}</div>
+    <div class="ck-card slim"><div class="rrow"><span>Plan</span><b>${p.t}</b></div><div class="rrow"><span>${p.later?"1ye peman (jodi a)":"Montan"}</span><b>${fmt(p.today)} HTG</b></div>${p.later?`<div class="rrow"><span>Rès pou peye pita</span><b>${fmt(p.later)} HTG</b></div>`:""}</div>
+    <div class="paynow"><div><span>Pou peye kounye a</span><b>${fmt(p.today)} HTG</b></div><svg class="i"><use href="#i-wallet"/></svg></div>
+    <span class="k">Peye ak</span>
+    <div class="meths">${METHODS.map(m=>`<button class="meth ${CK.method==m.id?"on":""}" data-ckm="${m.id}"><span class="mic" style="background:${m.bg}"><svg class="i"><use href="#${m.ic}"/></svg></span><b>${m.t}</b><small>${m.id=="card"?usd(p.today)+" USD":m.s}</small></button>`).join("")}</div>
+    <button class="paybtn" id="ckPay" ${CK.busy?"disabled":""}>${CK.busy?`Ap konekte ak ${mname()}…`:CK.method=="card"?`Peye ${usd(p.today)} USD ak kat`:`Peye ${fmt(p.today)} HTG ak ${mname()}`}</button>
+    <p class="secure">Apre peman an, n ap voye konfimasyon sou WhatsApp ou epi kreye kont etidyan w.</p>
+    <button class="linkbtn" data-ckstep="1">← Retounen nan etap 1</button>`;
+  } else {
+    const L=CK.last,t=teacher(L.c.tid);
+    v.innerHTML=`<div class="ck-hero">${stepper(4)}<span class="okic"><svg class="i"><use href="#i-check"/></svg></span><h1>Peman <em>resevwa!</em></h1><p>Mèsi ${esc(L.name.split(" ")[0])}. Plas ou nan <b style="color:#fff">${L.c.t}</b> konfime.</p></div>
+    <div class="ck-card slim"><span class="rtitle">Resi</span><div class="rrow"><span>Nimewo resi</span><b>${L.ref}</b></div><div class="rrow"><span>Peye jodi a</span><b>${fmt(L.p.today)} HTG</b></div><div class="rrow"><span>Metòd</span><b>${L.m}</b></div>${L.p.later?`<div class="rrow"><span>Rès pou peye anvan ${promoLabel}</span><b>${fmt(L.p.later)} HTG</b></div>`:""}</div>
+    <div class="ck-card slim"><span class="rtitle">Sa k ap pase kounye a</span><ol class="next"><li>N ap voye konfimasyon an sou WhatsApp <b>${esc(L.wa)}</b>.</li><li>Kont etidyan w ap kreye ak <b>${esc(L.email)}</b>.</li><li>Klas yo kòmanse <b>${promoLabel}</b>.</li></ol></div>
+    <p class="note">Sa se yon demo: pa gen vrè lajan ki soti. ${fmt(split(L.p.today).tp)} HTG ale nan balans ${t.name} nan espas pwofesè a.</p>
+    <div class="pbtns" style="grid-template-columns:1fr 1fr"><a class="bout" href="#akey" style="text-align:center;text-decoration:none">Retounen lakay</a><a class="benr full" href="#pwofese" style="text-decoration:none">Wè espas pwofesè</a></div>`;
+  }
+}
+document.addEventListener("input",e=>{const id=e.target.id;
+  if(id=="ckName"){CK.name=e.target.value;ckUpdate()}
+  if(id=="ckWa"){CK.wa=e.target.value;ckUpdate()}
+  if(id=="ckEmail"){CK.email=e.target.value;ckUpdate()}
+  if(id=="ckPromo")CK.promo=e.target.value.toUpperCase().trim();
+});
+document.addEventListener("click",e=>{
+  const cc=e.target.closest("[data-ckc]");if(cc){const c=course(cc.dataset.ckc);CK.cid=c.id;CK.plan=c.st=="now"?"full":"dep";renderCheckout();return}
+  const cp=e.target.closest("[data-ckp]");if(cp){CK.plan=cp.dataset.ckp;ckUpdate();return}
+  const cm=e.target.closest("[data-ckm]");if(cm){CK.method=cm.dataset.ckm;renderCheckout();return}
+  const cs=e.target.closest("[data-ckstep]");if(cs){CK.step=+cs.dataset.ckstep;renderCheckout();scrollTo(0,0);return}
+  if(e.target.closest("#ckApply")){const code=($("ckPromo").value||"").toUpperCase().trim();CK.promo=code;CK.pct=PROMOS[code]||0;
+    if(CK.step==1){ckUpdate();$("ckPromoMsg").textContent=CK.pct?`Kòd ${code} aplike: −${CK.pct}% sou pri a.`:code?"Kòd sa a pa valab. Verifye l epi eseye ankò.":"Antre yon kòd anvan."}
+    else{renderCheckout();if(!CK.pct&&code)$("ckPromoMsg").textContent="Kòd sa a pa valab. Verifye l epi eseye ankò."}
+    if(CK.pct)toast(`Rabè ${CK.pct}% aplike.`);return}
+  if(e.target.closest("#ckNext")){CK.tried=true;const pr=ckProblems();ckUpdate();
+    if(pr.length){$(pr[0][0]).focus();return}
+    CK.step=2;renderCheckout();scrollTo(0,0);return}
+  if(e.target.closest("#ckPay")&&!CK.busy){CK.busy=true;renderCheckout();
+    setTimeout(()=>{const c=ckCourse(),p=ckPlan();
+      const ref="LA-"+Date.now().toString(36).toUpperCase().slice(-6);
+      ST.sales.unshift({id:"s"+Date.now(),cid:c.id,at:Date.now(),amt:p.today,kind:p.id=="dep"?"Rezèvasyon":p.id=="two"?"Versman 1/2":"Enskripsyon"});
+      ST.cart=(ST.cart||0)+1;save();
+      CK.last={ref,c,p,m:mname(),name:CK.name,wa:CK.wa,email:CK.email};CK.step=3;CK.busy=false;CK.pct=0;CK.promo="";
+      render();renderCheckout();scrollTo(0,0)},1400);return}
+});
 
 /* ---------- teacher ---------- */
 function renderTeacher(){
@@ -665,7 +873,8 @@ $("teacherSel").addEventListener("change",renderTeacher);
 
 function render(){renderCourses();renderTeacher();renderAdmin()}
 function route(){
-  const v=(location.hash||"#akey").slice(1),ok=["akey","kou","pwofese","admin"].includes(v)?v:"akey";
+  const v=(location.hash||"#akey").slice(1),ok=["akey","kou","peye","pwofese","admin"].includes(v)?v:"akey";
+  if(ok=="peye"){if(CK.step==3&&!CK.last)CK.step=1;if(CK.step==2&&ckProblems().length)CK.step=1;renderCheckout()}
   document.querySelectorAll("section.view").forEach(s=>s.hidden=s.id!=="v-"+ok);
   document.querySelectorAll("nav.desk a").forEach(a=>a.classList.toggle("on",a.dataset.v===ok));
   document.querySelectorAll("nav.tabs a").forEach((a,i)=>a.classList.toggle("on",a.dataset.v===ok&&!(ok==="kou"&&i===1)));
