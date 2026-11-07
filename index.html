@@ -77,17 +77,62 @@ nav.desk a.on{background:var(--gold-soft);color:var(--ink)}
 
 section.view{padding-block:20px 48px;display:flex;flex-direction:column;gap:26px}
 
-/* hero */
-.hero{background:var(--hero);color:var(--hero-ink);border-radius:26px;padding:clamp(26px,5vw,48px);position:relative;overflow:hidden;min-height:330px;display:flex;flex-direction:column;justify-content:space-between;gap:24px;box-shadow:0 14px 40px rgba(5,7,13,.18)}
-.hero::after{content:"";position:absolute;right:-80px;top:-60px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--gold) 22%,transparent),transparent 65%);pointer-events:none}
-.slide{display:flex;flex-direction:column;gap:14px;max-width:560px;position:relative;z-index:1}
+/* hero: flyer slider (single-look flyers, fixed colors on purpose) */
 .eyebrow{color:var(--gold);font-weight:700;font-size:13px;letter-spacing:.14em;text-transform:uppercase}
-.hero h1{font-size:clamp(42px,9vw,68px);font-weight:800;letter-spacing:-.035em;line-height:.98}
-.hero h1 em{font-style:normal;color:var(--gold);display:block}
-.hero p{color:var(--hero-muted);font-size:17px;max-width:40ch}
-.dots{display:flex;gap:8px;position:relative;z-index:1}
-.dots button{width:11px;height:11px;border-radius:6px;border:0;background:#4a5060;cursor:pointer;padding:0;transition:width .25s}
-.dots button.on{width:34px;background:var(--gold)}
+.flyers{position:relative;aspect-ratio:4/5;max-width:100%;border-radius:26px;overflow:hidden;container-type:inline-size;box-shadow:0 14px 40px rgba(5,7,13,.18);background:#14161c}
+@media (min-width:760px){.flyers{aspect-ratio:16/7}}
+.fly{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .6s,visibility .6s;font-family:var(--body);color:var(--fi);background:var(--fb)}
+.fly.on{opacity:1;visibility:visible}
+.fly .deco{position:absolute;inset:0;pointer-events:none}
+.fly .ph{position:absolute;right:-3cqw;bottom:0;height:64%;max-width:none;width:auto;z-index:1;-webkit-mask-image:radial-gradient(ellipse 62% 100% at 50% 100%,#000 72%,transparent 100%);mask-image:radial-gradient(ellipse 62% 100% at 50% 100%,#000 72%,transparent 100%)}
+.fly.bleed .ph{inset:0;z-index:0;height:100%;width:100%;object-fit:cover;object-position:50% 40%;right:0;-webkit-mask-image:none;mask-image:none}
+.fly.bleed .deco{background:linear-gradient(180deg,rgba(4,6,14,.92) 0%,rgba(4,6,14,.8) 48%,rgba(4,6,14,.25) 72%,rgba(4,6,14,.88) 100%);z-index:1}
+.fly .txt{position:absolute;left:6cqw;right:6cqw;top:6.5cqw;z-index:3;display:flex;flex-direction:column;align-items:flex-start;gap:2.6cqw}
+.fly .chip{display:inline-flex;align-items:center;gap:1.6cqw;padding:1.5cqw 3.2cqw;border-radius:999px;font:700 3cqw var(--body);letter-spacing:.14em;text-transform:uppercase;background:var(--cb);color:var(--cc)}
+.fly .chip::before{content:"";width:2cqw;height:2cqw;background:currentColor;clip-path:polygon(50% 0,62% 38%,100% 50%,62% 62%,50% 100%,38% 62%,0 50%,38% 38%)}
+.fly h1{font:800 10.6cqw/.96 var(--display);letter-spacing:-.04em;margin:0;text-wrap:balance}
+.fly h1 em{font-style:normal;color:var(--fa);display:block}
+.fly p{font:500 3.9cqw/1.35 var(--body);max-width:52cqw;opacity:.88;margin:0}
+.fly .bot{position:absolute;left:6cqw;bottom:7cqw;z-index:4;display:flex;flex-direction:column;align-items:flex-start;gap:3cqw;max-width:52cqw}
+.fly .cta{display:inline-flex;align-items:center;gap:2.4cqw;padding:3cqw 3cqw 3cqw 5cqw;border-radius:999px;background:var(--bb);color:var(--bc);font:700 4cqw var(--body);text-decoration:none;border:0;cursor:pointer;box-shadow:0 2cqw 5cqw rgba(0,0,0,.22);white-space:nowrap}
+.fly .cta span{width:7cqw;height:7cqw;border-radius:50%;background:var(--ab);color:var(--ac);display:flex;align-items:center;justify-content:center}
+.fly .cta svg.i{width:4cqw;height:4cqw}
+.fly .tags{display:flex;flex-wrap:wrap;gap:1.6cqw}
+.fly .tags b{background:var(--tb);color:var(--tc);border-radius:999px;padding:1.3cqw 2.8cqw;font:700 3.1cqw var(--body);white-space:nowrap;backdrop-filter:blur(4px)}
+.fly .stk{position:absolute;z-index:4;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;font-family:var(--display);line-height:.95;transform:rotate(-10deg);box-shadow:0 2cqw 6cqw rgba(0,0,0,.25)}
+.fly .stk small{font:700 2.7cqw var(--body);letter-spacing:.12em;text-transform:uppercase}
+.fly .stk b{font-weight:800;font-size:8cqw;letter-spacing:-.03em}
+.fly .fan{position:absolute;z-index:3;left:3cqw;bottom:30cqw;width:70cqw;height:30cqw}
+.fly .fan > div{position:absolute;width:30cqw;border-radius:3cqw;overflow:hidden;box-shadow:0 2.5cqw 6cqw rgba(10,15,28,.35);border:1cqw solid #fff;background:#fff}
+.fly .fan .cov{border-radius:2cqw}
+.fly .fan .cov .brand,.fly .fan .cov .tops,.fly .fan .cov .eye,.fly .fan .cov .date{display:none}
+.fly .spark{position:absolute;z-index:2;width:7cqw;height:7cqw;background:var(--fa);clip-path:polygon(50% 0,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 40%)}
+.fly .ring{position:absolute;border-radius:50%;border:.8cqw solid var(--rg);z-index:0}
+.fdots{position:absolute;left:50%;transform:translateX(-50%);bottom:2.4cqw;z-index:6;display:flex;gap:6px;padding:6px 8px;border-radius:999px;background:rgba(10,12,18,.45);backdrop-filter:blur(6px)}
+.fdots button{width:8px;height:8px;border-radius:4px;border:0;background:rgba(255,255,255,.55);cursor:pointer;padding:0;transition:width .25s}
+.fdots button.on{width:24px;background:#fff}
+.farr{position:absolute;top:50%;transform:translateY(-50%);z-index:6;width:40px;height:40px;border-radius:50%;border:0;background:rgba(10,12,18,.45);color:#fff;display:none;align-items:center;justify-content:center;cursor:pointer}
+.farr.l{left:12px}.farr.r{right:12px}
+@container (min-width:700px){
+  .fly .ph{height:100%;right:6cqw}
+  .fly .txt{left:5cqw;top:4.5cqw;right:auto;width:46cqw;gap:1.2cqw}
+  .fly .chip{font-size:1.15cqw;padding:.7cqw 1.4cqw;gap:.8cqw}.fly .chip::before{width:1cqw;height:1cqw}
+  .fly h1{font-size:5.4cqw}
+  .fly p{font-size:1.55cqw;max-width:36cqw}
+  .fly .bot{left:5cqw;bottom:4.5cqw;gap:1.3cqw;max-width:44cqw}
+  .fly .cta{font-size:1.5cqw;gap:1cqw;padding:1.1cqw 1.1cqw 1.1cqw 2cqw}
+  .fly .cta span{width:2.8cqw;height:2.8cqw}.fly .cta svg.i{width:1.6cqw;height:1.6cqw}
+  .fly .tags{gap:.7cqw}.fly .tags b{font-size:1.2cqw;padding:.55cqw 1.2cqw}
+  .fly .stk small{font-size:1.05cqw}.fly .stk b{font-size:3.2cqw}
+  .fly .fan{left:auto;right:30cqw;bottom:4cqw;width:30cqw;height:14cqw}
+  .fly .fan > div{width:13cqw;border-width:.45cqw;border-radius:1.4cqw}
+  .fly .spark{width:2.6cqw;height:2.6cqw}
+  .fly .ring{border-width:.35cqw}
+  .fly .stk{left:auto!important;right:auto!important;bottom:auto!important;left:44cqw!important;top:5cqw!important;width:10cqw!important;height:10cqw!important}
+  .fly.bleed .deco{background:linear-gradient(90deg,rgba(4,6,14,.95) 0%,rgba(4,6,14,.8) 38%,rgba(4,6,14,.15) 70%,rgba(4,6,14,.3) 100%)}
+  .fly.bleed .ph{object-position:50% 45%}
+}
+@media (hover:hover) and (min-width:760px){.farr{display:flex}}
 
 /* buttons */
 .btn{border:0;border-radius:14px;padding:13px 22px;font:700 16px var(--body);cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:10px}
@@ -410,7 +455,7 @@ nav.tabs a.on{background:var(--gold-soft);color:var(--gold)}
 <main class="wrap">
 
 <section class="view" id="v-akey">
-  <div class="hero" id="hero"><div class="slide" id="slide"></div><div class="dots" id="dots"></div></div>
+  <div class="flyers" id="hero" aria-roledescription="carousel" aria-label="Bànyè Lekòl Anliy"><div id="flys"></div><button class="farr l" id="prevF" aria-label="Bànyè anvan"><svg class="i"><use href="#i-left"/></svg></button><button class="farr r" id="nextF" aria-label="Pwochen bànyè"><svg class="i"><use href="#i-arrow"/></svg></button><div class="fdots" id="dots"></div></div>
 
   <div class="head"><h2>Chwazi sa w bezwen</h2><a class="more" href="#kou">Wè tout <svg class="i" style="width:18px;height:18px"><use href="#i-chev"/></svg></a></div>
   <div class="rail" id="cats"></div>
@@ -645,19 +690,54 @@ function card(c){
     <div class="pbtns" style="grid-template-columns:.8fr 1.4fr"><button class="bout" data-view="${c.id}">Wè</button><button class="benr full" data-buy="${c.id}">Rezève plas mwen</button></div></div></article>`;
 }
 
-/* ---------- hero ---------- */
-const SLIDES=[
-  {e:"Lekòl an liy",a:"Aprann.",b:"Kote w ye.",p:"Fòmasyon pratik an kreyòl ak pi bon pwofesè Ayiti yo, sou telefòn ou.",cta:"Gade fòmasyon yo",h:"#kou"},
-  {e:"Peye an 2 fwa",a:"13,500 HTG",b:"oswa 2 × 6,750.",p:"Peye ak MonCash, NatCash, kat bank oswa PayPal pou fanmi nan dyaspora.",cta:"Enskri kounye a",h:"#kou"},
-  {e:"Pwochen promosyon · "+promoLabel,a:"Flutter, IA,",b:"FL Studio.",p:"Rezève plas ou ak 2,500 HTG sèlman anvan plas yo fini.",cta:"Rezève plas mwen",h:"#kou",cat:"iadev"},
-  {e:"Pou pwofesè",a:"Anseye.",b:"Touche.",p:"70% chak vant ale nan pòch ou, peye chak 15 jou.",cta:"Vin anseye",h:"#pwofese"}
+/* ---------- hero: flyers ---------- */
+const ARW='<span><svg class="i"><use href="#i-arrow"/></svg></span>';
+const FLYERS=[
+  {img:"img/etidyan-oranj.webp",alt:"Etidyan souri ak yon laptop",v:"--fb:radial-gradient(120% 90% at 80% 75%,#ff9a3d 0%,#fd7e1d 45%,#f26a10 100%);--fi:#fff;--fa:#14161c;--cb:#14161c;--cc:#fd7e1d;--bb:#14161c;--bc:#fff;--ab:#fff;--ac:#14161c;--tb:rgba(255,255,255,.22);--tc:#fff;--rg:rgba(255,255,255,.35)",
+   chip:"Lekòl Anliy",h:"Aprann yon metye.<em>Sou telefòn ou.</em>",p:"11 fòmasyon pratik an kreyòl, ak pwofesè ki akonpaye w.",
+   tags:["CapCut","Grafik","WordPress","Flutter"],cta:{t:"Gade fòmasyon yo",h:"#kou"},
+   deco:`<div class="ring" style="width:78cqw;height:78cqw;right:-18cqw;bottom:-8cqw"></div><div class="spark" style="right:10cqw;top:44cqw"></div>`},
+  {img:"img/etidyan-wouj.webp",alt:"Etidyant kontan, bra l leve",v:"--fb:#f6f6f6;--fi:#14161c;--fa:#e3262d;--cb:#e3262d;--cc:#fff;--bb:#14161c;--bc:#fff;--ab:#e8a93a;--ac:#1d1300;--tb:#fff;--tc:#14161c;--rg:#e3262d",
+   chip:"Disponib kounye a",h:"Ou ka fè l!<em>Dizay. Videyo.</em>",p:"Kòmanse jodi a, travay pou kliyan demen.",
+   fan:["grafik","capcut","wordpress"],cta:{t:"Enskri kounye a",h:"#kou"},
+   deco:`<div class="ring" style="width:62cqw;height:62cqw;right:-6cqw;bottom:6cqw;border-style:dashed;opacity:.5"></div><div class="spark" style="right:52cqw;top:50cqw"></div>`},
+  {img:"img/etidyan-sezi.webp",alt:"Etidyan sezi devan laptop li",v:"--fb:linear-gradient(160deg,#dcdde3 0%,#c4c3cb 60%,#b7b2b6 100%);--fi:#14161c;--fa:#6d5fd8;--cb:#14161c;--cc:#fff;--bb:#6d5fd8;--bc:#fff;--ab:#fff;--ac:#6d5fd8;--tb:rgba(255,255,255,.7);--tc:#14161c;--rg:#6d5fd8",
+   chip:"Pwochen promosyon",h:"Web + IA.<em>Se ou k ap kreye l.</em>",p:"Aplikasyon web, Flutter ak React Native. Plas yo limite.",
+   tags:["Rezève: 2,500 HTG"],cta:{t:"Rezève plas mwen",buy:"webia"},
+   stk:{style:"left:auto;right:5cqw;top:44cqw;width:24cqw;height:24cqw;background:#e8a93a;color:#1d1300",small:"Kòmanse",b:"25 NOV"}},
+  {img:"img/etidyan-kob.webp",alt:"Etidyant sezi, li kenbe yon pyès lajan",v:"--fb:#f4f4f4;--fi:#14161c;--fa:#d71f26;--cb:#14161c;--cc:#fff;--bb:#d71f26;--bc:#fff;--ab:#fff;--ac:#d71f26;--tb:#14161c;--tc:#fff;--rg:#d71f26",
+   chip:"Peman fasil",h:"13,500 HTG?<em>Peye l an 2 fwa.</em>",p:"6,750 HTG jodi a, rès la anvan klas yo kòmanse.",
+   tags:["MonCash","NatCash","Kat"],cta:{t:"Chwazi fòmasyon w",h:"#kou"},
+   stk:{style:"left:6cqw;top:52cqw;width:22cqw;height:22cqw;background:#14161c;color:#fff",small:"Sèlman",b:"2 ×"}},
+  {img:"img/biznis-ekran.webp",alt:"Laptop ak grafik mache sou ekran an",bleed:1,v:"--fb:#07060e;--fi:#fff;--fa:#2fe39a;--cb:#2fe39a;--cc:#07210f;--bb:#2fe39a;--bc:#07210f;--ab:#07210f;--ac:#2fe39a;--tb:rgba(255,255,255,.14);--tc:#fff;--rg:#2fe39a",
+   chip:"Biznis anliy",h:"Fè lajan sou entènèt.<em>3 jou. 5,000 HTG.</em>",p:"Kat vityèl, achte anliy, epi vann pwodui w sou rezo sosyal.",
+   tags:["Kat vityèl","Boutik anliy","Vant"],cta:{t:"Enskri",buy:"biznis"}},
+  {img:"img/pwofese-wouj.webp",alt:"Pwofesè souri, li gade anlè",v:"--fb:radial-gradient(110% 90% at 75% 60%,#f3262c 0%,#d00616 55%,#a10010 100%);--fi:#fff;--fa:#ffd166;--cb:#fff;--cc:#c00012;--bb:#fff;--bc:#14161c;--ab:#14161c;--ac:#fff;--tb:rgba(0,0,0,.25);--tc:#fff;--rg:rgba(255,255,255,.3)",
+   chip:"Pou pwofesè",h:"Anseye sa w konnen.<em>Touche 70%.</em>",p:"Peye chak 15 jou sou MonCash, NatCash oswa bank.",
+   cta:{t:"Vin anseye",h:"#pwofese"},
+   stk:{style:"left:6cqw;bottom:24cqw;width:22cqw;height:22cqw;background:#ffd166;color:#14161c",small:"Pou ou",b:"70%"},
+   deco:`<div class="ring" style="width:70cqw;height:70cqw;right:-14cqw;bottom:-6cqw"></div>`}
 ];
+function flyerHTML(f,i){
+  const cta=f.cta.buy?`<button class="cta" data-buy="${f.cta.buy}">${f.cta.t}${ARW}</button>`:`<a class="cta" href="${f.cta.h}">${f.cta.t}${ARW}</a>`;
+  const fan=f.fan?`<div class="fan">${f.fan.map((id,k)=>`<div style="left:${k*44/3}cqw;top:${[2,-2,3][k]}cqw;transform:rotate(${[-12,-2,9][k]}deg);z-index:${k}">${cover(course(id))}</div>`).join("")}</div>`:"";
+  const stk=f.stk?`<div class="stk" style="${f.stk.style}"><small>${f.stk.small}</small><b>${f.stk.b}</b></div>`:"";
+  return `<div class="fly ${f.bleed?"bleed":""} ${i==0?"on":""}" style="${f.v}" role="group" aria-roledescription="slide" aria-label="${i+1} sou ${FLYERS.length}">
+    <div class="deco">${f.deco||""}</div>
+    <img class="ph" src="${f.img}" alt="${f.alt}" ${i?'loading="lazy"':""} decoding="async">
+    <div class="txt"><span class="chip">${f.chip}</span><h1>${f.h}</h1><p>${f.p}</p></div>
+    ${fan}${stk}
+    <div class="bot">${f.tags?`<div class="tags">${f.tags.map(t=>`<b>${t}</b>`).join("")}</div>`:""}${cta}</div></div>`;
+}
+$("flys").innerHTML=FLYERS.map(flyerHTML).join("");
 let si=0,timer;
-function showSlide(i){si=(i+SLIDES.length)%SLIDES.length;const s=SLIDES[si];
-  $("slide").innerHTML=`<span class="eyebrow">${s.e}</span><h1>${s.a}<em>${s.b}</em></h1><p>${s.p}</p><a class="btn gold" href="${s.h}" ${s.cat?`data-cat="${s.cat}"`:""}>${s.cta} <svg class="i" style="width:20px;height:20px"><use href="#i-arrow"/></svg></a>`;
-  $("dots").innerHTML=SLIDES.map((_,k)=>`<button class="${k===si?"on":""}" data-dot="${k}" aria-label="Bànyè ${k+1}"></button>`).join("")}
-function auto(){clearInterval(timer);if(!matchMedia("(prefers-reduced-motion: reduce)").matches)timer=setInterval(()=>showSlide(si+1),5500)}
+function showSlide(i){si=(i+FLYERS.length)%FLYERS.length;
+  document.querySelectorAll("#flys .fly").forEach((el,k)=>el.classList.toggle("on",k===si));
+  $("dots").innerHTML=FLYERS.map((_,k)=>`<button class="${k===si?"on":""}" data-dot="${k}" aria-label="Bànyè ${k+1}"></button>`).join("")}
+function auto(){clearInterval(timer);if(!matchMedia("(prefers-reduced-motion: reduce)").matches)timer=setInterval(()=>showSlide(si+1),5000)}
 $("dots").addEventListener("click",e=>{const b=e.target.closest("[data-dot]");if(b){showSlide(+b.dataset.dot);auto()}});
+$("prevF").addEventListener("click",()=>{showSlide(si-1);auto()});$("nextF").addEventListener("click",()=>{showSlide(si+1);auto()});
+$("hero").addEventListener("mouseenter",()=>clearInterval(timer));$("hero").addEventListener("mouseleave",auto);
 let tx=null;$("hero").addEventListener("touchstart",e=>tx=e.touches[0].clientX,{passive:true});
 $("hero").addEventListener("touchend",e=>{if(tx==null)return;const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>40){showSlide(si+(dx<0?1:-1));auto()}tx=null});
 
