@@ -332,6 +332,46 @@ td.r,th.r{text-align:right}
 .dom.on::before{background:#fff}
 .dom.on b{background:var(--gold);color:var(--gold-ink)}
 
+/* admin */
+.atabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;background:var(--soft);border:1px solid var(--line);border-radius:16px;padding:5px}
+.atabs button{border:0;background:transparent;border-radius:12px;padding:9px 14px;font:600 14px var(--body);color:var(--muted);cursor:pointer;white-space:nowrap;display:flex;align-items:center;gap:6px}
+.atabs button.on{background:var(--surface);color:var(--ink);box-shadow:0 2px 8px rgba(10,15,28,.08)}
+.atabs button i{font-style:normal;background:var(--gold);color:var(--gold-ink);border-radius:999px;font-size:11px;font-weight:800;padding:1px 7px}
+.kpi .sub2{font-size:12px;color:var(--muted);margin-top:4px;display:block}
+.kpi.warnk{border-color:color-mix(in srgb,var(--warn) 50%,var(--line))}
+.bars14{width:100%;height:auto;display:block}
+.bars14 text{fill:var(--muted);font:10px var(--body)}
+.bars14 .b{fill:var(--gold)}
+.bars14 .b.z{fill:var(--line)}
+.bars14 .bt{fill:var(--ink);font-weight:700}
+.top5{display:flex;flex-direction:column;gap:10px}
+.top5 .r{display:grid;grid-template-columns:1fr auto;gap:4px 10px;align-items:center}
+.top5 .r small{color:var(--muted)}
+.top5 .bar{grid-column:1/-1;height:6px;border-radius:3px;background:var(--soft);overflow:hidden}
+.top5 .bar i{display:block;height:100%;background:var(--gold);border-radius:3px}
+.atool{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.atool label.s{flex:1;min-width:200px;display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:0 12px}
+.atool label.s input{border:0;background:transparent;padding:11px 0;font:15px var(--body);color:var(--ink);width:100%;outline:none}
+.atool label.s svg.i{color:var(--muted);width:18px;height:18px}
+.olist{display:flex;flex-direction:column;gap:10px}
+.orow{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--sc,var(--ok));border-radius:16px;padding:14px 16px;display:grid;grid-template-columns:1.3fr 1.3fr auto;gap:8px 16px;align-items:center;cursor:pointer;text-align:left;font:inherit;color:var(--ink);width:100%}
+.orow:hover{border-color:var(--gold);border-left-color:var(--sc,var(--ok))}
+.orow > div{min-width:0}
+.orow b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.orow small{color:var(--muted);font-size:13px;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.orow .money{text-align:right;font-variant-numeric:tabular-nums}
+.orow .money b{font-size:16px}
+.orow .money small.rest{color:var(--warn);font-weight:700}
+@media (max-width:640px){.orow{grid-template-columns:1fr auto}.orow .cc{grid-column:1/-1;order:3}}
+.empty{padding:24px;text-align:center;color:var(--muted);background:var(--surface);border:1px dashed var(--line);border-radius:16px}
+.paylist{display:flex;flex-direction:column;gap:8px}
+.paylist div{display:flex;justify-content:space-between;gap:10px;background:var(--soft);border-radius:10px;padding:10px 12px;font-size:14px;font-variant-numeric:tabular-nums}
+.actrow{display:flex;gap:10px;flex-wrap:wrap}
+.actrow > *{flex:1;min-width:140px;justify-content:center}
+.btn.wa2{background:#1f9d5c;color:#fff}
+.prog{height:8px;border-radius:4px;background:var(--soft);overflow:hidden}
+.prog i{display:block;height:100%;background:var(--ok)}
+
 /* checkout */
 #v-peye{max-width:640px;margin:0 auto;width:100%;gap:18px}
 .ck-hero{background:var(--hero);color:var(--hero-ink);border-radius:28px;padding:24px 22px 28px;position:relative;overflow:hidden;display:flex;flex-direction:column;gap:16px;align-items:flex-start}
@@ -586,22 +626,11 @@ nav.tabs a.on{background:var(--gold-soft);color:var(--gold)}
 
 <section class="view" id="v-admin" hidden>
   <div class="head">
-    <div><span class="demo">DEMO</span><h2 style="margin-top:6px">Panèl admin</h2><p class="muted">Isit la ou wè sa lekòl la touche, ak demann retrè pwofesè yo pou w peye.</p></div>
+    <div><span class="demo">DEMO</span><h2 style="margin-top:6px">Panèl admin</h2><p class="muted">Wè kiyès ki peye, pou ki fòmasyon, konbyen ki rete, epi peye pwofesè yo.</p></div>
     <button class="btn g sm" id="resetBtn">Rekòmanse demo a</button>
   </div>
-  <div class="kpis" id="aKpis"></div>
-  <div class="panel"><h3>Demann retrè an atant</h3><div class="tblwrap"><table id="aPending"></table></div></div>
-  <div class="panel"><h3>Balans chak pwofesè</h3><div class="tblwrap"><table id="aTeachers"></table></div></div>
-  <div class="panel">
-    <h3>Règ peman yo</h3>
-    <div class="form">
-      <label for="rShare">Pati pwofesè (%)<input id="rShare" type="number" min="1" max="99"></label>
-      <label for="rFee">Frè peman (%)<input id="rFee" type="number" min="0" max="20" step="0.5"></label>
-      <label for="rHold">Jou an atant anvan disponib<input id="rHold" type="number" min="0" max="60"></label>
-      <label for="rMin">Retrè minimòm (HTG)<input id="rMin" type="number" min="0" step="50"></label>
-    </div>
-    <button class="btn gold" id="saveRules">Anrejistre règ yo</button>
-  </div>
+  <div class="atabs" id="atabs" role="tablist"></div>
+  <div id="aView" style="display:flex;flex-direction:column;gap:16px"></div>
 </section>
 </main>
 
@@ -719,12 +748,19 @@ const COURSES=[
 const LVL=["","Debitan","Entèmedyè","Avanse"];
 
 /* ---------- state ---------- */
-const KEY="lekol-anliy-demo-v3";
+const KEY="lekol-anliy-demo-v4";
 function seed(){
-  const now=Date.now(),sales=[];
-  [["capcut",2],["capcut",5],["capcut",20],["grafik",3],["grafik",18],["sitphone",1],["sitphone",25],["biznis",4],["biznis",16],["biznis",22],["wordpress",9],["wordpress",30],["flutter",3],["feyton",6]]
-    .forEach(([c,d],i)=>{const co=course(c);sales.push({id:"s"+i,cid:c,at:now-d*DAY,amt:co.st=="soon"?co.dep:co.p,kind:co.st=="soon"?"Rezèvasyon":"Enskripsyon"})});
-  return {rules:{share:70,fee:3,hold:14,min:1000},sales,cart:0,payouts:[
+  const now=Date.now(),sales=[],orders=[];
+  const PEOPLE=[["Marie Joseph","capcut","full",2,"MonCash"],["Jean-Marc Pierre","capcut","two",12,"NatCash",1],["Nadia Louis","capcut","full",20,"MonCash"],["Kervens Jean","grafik","two",3,"MonCash"],["Roselande Michel","grafik","full",18,"Kat"],["Wilfrid Charles","sitphone","two",1,"MonCash"],["Daphnée Etienne","sitphone","full",25,"MonCash"],["Ricardo Baptiste","biznis","full",4,"NatCash"],["Fabiola Desir","biznis","full",16,"MonCash"],["Stevenson Augustin","biznis","full",22,"MonCash"],["Mirlande Paul","wordpress","two",9,"MonCash"],["Junior Celestin","wordpress","full",30,"Kat"],["Guerline Noel","flutter","dep",3,"MonCash"],["Peterson Alexis","feyton","dep",6,"NatCash"],["Marie Joseph","flutter","dep",1,"MonCash"]];
+  PEOPLE.forEach(([name,cid,plan,d,method,second],i)=>{
+    const c=course(cid),total=c.p,first=plan=="full"?total:plan=="two"?Math.ceil(total/2):c.dep,at=now-d*DAY-i*3600e3;
+    const slug=name.toLowerCase().normalize("NFD").replace(/[^a-z ]/g,"").replace(/ /g,".");
+    const o={id:"LA-"+(1040+i),name,wa:"+509 3"+String(611+i*23).slice(0,3)+" "+String(1000+i*377).slice(-4),email:slug+"@example.com",cid,plan,total,paid:first,at,pays:[{amt:first,at,method,kind:plan=="dep"?"Rezèvasyon":plan=="two"?"Versman 1/2":"Enskripsyon"}],demo:1};
+    if(second){const at2=at+7*DAY;o.pays.push({amt:total-first,at:at2,method,kind:"Versman 2/2"});o.paid=total}
+    orders.push(o);o.pays.forEach((pp,k)=>sales.push({id:"s"+i+"-"+k,cid,at:pp.at,amt:pp.amt,kind:pp.kind,oid:o.id}));
+  });
+  orders.sort((x,y)=>y.at-x.at);sales.sort((x,y)=>y.at-x.at);
+  return {rules:{share:70,fee:3,hold:14,min:1000},sales,orders,cart:0,payouts:[
     {id:"p1",tid:"t1",amt:5000,method:"MonCash",at:now-10*DAY,status:"peye"},
     {id:"p2",tid:"t2",amt:8000,method:"NatCash",at:now-2*DAY,status:"an atant"}]};
 }
@@ -983,7 +1019,9 @@ document.addEventListener("click",e=>{
   if(e.target.closest("#ckPay")&&!CK.busy){CK.busy=true;renderCheckout();
     setTimeout(()=>{const c=ckCourse(),p=ckPlan();
       const ref="LA-"+Date.now().toString(36).toUpperCase().slice(-6);
-      ST.sales.unshift({id:"s"+Date.now(),cid:c.id,at:Date.now(),amt:p.today,kind:p.id=="dep"?"Rezèvasyon":p.id=="two"?"Versman 1/2":"Enskripsyon"});
+      const kind=p.id=="dep"?"Rezèvasyon":p.id=="two"?"Versman 1/2":"Enskripsyon",nowt=Date.now();
+      ST.sales.unshift({id:"s"+nowt,cid:c.id,at:nowt,amt:p.today,kind,oid:ref});
+      ST.orders=ST.orders||[];ST.orders.unshift({id:ref,name:CK.name.trim(),wa:CK.wa.trim(),email:CK.email.trim(),cid:c.id,plan:p.id,total:ckPrice(c),paid:p.today,at:nowt,promo:CK.pct?CK.promo:"",pays:[{amt:p.today,at:nowt,method:mname(),kind}]});
       ST.cart=(ST.cart||0)+1;save();
       CK.last={ref,c,p,m:mname(),name:CK.name,wa:CK.wa,email:CK.email};CK.step=3;CK.busy=false;CK.pct=0;CK.promo="";
       render();renderCheckout();scrollTo(0,0)},1400);return}
@@ -1014,25 +1052,100 @@ $("wdBtn").addEventListener("click",()=>{
 });
 
 /* ---------- admin ---------- */
+let aTab="apesi",aQ="",aF="all";
+const ost=o=>o.paid>=o.total?"full":o.plan=="dep"?"dep":"part";
+const OST={full:["Peye nèt","ok","var(--ok)"],part:["Rès pou peye","warn","var(--warn)"],dep:["Rezève","warn","#e5484d"]};
+const PLN={full:"1 sèl peman",two:"2 versman",dep:"Rezèvasyon"};
+const dt=ts=>new Date(ts).toLocaleDateString("fr-HT",{day:"2-digit",month:"short",year:"numeric"});
+const waLink=(o,msg)=>`https://wa.me/${o.wa.replace(/\D/g,"")}?text=${encodeURIComponent(msg)}`;
+function orders(){return ST.orders||[]}
+function aTabs(){const pend=ST.payouts.filter(p=>p.status==="an atant").length,rest=orders().filter(o=>o.paid<o.total).length;
+  $("atabs").innerHTML=[["apesi","Apèsi"],["peman","Peman",rest],["etidyan","Etidyan"],["pwofese","Pwofesè",pend],["regl","Règ"]].map(([k,t,n])=>`<button role="tab" class="${aTab==k?"on":""}" data-atab="${k}">${t}${n?`<i>${n}</i>`:""}</button>`).join("")}
 function renderAdmin(){
-  let gross=0,fees=0,school=0,owed=0;
-  ST.sales.forEach(s=>{const x=split(s.amt);gross+=s.amt;fees+=x.fee;school+=x.sp});
-  TEACHERS.forEach(t=>{const b=balance(t.id);owed+=b.total-b.paid});
-  $("aKpis").innerHTML=`<div class="kpi"><small>Vant total</small><b>${fmt(gross)}</b> <small>HTG</small></div>
-    <div class="kpi"><small>Frè peman</small><b>${fmt(fees)}</b> <small>HTG</small></div>
-    <div class="kpi hl"><small>Revni lekòl la</small><b>${fmt(school)}</b> <small>HTG</small></div>
-    <div class="kpi"><small>Dèt pwofesè yo</small><b>${fmt(owed)}</b> <small>HTG</small></div>`;
-  const pend=ST.payouts.filter(p=>p.status==="an atant").map(p=>`<tr><td>${d(p.at)}</td><td>${teacher(p.tid).name}</td><td>${p.method}</td><td>${teacher(p.tid).pay}</td><td class="r"><b>${fmt(p.amt)}</b></td><td><button class="btn gold sm" data-pay="${p.id}">Make peye</button></td></tr>`).join("");
-  $("aPending").innerHTML=`<tr><th>Dat</th><th>Pwofesè</th><th>Metòd</th><th>Kont</th><th class="r">HTG</th><th></th></tr>${pend||'<tr><td colspan="6" class="muted">Pa gen demann an atant.</td></tr>'}`;
-  $("aTeachers").innerHTML=`<tr><th>Pwofesè</th><th class="r">Total touche</th><th class="r">An atant</th><th class="r">Disponib</th><th class="r">Peye</th></tr>`+
-    TEACHERS.map(t=>{const b=balance(t.id);return `<tr><td>${t.name}</td><td class="r">${fmt(b.total)}</td><td class="r">${fmt(b.pending)}</td><td class="r">${fmt(b.withdrawable)}</td><td class="r">${fmt(b.paid)}</td></tr>`}).join("");
-  const r=ST.rules;$("rShare").value=r.share;$("rFee").value=r.fee;$("rHold").value=r.hold;$("rMin").value=r.min;
+  aTabs();const v=$("aView"),O=orders();
+  const coll=O.reduce((a,o)=>a+o.paid,0),due=O.reduce((a,o)=>a+(o.total-o.paid),0);
+  let school=0,fees=0;ST.sales.forEach(x=>{const y=split(x.amt);school+=y.sp;fees+=y.fee});
+  const studs=new Set(O.map(o=>o.email.toLowerCase())).size;
+  if(aTab=="apesi"){
+    const days=[...Array(14)].map((_,i)=>{const d0=new Date();d0.setHours(0,0,0,0);d0.setDate(d0.getDate()-13+i);return d0});
+    const sums=days.map(d0=>ST.sales.filter(x=>x.at>=+d0&&x.at<+d0+DAY).reduce((a,x)=>a+x.amt,0));
+    const mx=Math.max(...sums,1),W=300,H=120,bw=W/14;
+    const svg=`<svg class="bars14" viewBox="0 0 ${W} ${H+18}" role="img" aria-label="Lajan ki antre chak jou, 14 dènye jou">`+sums.map((v2,i)=>{const h=v2?Math.max(3,v2/mx*(H-16)):2;return `<rect class="b ${v2?"":"z"}" x="${i*bw+3}" y="${H-h}" width="${bw-6}" height="${h}" rx="2"><title>${days[i].toLocaleDateString("fr-HT",{day:"2-digit",month:"short"})}: ${fmt(v2)} HTG</title></rect>`}).join("")+
+      `<text class="bt" x="${sums.indexOf(mx)*bw+bw/2}" y="${H-(mx/mx*(H-16))-4}" text-anchor="middle">${fmt(mx)}</text>`+
+      [0,7,13].map(i=>`<text x="${i==0?2:i==13?W-2:i*bw+bw/2}" y="${H+14}" text-anchor="${i==0?"start":i==13?"end":"middle"}">${days[i].toLocaleDateString("fr-HT",{day:"2-digit",month:"short"})}</text>`).join("")+`</svg>`;
+    const byC=COURSES.map(c=>{const os=O.filter(o=>o.cid==c.id);return{c,n:os.length,amt:os.reduce((a,o)=>a+o.paid,0)}}).filter(x=>x.n).sort((x,y)=>y.amt-x.amt).slice(0,5);
+    const mxc=Math.max(...byC.map(x=>x.amt),1);
+    v.innerHTML=`<div class="kpis">
+      <div class="kpi hl"><small>Lajan ki antre</small><b>${fmt(coll)}</b> <small>HTG</small><span class="sub2">${O.length} peman · ${studs} etidyan</span></div>
+      <div class="kpi warnk"><small>Rès pou kolekte</small><b>${fmt(due)}</b> <small>HTG</small><span class="sub2">${O.filter(o=>o.paid<o.total).length} moun ki dwe</span></div>
+      <div class="kpi"><small>Pati lekòl la</small><b>${fmt(school)}</b> <small>HTG</small><span class="sub2">apre ${ST.rules.share}% pwofesè</span></div>
+      <div class="kpi"><small>Frè peman</small><b>${fmt(fees)}</b> <small>HTG</small><span class="sub2">${ST.rules.fee}% sou chak peman</span></div></div>
+    <div class="panel"><div class="head"><h3>Lajan ki antre chak jou</h3><small class="muted">14 dènye jou</small></div>${svg}</div>
+    <div class="panel"><h3>Fòmasyon ki vann plis</h3><div class="top5">${byC.map(x=>`<div class="r"><b>${x.c.t}</b><span class="price" style="font-size:15px">${fmt(x.amt)} HTG</span><small>${x.n} etidyan</small><span></span><div class="bar"><i style="width:${x.amt/mxc*100}%"></i></div></div>`).join("")||'<p class="muted">Poko gen vant.</p>'}</div></div>
+    <div class="panel"><div class="head"><h3>Dènye peman yo</h3><button class="btn g sm" data-atab="peman">Wè tout</button></div><div class="olist">${O.slice(0,4).map(orow).join("")||'<div class="empty">Poko gen peman.</div>'}</div></div>`;
+  } else if(aTab=="peman"){
+    const cnt=k=>O.filter(o=>k=="all"||ost(o)==k).length;
+    v.innerHTML=`<div class="atool"><label class="s" for="aQ"><svg class="i"><use href="#i-search"/></svg><input id="aQ" placeholder="Chèche non, imèl, telefòn, resi…" value="${esc(aQ)}" autocomplete="off"></label><button class="btn g sm" id="csvBtn">Kopye an CSV</button></div>
+    <div class="chips">${[["all","Tout"],["full","Peye nèt"],["part","Rès pou peye"],["dep","Rezève"]].map(([k,t])=>`<button class="chip ${aF==k?"on":""}" data-af="${k}">${t} (${cnt(k)})</button>`).join("")}</div>
+    <div class="olist" id="aList"></div>`;
+    aList();
+  } else if(aTab=="etidyan"){
+    const m={};O.forEach(o=>{const k=o.email.toLowerCase();(m[k]=m[k]||{name:o.name,wa:o.wa,email:o.email,os:[]}).os.push(o)});
+    const L=Object.values(m).sort((x,y)=>Math.max(...y.os.map(o=>o.at))-Math.max(...x.os.map(o=>o.at)));
+    v.innerHTML=`<div class="panel"><div class="head"><h3>${L.length} etidyan</h3><small class="muted">Peze yon non pou wè peman li yo</small></div><div class="tblwrap"><table>
+      <tr><th>Etidyan</th><th>WhatsApp</th><th>Fòmasyon</th><th class="r">Peye</th><th class="r">Rès</th></tr>
+      ${L.map(x=>{const pd=x.os.reduce((a,o)=>a+o.paid,0),rs=x.os.reduce((a,o)=>a+o.total-o.paid,0);return `<tr><td><button class="linkbtn" data-oid="${x.os[0].id}">${esc(x.name)}</button><br><small class="muted">${esc(x.email)}</small></td><td>${esc(x.wa)}</td><td>${x.os.map(o=>course(o.cid).cv.l.join(" ").replace(/<[^>]+>/g,"")).join(", ")}</td><td class="r">${fmt(pd)}</td><td class="r">${rs?`<b style="color:var(--warn)">${fmt(rs)}</b>`:"—"}</td></tr>`}).join("")}
+    </table></div></div>`;
+  } else if(aTab=="pwofese"){
+    let owed=0;TEACHERS.forEach(t=>{const b=balance(t.id);owed+=b.total-b.paid});
+    const pend=ST.payouts.filter(p=>p.status==="an atant").map(p=>`<tr><td>${d(p.at)}</td><td>${teacher(p.tid).name}</td><td>${p.method}</td><td>${teacher(p.tid).pay}</td><td class="r"><b>${fmt(p.amt)}</b></td><td><button class="btn gold sm" data-pay="${p.id}">Make peye</button></td></tr>`).join("");
+    v.innerHTML=`<div class="kpis" style="grid-template-columns:repeat(2,1fr)"><div class="kpi"><small>Dèt pwofesè yo</small><b>${fmt(owed)}</b> <small>HTG</small></div><div class="kpi"><small>Demann an atant</small><b>${ST.payouts.filter(p=>p.status==="an atant").length}</b></div></div>
+    <div class="panel"><h3>Demann retrè an atant</h3><div class="tblwrap"><table><tr><th>Dat</th><th>Pwofesè</th><th>Metòd</th><th>Kont</th><th class="r">HTG</th><th></th></tr>${pend||'<tr><td colspan="6" class="muted">Pa gen demann an atant.</td></tr>'}</table></div></div>
+    <div class="panel"><h3>Balans chak pwofesè</h3><div class="tblwrap"><table><tr><th>Pwofesè</th><th class="r">Total touche</th><th class="r">An atant</th><th class="r">Disponib</th><th class="r">Peye</th></tr>${TEACHERS.map(t=>{const b=balance(t.id);return `<tr><td>${t.name}</td><td class="r">${fmt(b.total)}</td><td class="r">${fmt(b.pending)}</td><td class="r">${fmt(b.withdrawable)}</td><td class="r">${fmt(b.paid)}</td></tr>`}).join("")}</table></div></div>`;
+  } else {
+    const r=ST.rules;
+    v.innerHTML=`<div class="panel"><h3>Règ peman yo</h3><div class="form">
+      <label for="rShare">Pati pwofesè (%)<input id="rShare" type="number" min="1" max="99" value="${r.share}"></label>
+      <label for="rFee">Frè peman (%)<input id="rFee" type="number" min="0" max="20" step="0.5" value="${r.fee}"></label>
+      <label for="rHold">Jou an atant anvan disponib<input id="rHold" type="number" min="0" max="60" value="${r.hold}"></label>
+      <label for="rMin">Retrè minimòm (HTG)<input id="rMin" type="number" min="0" step="50" value="${r.min}"></label></div>
+      <button class="btn gold" id="saveRules">Anrejistre règ yo</button></div>`;
+  }
 }
-document.addEventListener("click",e=>{const b=e.target.closest("[data-pay]");if(!b)return;
-  const p=ST.payouts.find(x=>x.id===b.dataset.pay);p.status="peye";save();toast(`${fmt(p.amt)} HTG make kòm peye pou ${teacher(p.tid).name}`);render()});
-$("saveRules").addEventListener("click",()=>{const v=id=>Number($(id).value);
-  if(v("rShare")<1||v("rShare")>99){toast("Pati pwofesè a dwe ant 1 ak 99%.");return}
-  ST.rules={share:v("rShare"),fee:v("rFee"),hold:v("rHold"),min:v("rMin")};save();toast("Règ yo anrejistre.");render()});
+function orow(o){const c=course(o.cid),st=ost(o),S2=OST[st],rest=o.total-o.paid;
+  return `<button class="orow" data-oid="${o.id}" style="--sc:${S2[2]}"><div><b>${esc(o.name)}</b><small>${esc(o.wa)} · ${d(o.at)}</small></div>
+  <div class="cc"><b style="font-weight:600">${c.t}</b><small>${PLN[o.plan]} · ${o.pays[o.pays.length-1].method} · ${o.id}</small></div>
+  <div class="money"><b>${fmt(o.paid)} HTG</b>${rest?`<small class="rest">Rès ${fmt(rest)}</small>`:`<small><span class="pill ok">${S2[0]}</span></small>`}</div></button>`}
+function aList(){const q=aQ.trim().toLowerCase();
+  const L=orders().filter(o=>(aF=="all"||ost(o)==aF)&&(!q||[o.name,o.email,o.wa,o.id,course(o.cid).t].join(" ").toLowerCase().includes(q)));
+  $("aList").innerHTML=L.map(orow).join("")||`<div class="empty">Pa gen peman ki koresponn.</div>`}
+function openOrder(id){const o=orders().find(x=>x.id==id);if(!o)return;const c=course(o.cid),rest=o.total-o.paid,S2=OST[ost(o)],first=esc(o.name.split(" ")[0]);
+  $("mbox").innerHTML=`<div style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start"><div><span class="pill ${S2[1]}">${S2[0]}</span><h2 style="font-size:24px;margin-top:8px">${esc(o.name)}</h2><p class="muted">Resi ${o.id} · ${dt(o.at)}</p></div><button class="iconbtn" data-mclose aria-label="Fèmen"><svg class="i"><use href="#i-x"/></svg></button></div>
+    <div class="ck-card slim"><div class="rrow"><span>WhatsApp</span><b>${esc(o.wa)}</b></div><div class="rrow"><span>Imèl</span><b>${esc(o.email)}</b></div></div>
+    <div class="ck-card slim"><span class="rtitle">Fòmasyon</span><b style="font-size:17px">${c.t}</b><p class="muted">${PLN[o.plan]} · Pwofesè: ${teacher(c.tid).name}${o.promo?` · Kòd ${esc(o.promo)}`:""}</p>
+      <div class="rrow"><span>Pri total</span><b>${fmt(o.total)} HTG</b></div><div class="rrow"><span>Peye</span><b style="color:var(--ok)">${fmt(o.paid)} HTG</b></div><div class="rrow"><span>Rès</span><b style="color:${rest?"var(--warn)":"inherit"}">${fmt(rest)} HTG</b></div>
+      <div class="prog"><i style="width:${o.paid/o.total*100}%"></i></div></div>
+    <div class="ck-card slim"><span class="rtitle">Istorik peman</span><div class="paylist">${o.pays.map(pp=>`<div><span>${dt(pp.at)} · ${pp.kind}<br><small class="muted">${pp.method}</small></span><b>${fmt(pp.amt)} HTG</b></div>`).join("")}</div></div>
+    <div class="actrow">${rest?`<button class="btn gold" data-settle="${o.id}">Anrejistre rès la (${fmt(rest)} HTG)</button>`:""}
+      <a class="btn wa2" href="${waLink(o,rest?`Bonjou ${o.name.split(" ")[0]}, se Lekòl Anliy. Ou rete ${fmt(rest)} HTG pou fòmasyon "${c.t}". Klas yo kòmanse ${promoLabel}. Mèsi!`:`Bonjou ${o.name.split(" ")[0]}, se Lekòl Anliy. Mèsi pou peman ou pou "${c.t}"! Resi: ${o.id}.`)}" target="_blank" rel="noopener"><svg class="i"><use href="#i-wa"/></svg>${rest?"Voye rapèl":"Voye mèsi"} sou WhatsApp</a></div>
+    ${o.demo?'<p class="note small">Egzanp: moun sa a fiktif, li la pou demo a sèlman.</p>':""}`;
+  $("modal").hidden=false}
+document.addEventListener("click",e=>{
+  const at=e.target.closest("[data-atab]");if(at){aTab=at.dataset.atab;renderAdmin();return}
+  const af=e.target.closest("[data-af]");if(af){aF=af.dataset.af;renderAdmin();return}
+  const oi=e.target.closest("[data-oid]");if(oi){openOrder(oi.dataset.oid);return}
+  const se=e.target.closest("[data-settle]");if(se){const o=orders().find(x=>x.id==se.dataset.settle),rest=o.total-o.paid,t0=Date.now();
+    o.pays.push({amt:rest,at:t0,method:"MonCash",kind:o.plan=="dep"?"Rès rezèvasyon":"Versman 2/2"});o.paid=o.total;
+    ST.sales.unshift({id:"s"+t0,cid:o.cid,at:t0,amt:rest,kind:"Rès peman",oid:o.id});save();render();openOrder(o.id);toast(`${fmt(rest)} HTG anrejistre pou ${o.name}.`);return}
+  if(e.target.closest("#csvBtn")){const rows=[["Resi","Dat","Non","WhatsApp","Imel","Formasyon","Plan","Total","Peye","Res"]].concat(orders().map(o=>[o.id,dt(o.at),o.name,o.wa,o.email,course(o.cid).t,PLN[o.plan],o.total,o.paid,o.total-o.paid]));
+    const csv=rows.map(r=>r.map(x=>`"${String(x).replace(/"/g,'""')}"`).join(",")).join("\n");
+    (navigator.clipboard?navigator.clipboard.writeText(csv):Promise.reject()).then(()=>toast("CSV kopye. Kole l nan Excel oswa Google Sheets."),()=>toast("Navigatè a pa kite m kopye. Eseye sou yon lòt navigatè."));return}
+  const pb=e.target.closest("[data-pay]");if(pb){const p=ST.payouts.find(x=>x.id===pb.dataset.pay);p.status="peye";save();toast(`${fmt(p.amt)} HTG make kòm peye pou ${teacher(p.tid).name}`);render();return}
+  if(e.target.closest("#saveRules")){const v2=id=>Number($(id).value);
+    if(v2("rShare")<1||v2("rShare")>99){toast("Pati pwofesè a dwe ant 1 ak 99%.");return}
+    ST.rules={share:v2("rShare"),fee:v2("rFee"),hold:v2("rHold"),min:v2("rMin")};save();toast("Règ yo anrejistre.");render()}
+});
+document.addEventListener("input",e=>{if(e.target.id=="aQ"){aQ=e.target.value;aList()}});
 $("resetBtn").addEventListener("click",()=>{ST=seed();save();toast("Demo a rekòmanse.");render()});
 $("teacherSel").innerHTML=TEACHERS.map(t=>`<option value="${t.id}">${t.name}</option>`).join("");
 $("teacherSel").addEventListener("change",renderTeacher);
