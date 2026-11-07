@@ -333,44 +333,153 @@ td.r,th.r{text-align:right}
 .dom.on b{background:var(--gold);color:var(--gold-ink)}
 
 /* admin */
-.atabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;background:var(--soft);border:1px solid var(--line);border-radius:16px;padding:5px}
-.atabs button{border:0;background:transparent;border-radius:12px;padding:9px 14px;font:600 14px var(--body);color:var(--muted);cursor:pointer;white-space:nowrap;display:flex;align-items:center;gap:6px}
-.atabs button.on{background:var(--surface);color:var(--ink);box-shadow:0 2px 8px rgba(10,15,28,.08)}
+#v-admin{gap:18px}
+.ahero{position:relative;overflow:hidden;border-radius:28px;background:var(--hero);color:var(--hero-ink);padding:24px 22px;display:flex;flex-direction:column;gap:18px}
+.ahero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:28px 28px;-webkit-mask-image:radial-gradient(ellipse 80% 90% at 85% 0%,#000,transparent 70%);mask-image:radial-gradient(ellipse 80% 90% at 85% 0%,#000,transparent 70%);pointer-events:none}
+.ahero::after{content:"";position:absolute;right:-90px;top:-90px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--gold) 40%,transparent),transparent 65%);pointer-events:none}
+.ahero > *{position:relative;z-index:1}
+.ahtop{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.ahtop .who{display:flex;align-items:center;gap:12px}
+.ahtop .me{width:46px;height:46px;border-radius:14px;background:var(--gold);color:var(--gold-ink);display:flex;align-items:center;justify-content:center;font:800 18px var(--display)}
+.ahtop small{color:var(--hero-muted);display:block;font-size:13px}
+.ahtop b{font:800 20px var(--display)}
+.ahtop .demo{margin-left:6px}
+.reset2{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);color:#fff;border-radius:12px;padding:9px 14px;font:600 13px var(--body);cursor:pointer}
+.abig{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:end}
+.abig > *{min-width:0}
+.abig .lbl{color:var(--gold);font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:12px}
+.abig .num{font:800 clamp(36px,9vw,56px)/1 var(--display);letter-spacing:-.04em;font-variant-numeric:tabular-nums;margin-top:6px}
+.abig .num small{font-size:.4em;color:var(--hero-muted);letter-spacing:0;margin-left:4px}
+.trend{display:inline-flex;align-items:center;gap:6px;margin-top:10px;background:rgba(47,227,154,.14);color:#2fe39a;border-radius:999px;padding:5px 11px;font-weight:700;font-size:13px}
+.trend.dn{background:rgba(255,107,107,.14);color:#ff8a8a}
+.trend svg.i{width:15px;height:15px}
+.abig svg.sp{width:150px;height:60px}
+.qa{display:flex;gap:8px;flex-wrap:wrap}
+.qa button{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);color:#fff;border-radius:999px;padding:9px 14px;font:600 14px var(--body);cursor:pointer}
+.qa button.gold2{background:var(--gold);color:var(--gold-ink);border-color:var(--gold)}
+.qa button svg.i{width:17px;height:17px}
+.qa button i{font-style:normal;background:#e5484d;color:#fff;border-radius:999px;font-size:11px;font-weight:800;padding:1px 7px}
+.atabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:6px;position:sticky;top:calc(env(safe-area-inset-top,0px) + 118px);z-index:4;box-shadow:0 8px 24px rgba(10,15,28,.06)}
+.atabs button{border:0;background:transparent;border-radius:13px;padding:10px 14px;font:600 14px var(--body);color:var(--muted);cursor:pointer;white-space:nowrap;display:flex;align-items:center;gap:8px;flex:1;justify-content:center}
+.atabs button svg.i{width:18px;height:18px}
+.atabs button.on{background:var(--ink);color:var(--surface)}
 .atabs button i{font-style:normal;background:var(--gold);color:var(--gold-ink);border-radius:999px;font-size:11px;font-weight:800;padding:1px 7px}
-.kpi .sub2{font-size:12px;color:var(--muted);margin-top:4px;display:block}
-.kpi.warnk{border-color:color-mix(in srgb,var(--warn) 50%,var(--line))}
-.bars14{width:100%;height:auto;display:block}
-.bars14 text{fill:var(--muted);font:10px var(--body)}
-.bars14 .b{fill:var(--gold)}
-.bars14 .b.z{fill:var(--line)}
-.bars14 .bt{fill:var(--ink);font-weight:700}
-.top5{display:flex;flex-direction:column;gap:10px}
-.top5 .r{display:grid;grid-template-columns:1fr auto;gap:4px 10px;align-items:center}
-.top5 .r small{color:var(--muted)}
-.top5 .bar{grid-column:1/-1;height:6px;border-radius:3px;background:var(--soft);overflow:hidden}
-.top5 .bar i{display:block;height:100%;background:var(--gold);border-radius:3px}
+.k4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+@media (max-width:900px){.k4{grid-template-columns:1fr 1fr}}
+.kc{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:16px;display:flex;flex-direction:column;gap:10px;position:relative;overflow:hidden;min-width:0}
+.kc .ic{width:42px;height:42px;border-radius:13px;display:flex;align-items:center;justify-content:center;background:color-mix(in srgb,var(--kcol) 16%,transparent);color:var(--kcol)}
+.kc .ic svg.i{width:21px;height:21px}
+.kc small{color:var(--muted);font-size:13px;font-weight:600}
+.kc b{font:800 clamp(22px,5.5vw,28px)/1 var(--display);letter-spacing:-.03em;font-variant-numeric:tabular-nums;white-space:nowrap}
+.kc b em{font-style:normal;font-size:.5em;color:var(--muted);margin-left:3px;letter-spacing:0}
+.kc .sub2{font-size:12px;color:var(--muted)}
+.kc svg.sp{position:absolute;right:0;top:12px;width:46%;height:40px;opacity:.9}
+.g2{display:grid;grid-template-columns:1.6fr 1fr;gap:16px}
+@media (max-width:900px){.g2{grid-template-columns:1fr}}
+.card2{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:20px;display:flex;flex-direction:column;gap:16px;min-width:0;box-shadow:0 10px 30px rgba(10,15,28,.04)}
+.card2 .ch{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.card2 .ch h3{font-size:18px}
+.card2 .ch small{color:var(--muted);font-size:13px;display:block;margin-top:3px}
+.seg{display:flex;background:var(--soft);border-radius:10px;padding:3px}
+.seg button{border:0;background:transparent;border-radius:8px;padding:5px 10px;font:600 12px var(--body);color:var(--muted);cursor:pointer}
+.seg button.on{background:var(--surface);color:var(--ink);box-shadow:0 1px 4px rgba(10,15,28,.1)}
+.chart svg{width:100%;height:auto;display:block;overflow:visible}
+.chart .gl{stroke:var(--line);stroke-dasharray:3 4}
+.chart text{fill:var(--muted);font:10px var(--body)}
+.chart .tip{fill:var(--ink);font-weight:700;font-size:11px}
+.cstats{display:flex;gap:18px;flex-wrap:wrap}
+.cstats div small{color:var(--muted);font-size:12px;display:block}
+.cstats div b{font:800 18px var(--display);font-variant-numeric:tabular-nums}
+.donut{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.donut svg{width:132px;height:132px;flex:none}
+.donut .ctr{fill:var(--ink);font:800 7px var(--display)}
+.donut .ctr2{fill:var(--muted);font:600 3.6px var(--body)}
+.legend{display:flex;flex-direction:column;gap:10px;flex:1;min-width:140px}
+.legend div{display:grid;grid-template-columns:12px 1fr auto;gap:10px;align-items:center;font-size:14px}
+.legend i{width:12px;height:12px;border-radius:4px}
+.legend b{font-variant-numeric:tabular-nums}
+.legend small{grid-column:2/-1;color:var(--muted);font-size:12px;margin-top:-6px}
+.plans3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.plans3 div{background:var(--soft);border-radius:14px;padding:12px;display:flex;flex-direction:column;gap:2px}
+.plans3 b{font:800 22px var(--display)}
+.plans3 small{color:var(--muted);font-size:12px}
+.tops{display:flex;flex-direction:column;gap:14px}
+.tops .r{display:grid;grid-template-columns:44px 1fr auto;gap:4px 12px;align-items:center}
+.tops .th{width:44px;height:44px;border-radius:12px;grid-row:span 2;display:flex;align-items:center;justify-content:center;font:400 14px var(--cond);color:#fff;letter-spacing:.02em;background:linear-gradient(150deg,var(--a),color-mix(in srgb,var(--a) 40%,#0b1020))}
+.tops .r b{font-size:15px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tops .r .amt{font-weight:800;font-variant-numeric:tabular-nums}
+.tops .bar{grid-column:2/-1;height:7px;border-radius:4px;background:var(--soft);overflow:hidden}
+.tops .bar i{display:block;height:100%;border-radius:4px;background:linear-gradient(90deg,var(--a),color-mix(in srgb,var(--a) 60%,#fff))}
+.av{width:42px;height:42px;border-radius:14px;display:flex;align-items:center;justify-content:center;font:800 15px var(--display);color:#fff;flex:none;background:linear-gradient(140deg,var(--avc),color-mix(in srgb,var(--avc) 55%,#000))}
+.av.lg{width:64px;height:64px;border-radius:20px;font-size:23px}
 .atool{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-.atool label.s{flex:1;min-width:200px;display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:0 12px}
-.atool label.s input{border:0;background:transparent;padding:11px 0;font:15px var(--body);color:var(--ink);width:100%;outline:none}
+.atool label.s{flex:1;min-width:200px;display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:0 14px}
+.atool label.s:focus-within{border-color:var(--gold)}
+.atool label.s input{border:0;background:transparent;padding:13px 0;font:15px var(--body);color:var(--ink);width:100%;outline:none}
 .atool label.s svg.i{color:var(--muted);width:18px;height:18px}
+.fchips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}
+.fchip{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:8px 14px;font:600 14px var(--body);cursor:pointer;display:flex;align-items:center;gap:8px;white-space:nowrap}
+.fchip::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--fc,var(--ink))}
+.fchip b{background:var(--soft);border-radius:999px;padding:0 7px;font-size:12px}
+.fchip.on{background:var(--ink);color:var(--surface);border-color:var(--ink)}
+.fchip.on b{background:var(--gold);color:var(--gold-ink)}
 .olist{display:flex;flex-direction:column;gap:10px}
-.orow{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--sc,var(--ok));border-radius:16px;padding:14px 16px;display:grid;grid-template-columns:1.3fr 1.3fr auto;gap:8px 16px;align-items:center;cursor:pointer;text-align:left;font:inherit;color:var(--ink);width:100%}
-.orow:hover{border-color:var(--gold);border-left-color:var(--sc,var(--ok))}
+.orow{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:14px;display:grid;grid-template-columns:auto 1.2fr 1.3fr auto;gap:6px 14px;align-items:center;cursor:pointer;text-align:left;font:inherit;color:var(--ink);width:100%;transition:transform .15s,box-shadow .15s,border-color .15s}
+.orow:hover{border-color:color-mix(in srgb,var(--gold) 60%,var(--line));box-shadow:0 10px 24px rgba(10,15,28,.08);transform:translateY(-1px)}
 .orow > div{min-width:0}
 .orow b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .orow small{color:var(--muted);font-size:13px;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.orow .money{text-align:right;font-variant-numeric:tabular-nums}
+.orow .cdot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--a);margin-right:6px;vertical-align:1px}
+.orow .money{display:flex;align-items:center;gap:10px;justify-content:flex-end;text-align:right;font-variant-numeric:tabular-nums}
 .orow .money b{font-size:16px}
-.orow .money small.rest{color:var(--warn);font-weight:700}
-@media (max-width:640px){.orow{grid-template-columns:1fr auto}.orow .cc{grid-column:1/-1;order:3}}
-.empty{padding:24px;text-align:center;color:var(--muted);background:var(--surface);border:1px dashed var(--line);border-radius:16px}
-.paylist{display:flex;flex-direction:column;gap:8px}
-.paylist div{display:flex;justify-content:space-between;gap:10px;background:var(--soft);border-radius:10px;padding:10px 12px;font-size:14px;font-variant-numeric:tabular-nums}
+.ring{width:38px;height:38px;flex:none}
+.ring .bg{stroke:var(--soft)}
+.ring text{fill:var(--ink);font:800 9px var(--body)}
+.bdg2{display:inline-flex;align-items:center;gap:5px;border-radius:999px;padding:3px 9px;font-size:12px;font-weight:700;background:color-mix(in srgb,var(--bc) 15%,transparent);color:var(--bc);white-space:nowrap}
+.bdg2::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+@media (max-width:640px){.orow{grid-template-columns:auto 1fr auto}.orow .cc{grid-column:2/-1;order:4}}
+.empty{padding:30px;text-align:center;color:var(--muted);background:var(--surface);border:1px dashed var(--line);border-radius:20px}
+.scards{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:12px}
+.scard{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:16px;display:flex;flex-direction:column;gap:12px;cursor:pointer;text-align:left;font:inherit;color:var(--ink)}
+.scard:hover{border-color:color-mix(in srgb,var(--gold) 60%,var(--line))}
+.scard .top{display:flex;gap:12px;align-items:center}
+.scard .top > div{min-width:0}
+.scard .top b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.scard .top small{color:var(--muted);font-size:13px;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.scard .cs{display:flex;flex-wrap:wrap;gap:6px}
+.scard .cs span{background:var(--soft);border-radius:999px;padding:3px 10px;font-size:12px;font-weight:600}
+.scard .ft{display:flex;justify-content:space-between;border-top:1px solid var(--line);padding-top:10px;font-size:14px;font-variant-numeric:tabular-nums}
+.tcards{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:12px}
+.tcard{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:18px;display:flex;flex-direction:column;gap:14px}
+.tcard .top{display:flex;gap:12px;align-items:center}
+.tcard .top small{color:var(--muted);font-size:13px;display:block}
+.tcard .nums{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.tcard .nums div{background:var(--soft);border-radius:12px;padding:10px}
+.tcard .nums small{color:var(--muted);font-size:11px;display:block}
+.tcard .nums b{font-variant-numeric:tabular-nums;font-size:15px}
+.req{display:flex;align-items:center;gap:12px;background:var(--gold-soft);border:1px solid color-mix(in srgb,var(--gold) 45%,transparent);border-radius:14px;padding:12px}
+.req > div{flex:1;min-width:0}
+.req small{color:var(--muted);font-size:12px;display:block}
+.paylist{display:flex;flex-direction:column;gap:0;position:relative;padding-left:18px}
+.paylist::before{content:"";position:absolute;left:5px;top:8px;bottom:8px;width:2px;background:var(--line)}
+.paylist div{display:flex;justify-content:space-between;gap:10px;padding:8px 0;font-size:14px;font-variant-numeric:tabular-nums;position:relative}
+.paylist div::before{content:"";position:absolute;left:-17px;top:13px;width:10px;height:10px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 3px var(--surface)}
+.ohead{display:flex;gap:14px;align-items:center}
 .actrow{display:flex;gap:10px;flex-wrap:wrap}
-.actrow > *{flex:1;min-width:140px;justify-content:center}
+.actrow > *{flex:1;min-width:150px;justify-content:center}
 .btn.wa2{background:#1f9d5c;color:#fff}
-.prog{height:8px;border-radius:4px;background:var(--soft);overflow:hidden}
-.prog i{display:block;height:100%;background:var(--ok)}
+.prog{height:10px;border-radius:5px;background:var(--soft);overflow:hidden}
+.prog i{display:block;height:100%;background:linear-gradient(90deg,var(--ok),#5ee0a0);border-radius:5px}
+.rules2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:640px){.rules2{grid-template-columns:1fr}}
+.rule{background:var(--soft);border-radius:18px;padding:16px;display:flex;flex-direction:column;gap:8px}
+.rule label{font-weight:700;font-size:14px}
+.rule small{color:var(--muted);font-size:12px}
+.rule input{font:800 22px var(--display);padding:10px 12px;border-radius:12px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);width:100%}
+.rule input:focus{outline:none;border-color:var(--gold)}
+.sim{background:var(--hero);color:var(--hero-ink);border-radius:18px;padding:16px;display:flex;flex-direction:column;gap:10px}
+.sim .sb{display:flex;height:30px;border-radius:9px;overflow:hidden;font-size:12px;font-weight:800}
+.sim .sb div{display:flex;align-items:center;justify-content:center;white-space:nowrap;overflow:hidden}
 
 /* checkout */
 #v-peye{max-width:640px;margin:0 auto;width:100%;gap:18px}
@@ -513,6 +622,12 @@ nav.tabs a.on{background:var(--gold-soft);color:var(--gold)}
   <symbol id="i-tag" viewBox="0 0 24 24"><path d="M3 12V4h8l9 9-8 8z"/><circle cx="7.5" cy="8.5" r="1.3"/></symbol>
   <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
   <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></symbol>
+  <symbol id="i-up" viewBox="0 0 24 24"><path d="m4 16 6-6 4 4 6-7"/><path d="M15 7h5v5"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c1-3.6 3.6-5.5 6.5-5.5s5.5 1.9 6.5 5.5"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14.5c2 .6 3.2 2.4 3.6 5.5"/></symbol>
+  <symbol id="i-pie" viewBox="0 0 24 24"><path d="M12 3v9h9a9 9 0 1 1-9-9z"/><path d="M15 3.5A9 9 0 0 1 20.5 9H15z"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5h.01"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></symbol>
+  <symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9 7 7M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1"/></symbol>
   <symbol id="i-grad" viewBox="0 0 24 24"><path d="m2 9 10-5 10 5-10 5z"/><path d="M6 11v5c3 2.5 9 2.5 12 0v-5"/></symbol>
   <symbol id="i-rocket" viewBox="0 0 24 24"><path d="M5 15c-1.5 1-2 4-2 6 2 0 5-.5 6-2"/><path d="M9 15l-3-3c1.5-4.5 5-8.5 13-9-.5 8-4.5 11.5-9 13z"/><circle cx="15" cy="9" r="1.6"/></symbol>
   <symbol id="i-login" viewBox="0 0 24 24"><path d="M14 4h4a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-4M4 12h11M11 8l4 4-4 4"/></symbol>
@@ -625,10 +740,7 @@ nav.tabs a.on{background:var(--gold-soft);color:var(--gold)}
 </section>
 
 <section class="view" id="v-admin" hidden>
-  <div class="head">
-    <div><span class="demo">DEMO</span><h2 style="margin-top:6px">Panèl admin</h2><p class="muted">Wè kiyès ki peye, pou ki fòmasyon, konbyen ki rete, epi peye pwofesè yo.</p></div>
-    <button class="btn g sm" id="resetBtn">Rekòmanse demo a</button>
-  </div>
+  <div class="ahero" id="aHero"></div>
   <div class="atabs" id="atabs" role="tablist"></div>
   <div id="aView" style="display:flex;flex-direction:column;gap:16px"></div>
 </section>
@@ -1052,86 +1164,114 @@ $("wdBtn").addEventListener("click",()=>{
 });
 
 /* ---------- admin ---------- */
-let aTab="apesi",aQ="",aF="all";
+let aTab="apesi",aQ="",aF="all",aRange=14;
 const ost=o=>o.paid>=o.total?"full":o.plan=="dep"?"dep":"part";
-const OST={full:["Peye nèt","ok","var(--ok)"],part:["Rès pou peye","warn","var(--warn)"],dep:["Rezève","warn","#e5484d"]};
+const OST={full:["Peye nèt","var(--ok)"],part:["Rès pou peye","var(--warn)"],dep:["Rezève","#e5484d"]};
 const PLN={full:"1 sèl peman",two:"2 versman",dep:"Rezèvasyon"};
+const AVC=["#e8a93a","#6d5fd8","#1f9d5c","#e5484d","#3aa0e0","#f07a2a","#c2410c","#0f766e"];
 const dt=ts=>new Date(ts).toLocaleDateString("fr-HT",{day:"2-digit",month:"short",year:"numeric"});
+const ini=n=>n.trim().split(/\s+/).map(w=>w[0]).slice(0,2).join("").toUpperCase();
+const avc=n=>AVC[[...n].reduce((a,c)=>a+c.charCodeAt(0),0)%AVC.length];
+const av=(n,lg)=>`<span class="av ${lg?"lg":""}" style="--avc:${avc(n)}">${esc(ini(n))}</span>`;
+const ctitle=c=>c.cv.l.join(" ").replace(/<[^>]+>/g,"");
 const waLink=(o,msg)=>`https://wa.me/${o.wa.replace(/\D/g,"")}?text=${encodeURIComponent(msg)}`;
 function orders(){return ST.orders||[]}
+function daily(n,f){const out=[];for(let i=n-1;i>=0;i--){const d0=new Date();d0.setHours(0,0,0,0);d0.setDate(d0.getDate()-i);out.push({d:d0,v:ST.sales.filter(x=>x.at>=+d0&&x.at<+d0+DAY).reduce((a,x)=>a+f(x),0)})}return out}
+function spark(vals,col,w=120,h=40){const mx=Math.max(...vals,1),st=w/(vals.length-1);
+  const pts=vals.map((v,i)=>[i*st,h-4-(v/mx)*(h-10)]);const line=pts.map((p,i)=>(i?"L":"M")+p[0].toFixed(1)+" "+p[1].toFixed(1)).join(" ");
+  const id="sg"+Math.random().toString(36).slice(2,7);
+  return `<svg class="sp" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${col}" stop-opacity=".35"/><stop offset="1" stop-color="${col}" stop-opacity="0"/></linearGradient></defs><path d="${line} L${w} ${h} L0 ${h}Z" fill="url(#${id})"/><path d="${line}" fill="none" stroke="${col}" stroke-width="2" stroke-linecap="round" vector-effect="non-scaling-stroke"/></svg>`}
+function ring(pct,col){const c=2*Math.PI*15;return `<svg class="ring" viewBox="0 0 38 38" aria-label="${Math.round(pct)}% peye"><circle class="bg" cx="19" cy="19" r="15" fill="none" stroke-width="4"/><circle cx="19" cy="19" r="15" fill="none" stroke="${col}" stroke-width="4" stroke-linecap="round" stroke-dasharray="${(pct/100*c).toFixed(1)} ${c.toFixed(1)}" transform="rotate(-90 19 19)"/><text x="19" y="22" text-anchor="middle">${Math.round(pct)}%</text></svg>`}
+function aHero(){
+  const O=orders(),d7=daily(14,x=>x.amt),wk=d7.slice(7).reduce((a,x)=>a+x.v,0),pw=d7.slice(0,7).reduce((a,x)=>a+x.v,0);
+  const ch=pw?Math.round((wk-pw)/pw*100):100,rest=O.filter(o=>o.paid<o.total).length,pend=ST.payouts.filter(p=>p.status==="an atant").length;
+  const h=new Date().getHours(),greet=h<12?"Bonjou":h<18?"Bon apremidi":"Bonswa";
+  $("aHero").innerHTML=`<div class="ahtop"><div class="who"><span class="me">LA</span><div><small>${new Date().toLocaleDateString("fr-HT",{weekday:"long",day:"numeric",month:"long"})}</small><b>${greet}, Admin</b><span class="demo">DEMO</span></div></div><button class="reset2" id="resetBtn">Rekòmanse demo a</button></div>
+  <div class="abig"><div><span class="lbl">Lajan ki antre · 7 dènye jou</span><div class="num">${fmt(wk)}<small>HTG</small></div>
+    <span class="trend ${ch<0?"dn":""}"><svg class="i"${ch<0?' style="transform:scaleY(-1)"':""}><use href="#i-up"/></svg>${ch>=0?"+":""}${ch}% konpare ak semèn pase a</span></div>
+    ${spark(d7.map(x=>x.v),"#f0b44a",150,60)}</div>
+  <div class="qa"><button class="gold2" data-atab="peman" data-af2="part"><svg class="i"><use href="#i-alert"/></svg>Rès pou kolekte <i>${rest}</i></button><button data-atab="pwofese"><svg class="i"><use href="#i-wallet"/></svg>Peye pwofesè <i>${pend}</i></button><button id="csvBtn"><svg class="i"><use href="#i-copy"/></svg>Kopye CSV</button></div>`;
+}
 function aTabs(){const pend=ST.payouts.filter(p=>p.status==="an atant").length,rest=orders().filter(o=>o.paid<o.total).length;
-  $("atabs").innerHTML=[["apesi","Apèsi"],["peman","Peman",rest],["etidyan","Etidyan"],["pwofese","Pwofesè",pend],["regl","Règ"]].map(([k,t,n])=>`<button role="tab" class="${aTab==k?"on":""}" data-atab="${k}">${t}${n?`<i>${n}</i>`:""}</button>`).join("")}
+  $("atabs").innerHTML=[["apesi","Apèsi","i-pie"],["peman","Peman","i-wallet",rest],["etidyan","Etidyan","i-users"],["pwofese","Pwofesè","i-user",pend],["regl","Règ","i-gear"]].map(([k,t,ic,n])=>`<button role="tab" aria-selected="${aTab==k}" class="${aTab==k?"on":""}" data-atab="${k}"><svg class="i"><use href="#${ic}"/></svg>${t}${n?`<i>${n}</i>`:""}</button>`).join("")}
 function renderAdmin(){
-  aTabs();const v=$("aView"),O=orders();
+  aHero();aTabs();const v=$("aView"),O=orders();
   const coll=O.reduce((a,o)=>a+o.paid,0),due=O.reduce((a,o)=>a+(o.total-o.paid),0);
   let school=0,fees=0;ST.sales.forEach(x=>{const y=split(x.amt);school+=y.sp;fees+=y.fee});
-  const studs=new Set(O.map(o=>o.email.toLowerCase())).size;
+  const studs=new Set(O.map(o=>o.email.toLowerCase())).size,d14=daily(14,x=>x.amt);
   if(aTab=="apesi"){
-    const days=[...Array(14)].map((_,i)=>{const d0=new Date();d0.setHours(0,0,0,0);d0.setDate(d0.getDate()-13+i);return d0});
-    const sums=days.map(d0=>ST.sales.filter(x=>x.at>=+d0&&x.at<+d0+DAY).reduce((a,x)=>a+x.amt,0));
-    const mx=Math.max(...sums,1),W=300,H=120,bw=W/14;
-    const svg=`<svg class="bars14" viewBox="0 0 ${W} ${H+18}" role="img" aria-label="Lajan ki antre chak jou, 14 dènye jou">`+sums.map((v2,i)=>{const h=v2?Math.max(3,v2/mx*(H-16)):2;return `<rect class="b ${v2?"":"z"}" x="${i*bw+3}" y="${H-h}" width="${bw-6}" height="${h}" rx="2"><title>${days[i].toLocaleDateString("fr-HT",{day:"2-digit",month:"short"})}: ${fmt(v2)} HTG</title></rect>`}).join("")+
-      `<text class="bt" x="${sums.indexOf(mx)*bw+bw/2}" y="${H-(mx/mx*(H-16))-4}" text-anchor="middle">${fmt(mx)}</text>`+
-      [0,7,13].map(i=>`<text x="${i==0?2:i==13?W-2:i*bw+bw/2}" y="${H+14}" text-anchor="${i==0?"start":i==13?"end":"middle"}">${days[i].toLocaleDateString("fr-HT",{day:"2-digit",month:"short"})}</text>`).join("")+`</svg>`;
-    const byC=COURSES.map(c=>{const os=O.filter(o=>o.cid==c.id);return{c,n:os.length,amt:os.reduce((a,o)=>a+o.paid,0)}}).filter(x=>x.n).sort((x,y)=>y.amt-x.amt).slice(0,5);
-    const mxc=Math.max(...byC.map(x=>x.amt),1);
-    v.innerHTML=`<div class="kpis">
-      <div class="kpi hl"><small>Lajan ki antre</small><b>${fmt(coll)}</b> <small>HTG</small><span class="sub2">${O.length} peman · ${studs} etidyan</span></div>
-      <div class="kpi warnk"><small>Rès pou kolekte</small><b>${fmt(due)}</b> <small>HTG</small><span class="sub2">${O.filter(o=>o.paid<o.total).length} moun ki dwe</span></div>
-      <div class="kpi"><small>Pati lekòl la</small><b>${fmt(school)}</b> <small>HTG</small><span class="sub2">apre ${ST.rules.share}% pwofesè</span></div>
-      <div class="kpi"><small>Frè peman</small><b>${fmt(fees)}</b> <small>HTG</small><span class="sub2">${ST.rules.fee}% sou chak peman</span></div></div>
-    <div class="panel"><div class="head"><h3>Lajan ki antre chak jou</h3><small class="muted">14 dènye jou</small></div>${svg}</div>
-    <div class="panel"><h3>Fòmasyon ki vann plis</h3><div class="top5">${byC.map(x=>`<div class="r"><b>${x.c.t}</b><span class="price" style="font-size:15px">${fmt(x.amt)} HTG</span><small>${x.n} etidyan</small><span></span><div class="bar"><i style="width:${x.amt/mxc*100}%"></i></div></div>`).join("")||'<p class="muted">Poko gen vant.</p>'}</div></div>
-    <div class="panel"><div class="head"><h3>Dènye peman yo</h3><button class="btn g sm" data-atab="peman">Wè tout</button></div><div class="olist">${O.slice(0,4).map(orow).join("")||'<div class="empty">Poko gen peman.</div>'}</div></div>`;
+    const D=daily(aRange,x=>x.amt),mx=Math.max(...D.map(x=>x.v),1),W=innerWidth>=900?620:320,H=innerWidth>=900?190:150,bw=W/D.length,tot=D.reduce((a,x)=>a+x.v,0),best=D.reduce((a,x)=>x.v>a.v?x:a,D[0]);
+    const nice=Math.ceil(mx/5000)*5000||5000;
+    const chart=`<svg viewBox="0 0 ${W} ${H+20}" role="img" aria-label="Lajan ki antre chak jou"><defs><linearGradient id="bgold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--gold)"/><stop offset="1" style="stop-color:var(--gold);stop-opacity:.35"/></linearGradient></defs>`+
+      [0,.5,1].map(f=>`<line class="gl" x1="0" x2="${W}" y1="${(H-8)-(f*(H-28))}" y2="${(H-8)-(f*(H-28))}"/><text x="${W}" y="${(H-11)-(f*(H-28))}" text-anchor="end">${f?fmt(nice*f/1000)+"k":""}</text>`).join("")+
+      D.map((x,i)=>{const h=x.v?Math.max(4,x.v/nice*(H-28)):3;return `<rect x="${i*bw+bw*.18}" y="${H-8-h}" width="${bw*.64}" height="${h}" rx="${Math.min(5,bw*.25)}" fill="${x.v?"url(#bgold)":"var(--line)"}"><title>${x.d.toLocaleDateString("fr-HT",{day:"2-digit",month:"short"})}: ${fmt(x.v)} HTG</title></rect>`}).join("")+
+      (best.v?`<text class="tip" x="${D.indexOf(best)*bw+bw/2}" y="${H-8-best.v/nice*(H-28)-6}" text-anchor="middle">${fmt(best.v)}</text>`:"")+
+      [0,Math.floor(D.length/2),D.length-1].map((i,k)=>`<text x="${k==0?0:k==2?W:i*bw+bw/2}" y="${H+10}" text-anchor="${k==0?"start":k==2?"end":"middle"}">${D[i].d.toLocaleDateString("fr-HT",{day:"2-digit",month:"short"})}</text>`).join("")+`</svg>`;
+    const M={};O.forEach(o=>o.pays.forEach(pp=>{M[pp.method]=(M[pp.method]||0)+pp.amt}));
+    const MC={MonCash:"#d71f26",NatCash:"#ef7d1a",Kat:"#6d5fd8"},mt=Object.values(M).reduce((a,x)=>a+x,0)||1;let off=25;
+    const donut=`<svg viewBox="0 0 42 42" role="img" aria-label="Metòd peman"><circle cx="21" cy="21" r="15.915" fill="none" stroke="var(--soft)" stroke-width="5"/>`+Object.entries(M).map(([k,x])=>{const pc=x/mt*100,seg=`<circle cx="21" cy="21" r="15.915" fill="none" stroke="${MC[k]||"#888"}" stroke-width="5" stroke-dasharray="${Math.max(pc-1.2,0)} ${100-Math.max(pc-1.2,0)}" stroke-dashoffset="${off}"/>`;off-=pc;return seg}).join("")+`<text class="ctr" x="21" y="21.5" text-anchor="middle">${fmt(mt/1000)}k</text><text class="ctr2" x="21" y="26" text-anchor="middle">HTG</text></svg>`;
+    const PL={full:0,two:0,dep:0};O.forEach(o=>PL[o.plan]++);
+    const byC=COURSES.map(c=>{const os=O.filter(o=>o.cid==c.id);return{c,n:os.length,amt:os.reduce((a,o)=>a+o.paid,0)}}).filter(x=>x.n).sort((x,y)=>y.amt-x.amt).slice(0,5),mxc=Math.max(...byC.map(x=>x.amt),1);
+    v.innerHTML=`<div class="k4">
+      <div class="kc" style="--kcol:var(--gold)"><span class="ic"><svg class="i"><use href="#i-wallet"/></svg></span>${spark(d14.map(x=>x.v),"var(--gold)")}<small>Total ki antre</small><b>${fmt(coll)}<em>HTG</em></b><span class="sub2">${O.length} peman</span></div>
+      <div class="kc" style="--kcol:var(--warn)"><span class="ic"><svg class="i"><use href="#i-alert"/></svg></span><small>Rès pou kolekte</small><b>${fmt(due)}<em>HTG</em></b><span class="sub2">${O.filter(o=>o.paid<o.total).length} moun ki dwe</span></div>
+      <div class="kc" style="--kcol:var(--ok)"><span class="ic"><svg class="i"><use href="#i-pie"/></svg></span>${spark(daily(14,x=>split(x.amt).sp).map(x=>x.v),"var(--ok)")}<small>Pati lekòl la</small><b>${fmt(school)}<em>HTG</em></b><span class="sub2">apre ${ST.rules.share}% pwofesè</span></div>
+      <div class="kc" style="--kcol:#6d5fd8"><span class="ic"><svg class="i"><use href="#i-users"/></svg></span><small>Etidyan</small><b>${studs}</b><span class="sub2">${COURSES.filter(c=>O.some(o=>o.cid==c.id)).length} fòmasyon aktif</span></div></div>
+    <div class="g2"><div class="card2 chart"><div class="ch"><div><h3>Lajan ki antre</h3><small>Chak jou</small></div><div class="seg">${[7,14,30].map(n=>`<button class="${aRange==n?"on":""}" data-range="${n}">${n} j</button>`).join("")}</div></div>
+      <div class="cstats"><div><small>Total</small><b>${fmt(tot)} HTG</b></div><div><small>Mwayèn pa jou</small><b>${fmt(tot/D.length)} HTG</b></div><div><small>Pi bon jou</small><b>${best.v?best.d.toLocaleDateString("fr-HT",{day:"2-digit",month:"short"}):"—"}</b></div></div>${chart}</div>
+      <div class="card2"><div class="ch"><div><h3>Metòd peman</h3><small>Ki jan etidyan yo peye</small></div></div><div class="donut">${donut}<div class="legend">${Object.entries(M).sort((a,b)=>b[1]-a[1]).map(([k,x])=>`<div><i style="background:${MC[k]||"#888"}"></i><span>${k}</span><b>${Math.round(x/mt*100)}%</b><small>${fmt(x)} HTG</small></div>`).join("")}</div></div>
+        <div class="plans3"><div><b>${PL.full}</b><small>1 sèl peman</small></div><div><b>${PL.two}</b><small>2 versman</small></div><div><b>${PL.dep}</b><small>Rezèvasyon</small></div></div></div></div>
+    <div class="g2"><div class="card2"><div class="ch"><div><h3>Dènye peman yo</h3><small>Peze yon moun pou wè detay li</small></div><button class="btn g sm" data-atab="peman">Wè tout</button></div><div class="olist">${O.slice(0,4).map(orow).join("")||'<div class="empty">Poko gen peman.</div>'}</div></div>
+      <div class="card2"><div class="ch"><div><h3>Top fòmasyon</h3><small>Pa lajan ki antre</small></div></div><div class="tops">${byC.map(x=>`<div class="r" style="--a:${x.c.cv.a}"><span class="th">${x.c.cv.l[0].replace(/<[^>]+>/g,"").slice(0,3)}</span><b>${x.c.t}</b><span class="amt">${fmt(x.amt)}</span><div class="bar"><i style="width:${x.amt/mxc*100}%"></i></div></div>`).join("")||'<p class="muted">Poko gen vant.</p>'}</div></div></div>`;
   } else if(aTab=="peman"){
     const cnt=k=>O.filter(o=>k=="all"||ost(o)==k).length;
-    v.innerHTML=`<div class="atool"><label class="s" for="aQ"><svg class="i"><use href="#i-search"/></svg><input id="aQ" placeholder="Chèche non, imèl, telefòn, resi…" value="${esc(aQ)}" autocomplete="off"></label><button class="btn g sm" id="csvBtn">Kopye an CSV</button></div>
-    <div class="chips">${[["all","Tout"],["full","Peye nèt"],["part","Rès pou peye"],["dep","Rezève"]].map(([k,t])=>`<button class="chip ${aF==k?"on":""}" data-af="${k}">${t} (${cnt(k)})</button>`).join("")}</div>
-    <div class="olist" id="aList"></div>`;
-    aList();
+    v.innerHTML=`<div class="atool"><label class="s" for="aQ"><svg class="i"><use href="#i-search"/></svg><input id="aQ" placeholder="Chèche non, imèl, telefòn, resi…" value="${esc(aQ)}" autocomplete="off"></label></div>
+    <div class="fchips">${[["all","Tout","var(--ink)"],["full","Peye nèt","var(--ok)"],["part","Rès pou peye","var(--warn)"],["dep","Rezève","#e5484d"]].map(([k,t,c])=>`<button class="fchip ${aF==k?"on":""}" style="--fc:${c}" data-af="${k}">${t}<b>${cnt(k)}</b></button>`).join("")}</div>
+    <div class="olist" id="aList"></div>`;aList();
   } else if(aTab=="etidyan"){
     const m={};O.forEach(o=>{const k=o.email.toLowerCase();(m[k]=m[k]||{name:o.name,wa:o.wa,email:o.email,os:[]}).os.push(o)});
     const L=Object.values(m).sort((x,y)=>Math.max(...y.os.map(o=>o.at))-Math.max(...x.os.map(o=>o.at)));
-    v.innerHTML=`<div class="panel"><div class="head"><h3>${L.length} etidyan</h3><small class="muted">Peze yon non pou wè peman li yo</small></div><div class="tblwrap"><table>
-      <tr><th>Etidyan</th><th>WhatsApp</th><th>Fòmasyon</th><th class="r">Peye</th><th class="r">Rès</th></tr>
-      ${L.map(x=>{const pd=x.os.reduce((a,o)=>a+o.paid,0),rs=x.os.reduce((a,o)=>a+o.total-o.paid,0);return `<tr><td><button class="linkbtn" data-oid="${x.os[0].id}">${esc(x.name)}</button><br><small class="muted">${esc(x.email)}</small></td><td>${esc(x.wa)}</td><td>${x.os.map(o=>course(o.cid).cv.l.join(" ").replace(/<[^>]+>/g,"")).join(", ")}</td><td class="r">${fmt(pd)}</td><td class="r">${rs?`<b style="color:var(--warn)">${fmt(rs)}</b>`:"—"}</td></tr>`}).join("")}
-    </table></div></div>`;
+    v.innerHTML=`<div class="card2"><div class="ch"><div><h3>${L.length} etidyan</h3><small>Peze yon kat pou wè peman yo</small></div></div><div class="scards">${L.map(x=>{const pd=x.os.reduce((a,o)=>a+o.paid,0),rs=x.os.reduce((a,o)=>a+o.total-o.paid,0);
+      return `<button class="scard" data-oid="${x.os[0].id}"><div class="top">${av(x.name)}<div><b>${esc(x.name)}</b><small>${esc(x.wa)} · ${esc(x.email)}</small></div></div><div class="cs">${x.os.map(o=>`<span>${ctitle(course(o.cid))}</span>`).join("")}</div><div class="ft"><span>Peye <b>${fmt(pd)}</b></span>${rs?`<span class="bdg2" style="--bc:var(--warn)">Rès ${fmt(rs)}</span>`:`<span class="bdg2" style="--bc:var(--ok)">À jou</span>`}</div></button>`}).join("")}</div></div>`;
   } else if(aTab=="pwofese"){
     let owed=0;TEACHERS.forEach(t=>{const b=balance(t.id);owed+=b.total-b.paid});
-    const pend=ST.payouts.filter(p=>p.status==="an atant").map(p=>`<tr><td>${d(p.at)}</td><td>${teacher(p.tid).name}</td><td>${p.method}</td><td>${teacher(p.tid).pay}</td><td class="r"><b>${fmt(p.amt)}</b></td><td><button class="btn gold sm" data-pay="${p.id}">Make peye</button></td></tr>`).join("");
-    v.innerHTML=`<div class="kpis" style="grid-template-columns:repeat(2,1fr)"><div class="kpi"><small>Dèt pwofesè yo</small><b>${fmt(owed)}</b> <small>HTG</small></div><div class="kpi"><small>Demann an atant</small><b>${ST.payouts.filter(p=>p.status==="an atant").length}</b></div></div>
-    <div class="panel"><h3>Demann retrè an atant</h3><div class="tblwrap"><table><tr><th>Dat</th><th>Pwofesè</th><th>Metòd</th><th>Kont</th><th class="r">HTG</th><th></th></tr>${pend||'<tr><td colspan="6" class="muted">Pa gen demann an atant.</td></tr>'}</table></div></div>
-    <div class="panel"><h3>Balans chak pwofesè</h3><div class="tblwrap"><table><tr><th>Pwofesè</th><th class="r">Total touche</th><th class="r">An atant</th><th class="r">Disponib</th><th class="r">Peye</th></tr>${TEACHERS.map(t=>{const b=balance(t.id);return `<tr><td>${t.name}</td><td class="r">${fmt(b.total)}</td><td class="r">${fmt(b.pending)}</td><td class="r">${fmt(b.withdrawable)}</td><td class="r">${fmt(b.paid)}</td></tr>`}).join("")}</table></div></div>`;
+    v.innerHTML=`<div class="k4" style="grid-template-columns:repeat(auto-fit,minmax(160px,1fr))"><div class="kc" style="--kcol:var(--warn)"><span class="ic"><svg class="i"><use href="#i-wallet"/></svg></span><small>Lekòl la dwe pwofesè yo</small><b>${fmt(owed)}<em>HTG</em></b></div><div class="kc" style="--kcol:var(--gold)"><span class="ic"><svg class="i"><use href="#i-alert"/></svg></span><small>Demann an atant</small><b>${ST.payouts.filter(p=>p.status==="an atant").length}</b></div></div>
+    <div class="tcards">${TEACHERS.map(t=>{const b=balance(t.id),reqs=ST.payouts.filter(p=>p.tid==t.id&&p.status==="an atant"),cs=COURSES.filter(c=>c.tid==t.id);
+      return `<div class="tcard"><div class="top">${av(t.name,1)}<div><b style="font-size:17px">${t.name}</b><small>${t.pay}</small><small>${cs.length} fòmasyon</small></div></div>
+      <div class="nums"><div><small>Total touche</small><b>${fmt(b.total)}</b></div><div><small>An atant</small><b>${fmt(b.pending)}</b></div><div><small>Disponib</small><b style="color:var(--ok)">${fmt(b.withdrawable)}</b></div></div>
+      ${reqs.map(p=>`<div class="req"><div><b>${fmt(p.amt)} HTG</b><small>Mande ${d(p.at)} · ${p.method}</small></div><button class="btn gold sm" data-pay="${p.id}">Make peye</button></div>`).join("")||`<small class="muted">Pa gen demann retrè. Deja peye: ${fmt(b.paid)} HTG.</small>`}</div>`}).join("")}</div>`;
   } else {
-    const r=ST.rules;
-    v.innerHTML=`<div class="panel"><h3>Règ peman yo</h3><div class="form">
-      <label for="rShare">Pati pwofesè (%)<input id="rShare" type="number" min="1" max="99" value="${r.share}"></label>
-      <label for="rFee">Frè peman (%)<input id="rFee" type="number" min="0" max="20" step="0.5" value="${r.fee}"></label>
-      <label for="rHold">Jou an atant anvan disponib<input id="rHold" type="number" min="0" max="60" value="${r.hold}"></label>
-      <label for="rMin">Retrè minimòm (HTG)<input id="rMin" type="number" min="0" step="50" value="${r.min}"></label></div>
+    const r=ST.rules,P=13500,x=split(P);
+    v.innerHTML=`<div class="card2"><div class="ch"><div><h3>Règ peman yo</h3><small>Chanjman yo aplike sou tout vant yo</small></div></div><div class="rules2">
+      <div class="rule"><label for="rShare">Pati pwofesè (%)</label><input id="rShare" type="number" min="1" max="99" value="${r.share}"><small>Sa pwofesè a touche sou chak vant, apre frè yo.</small></div>
+      <div class="rule"><label for="rFee">Frè peman (%)</label><input id="rFee" type="number" min="0" max="20" step="0.5" value="${r.fee}"><small>Sa MonCash, NatCash oswa kat la pran.</small></div>
+      <div class="rule"><label for="rHold">Jou an atant</label><input id="rHold" type="number" min="0" max="60" value="${r.hold}"><small>Kantite jou anvan lajan pwofesè a disponib.</small></div>
+      <div class="rule"><label for="rMin">Retrè minimòm (HTG)</label><input id="rMin" type="number" min="0" step="50" value="${r.min}"><small>Pi piti montan yon pwofesè ka mande.</small></div></div>
+      <div class="sim"><small style="color:var(--hero-muted)">Egzanp pou yon fòmasyon 13,500 HTG</small><div class="sb"><div style="width:${r.fee}%;background:#555;min-width:4px"></div><div style="width:${(x.tp/P*100).toFixed(1)}%;background:#1f9d5c">Pwofesè ${fmt(x.tp)}</div><div style="flex:1;background:#e8a93a;color:#1d1300">Lekòl ${fmt(x.sp)}</div></div></div>
       <button class="btn gold" id="saveRules">Anrejistre règ yo</button></div>`;
   }
 }
-function orow(o){const c=course(o.cid),st=ost(o),S2=OST[st],rest=o.total-o.paid;
-  return `<button class="orow" data-oid="${o.id}" style="--sc:${S2[2]}"><div><b>${esc(o.name)}</b><small>${esc(o.wa)} · ${d(o.at)}</small></div>
-  <div class="cc"><b style="font-weight:600">${c.t}</b><small>${PLN[o.plan]} · ${o.pays[o.pays.length-1].method} · ${o.id}</small></div>
-  <div class="money"><b>${fmt(o.paid)} HTG</b>${rest?`<small class="rest">Rès ${fmt(rest)}</small>`:`<small><span class="pill ok">${S2[0]}</span></small>`}</div></button>`}
+function orow(o){const c=course(o.cid),st=ost(o),S2=OST[st],rest=o.total-o.paid,pc=o.paid/o.total*100;
+  return `<button class="orow" data-oid="${o.id}">${av(o.name)}<div><b>${esc(o.name)}</b><small>${esc(o.wa)} · ${d(o.at)}</small></div>
+  <div class="cc" style="--a:${c.cv.a}"><b style="font-weight:600"><span class="cdot"></span>${c.t}</b><small>${PLN[o.plan]} · ${o.pays[o.pays.length-1].method} · ${o.id}</small></div>
+  <div class="money"><div><b>${fmt(o.paid)}</b><span class="bdg2" style="--bc:${S2[1]}">${rest?"Rès "+fmt(rest):S2[0]}</span></div>${rest?ring(pc,S2[1]):""}</div></button>`}
 function aList(){const q=aQ.trim().toLowerCase();
   const L=orders().filter(o=>(aF=="all"||ost(o)==aF)&&(!q||[o.name,o.email,o.wa,o.id,course(o.cid).t].join(" ").toLowerCase().includes(q)));
   $("aList").innerHTML=L.map(orow).join("")||`<div class="empty">Pa gen peman ki koresponn.</div>`}
-function openOrder(id){const o=orders().find(x=>x.id==id);if(!o)return;const c=course(o.cid),rest=o.total-o.paid,S2=OST[ost(o)],first=esc(o.name.split(" ")[0]);
-  $("mbox").innerHTML=`<div style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start"><div><span class="pill ${S2[1]}">${S2[0]}</span><h2 style="font-size:24px;margin-top:8px">${esc(o.name)}</h2><p class="muted">Resi ${o.id} · ${dt(o.at)}</p></div><button class="iconbtn" data-mclose aria-label="Fèmen"><svg class="i"><use href="#i-x"/></svg></button></div>
+function openOrder(id){const o=orders().find(x=>x.id==id);if(!o)return;const c=course(o.cid),rest=o.total-o.paid,S2=OST[ost(o)];
+  $("mbox").innerHTML=`<div style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start"><div class="ohead">${av(o.name,1)}<div><span class="bdg2" style="--bc:${S2[1]}">${S2[0]}</span><h2 style="font-size:23px;margin-top:6px">${esc(o.name)}</h2><p class="muted small">Resi ${o.id} · ${dt(o.at)}</p></div></div><button class="iconbtn" data-mclose aria-label="Fèmen"><svg class="i"><use href="#i-x"/></svg></button></div>
     <div class="ck-card slim"><div class="rrow"><span>WhatsApp</span><b>${esc(o.wa)}</b></div><div class="rrow"><span>Imèl</span><b>${esc(o.email)}</b></div></div>
-    <div class="ck-card slim"><span class="rtitle">Fòmasyon</span><b style="font-size:17px">${c.t}</b><p class="muted">${PLN[o.plan]} · Pwofesè: ${teacher(c.tid).name}${o.promo?` · Kòd ${esc(o.promo)}`:""}</p>
+    <div class="ck-card slim">${cover(c)}<b style="font-size:17px">${c.t}</b><p class="muted small">${PLN[o.plan]} · Pwofesè: ${teacher(c.tid).name}${o.promo?` · Kòd ${esc(o.promo)}`:""}</p>
       <div class="rrow"><span>Pri total</span><b>${fmt(o.total)} HTG</b></div><div class="rrow"><span>Peye</span><b style="color:var(--ok)">${fmt(o.paid)} HTG</b></div><div class="rrow"><span>Rès</span><b style="color:${rest?"var(--warn)":"inherit"}">${fmt(rest)} HTG</b></div>
       <div class="prog"><i style="width:${o.paid/o.total*100}%"></i></div></div>
-    <div class="ck-card slim"><span class="rtitle">Istorik peman</span><div class="paylist">${o.pays.map(pp=>`<div><span>${dt(pp.at)} · ${pp.kind}<br><small class="muted">${pp.method}</small></span><b>${fmt(pp.amt)} HTG</b></div>`).join("")}</div></div>
+    <div class="ck-card slim"><span class="rtitle">Istorik peman</span><div class="paylist">${o.pays.map(pp=>`<div><span>${pp.kind}<br><small class="muted">${dt(pp.at)} · ${pp.method}</small></span><b>${fmt(pp.amt)} HTG</b></div>`).join("")}</div></div>
     <div class="actrow">${rest?`<button class="btn gold" data-settle="${o.id}">Anrejistre rès la (${fmt(rest)} HTG)</button>`:""}
       <a class="btn wa2" href="${waLink(o,rest?`Bonjou ${o.name.split(" ")[0]}, se Lekòl Anliy. Ou rete ${fmt(rest)} HTG pou fòmasyon "${c.t}". Klas yo kòmanse ${promoLabel}. Mèsi!`:`Bonjou ${o.name.split(" ")[0]}, se Lekòl Anliy. Mèsi pou peman ou pou "${c.t}"! Resi: ${o.id}.`)}" target="_blank" rel="noopener"><svg class="i"><use href="#i-wa"/></svg>${rest?"Voye rapèl":"Voye mèsi"} sou WhatsApp</a></div>
     ${o.demo?'<p class="note small">Egzanp: moun sa a fiktif, li la pou demo a sèlman.</p>':""}`;
   $("modal").hidden=false}
 document.addEventListener("click",e=>{
-  const at=e.target.closest("[data-atab]");if(at){aTab=at.dataset.atab;renderAdmin();return}
+  const rg=e.target.closest("[data-range]");if(rg){aRange=+rg.dataset.range;renderAdmin();return}
+  const at=e.target.closest("[data-atab]");if(at){aTab=at.dataset.atab;if(at.dataset.af2)aF=at.dataset.af2;renderAdmin();if(at.closest("#aHero,.card2"))$("atabs").scrollIntoView({behavior:"smooth",block:"start"});return}
   const af=e.target.closest("[data-af]");if(af){aF=af.dataset.af;renderAdmin();return}
   const oi=e.target.closest("[data-oid]");if(oi){openOrder(oi.dataset.oid);return}
   const se=e.target.closest("[data-settle]");if(se){const o=orders().find(x=>x.id==se.dataset.settle),rest=o.total-o.paid,t0=Date.now();
@@ -1141,12 +1281,12 @@ document.addEventListener("click",e=>{
     const csv=rows.map(r=>r.map(x=>`"${String(x).replace(/"/g,'""')}"`).join(",")).join("\n");
     (navigator.clipboard?navigator.clipboard.writeText(csv):Promise.reject()).then(()=>toast("CSV kopye. Kole l nan Excel oswa Google Sheets."),()=>toast("Navigatè a pa kite m kopye. Eseye sou yon lòt navigatè."));return}
   const pb=e.target.closest("[data-pay]");if(pb){const p=ST.payouts.find(x=>x.id===pb.dataset.pay);p.status="peye";save();toast(`${fmt(p.amt)} HTG make kòm peye pou ${teacher(p.tid).name}`);render();return}
+  if(e.target.closest("#resetBtn")){ST=seed();save();toast("Demo a rekòmanse.");render();return}
   if(e.target.closest("#saveRules")){const v2=id=>Number($(id).value);
     if(v2("rShare")<1||v2("rShare")>99){toast("Pati pwofesè a dwe ant 1 ak 99%.");return}
     ST.rules={share:v2("rShare"),fee:v2("rFee"),hold:v2("rHold"),min:v2("rMin")};save();toast("Règ yo anrejistre.");render()}
 });
 document.addEventListener("input",e=>{if(e.target.id=="aQ"){aQ=e.target.value;aList()}});
-$("resetBtn").addEventListener("click",()=>{ST=seed();save();toast("Demo a rekòmanse.");render()});
 $("teacherSel").innerHTML=TEACHERS.map(t=>`<option value="${t.id}">${t.name}</option>`).join("");
 $("teacherSel").addEventListener("change",renderTeacher);
 
