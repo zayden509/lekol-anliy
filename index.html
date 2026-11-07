@@ -558,6 +558,50 @@ td.r,th.r{text-align:right}
 .srow .r b{color:var(--ok);font-variant-numeric:tabular-nums}
 .pfhead{display:flex;gap:14px;align-items:center}
 
+/* enskripsyon */
+#v-enskri,#v-kont{gap:18px}
+.auth{display:grid;grid-template-columns:1fr 1.15fr;background:var(--surface);border:1px solid var(--line);border-radius:30px;overflow:hidden;box-shadow:0 20px 50px rgba(10,15,28,.08)}
+.auth > *{min-width:0}
+.aside{background:var(--hero);color:var(--hero-ink);padding:32px 28px;position:relative;overflow:hidden;display:flex;flex-direction:column;gap:22px}
+.aside::after{content:"";position:absolute;left:-60px;bottom:-120px;width:380px;height:320px;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--gold) 34%,transparent),transparent 65%);pointer-events:none}
+.aside > *{position:relative;z-index:1}
+.aside h1{font:800 clamp(30px,6.5vw,44px)/1.02 var(--display);letter-spacing:-.03em}
+.aside h1 em{font-style:normal;color:var(--gold);display:block}
+.perks{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px;color:var(--hero-muted)}
+.perks li{display:flex;gap:10px;align-items:flex-start}
+.perks svg.i{width:20px;height:20px;color:#1d1300;background:var(--gold);border-radius:50%;padding:3px;stroke-width:2.6;flex:none}
+.stack{display:flex;align-items:center;margin-top:auto}
+.stack img{width:44px;height:44px;border-radius:50%;object-fit:cover;border:3px solid var(--hero);margin-left:-12px;max-width:none}
+.stack img:first-child{margin-left:0}
+.stack span{margin-left:12px;font-weight:700;font-size:14px}
+.aform{padding:26px 22px;display:flex;flex-direction:column;gap:16px}
+.aform h2{font-size:26px}
+.aform.done{align-items:flex-start;justify-content:center;gap:14px}
+.seg2{display:grid;grid-template-columns:1fr 1fr;background:var(--soft);border:1px solid var(--line);border-radius:16px;padding:5px;gap:4px}
+.seg2 button{border:0;background:transparent;border-radius:12px;padding:11px;font:700 15px var(--body);color:var(--muted);cursor:pointer}
+.seg2 button.on{background:var(--ink);color:var(--surface)}
+.roles{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.rc{border:1.5px solid var(--line);background:var(--soft);border-radius:18px;padding:14px;display:flex;flex-direction:column;gap:4px;text-align:left;font:inherit;color:var(--ink);cursor:pointer}
+.rc .ri{width:40px;height:40px;border-radius:12px;background:var(--surface);display:flex;align-items:center;justify-content:center;margin-bottom:6px;border:1px solid var(--line)}
+.rc small{color:var(--muted);font-size:12px}
+.rc.on{border-color:var(--gold);background:var(--gold-soft);box-shadow:0 0 0 1px var(--gold)}
+.rc.on .ri{background:var(--gold);color:var(--gold-ink);border-color:var(--gold)}
+.pw{position:relative}
+.pw input{padding-right:84px}
+.pw .eye{position:absolute;right:8px;top:50%;transform:translateY(-50%);border:0;background:var(--surface);color:var(--ink);border-radius:10px;padding:7px 10px;font:700 13px var(--body);cursor:pointer}
+.meter{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin-top:-6px}
+.meter i{height:5px;border-radius:3px;background:var(--line);transition:background .2s}
+.meter small{grid-column:1/-1;color:var(--muted);font-size:12px}
+.fld textarea.bad,.fld input.bad{border-color:var(--bad)}
+.chk{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--muted);cursor:pointer}
+.chk input{width:20px;height:20px;accent-color:var(--gold);flex:none;margin-top:1px}
+.chk a{color:var(--gold-text);font-weight:600}
+.dhint{display:flex;justify-content:space-between;align-items:center;gap:12px;background:var(--gold-soft);border:1px dashed color-mix(in srgb,var(--gold) 60%,transparent);border-radius:16px;padding:12px 14px}
+.dhint small{display:block;color:var(--muted);font-size:13px;overflow-wrap:anywhere}
+.qal{display:flex;align-items:center;gap:8px;background:var(--gold);color:var(--gold-ink);border-radius:999px;padding:9px 14px;font:600 14px var(--body);text-decoration:none}
+.qal svg.i{width:17px;height:17px}
+@media (max-width:820px){.auth{grid-template-columns:1fr}.aside{padding:24px 22px;gap:14px}.aside .perks{display:none}.stack{margin-top:0}}
+
 /* checkout */
 #v-peye{max-width:640px;margin:0 auto;width:100%;gap:18px}
 .ck-hero{background:var(--hero);color:var(--hero-ink);border-radius:28px;padding:24px 22px 28px;position:relative;overflow:hidden;display:flex;flex-direction:column;gap:16px;align-items:flex-start}
@@ -730,7 +774,7 @@ nav.tabs a.on{background:var(--gold-soft);color:var(--gold)}
       <a href="#admin" data-v="admin">Admin</a>
     </nav>
     <div class="hright">
-      <a class="iconbtn" href="#pwofese" aria-label="Kont"><svg class="i"><use href="#i-user"/></svg></a>
+      <a class="iconbtn" id="userBtn" href="#kont" aria-label="Konekte"><svg class="i"><use href="#i-user"/></svg></a>
       <button class="iconbtn" id="cartBtn" aria-label="Panye"><svg class="i"><use href="#i-cart"/></svg><span class="badge" id="cartN" hidden>0</span></button>
     </div>
   </div>
@@ -750,7 +794,7 @@ nav.tabs a.on{background:var(--gold-soft);color:var(--gold)}
       <a href="#akey" data-goto="help">Kontak</a>
       <div class="join"><h3><svg class="i"><use href="#i-rocket"/></svg>Vin jwenn Lekòl Anliy</h3><p class="muted">Devlope konpetans ou nan nouvo ekonomi dijital la.</p><a class="btn dark" href="#kou" data-tab="all">Dekouvri fòmasyon yo</a></div>
     </div>
-    <div class="dfoot"><a class="btn gold" href="#kou" data-tab="now"><svg class="i"><use href="#i-grad"/></svg>Enskri kounye a</a><button class="btn dark" id="loginBtn"><svg class="i"><use href="#i-login"/></svg>Konekte</button></div>
+    <div class="dfoot"><a class="btn gold" href="#enskri" data-au="signup"><svg class="i"><use href="#i-grad"/></svg>Enskri kounye a</a><button class="btn dark" id="loginBtn"><svg class="i"><use href="#i-login"/></svg>Konekte</button></div>
   </div>
 </div>
 
@@ -797,6 +841,10 @@ nav.tabs a.on{background:var(--gold-soft);color:var(--gold)}
 </section>
 
 <section class="view" id="v-peye" hidden></section>
+
+<section class="view" id="v-enskri" hidden></section>
+
+<section class="view" id="v-kont" hidden></section>
 
 <section class="view" id="v-pwofese" hidden>
   <div class="tswitch" id="tSwitch"></div>
@@ -926,7 +974,7 @@ const COURSES=[
 const LVL=["","Debitan","Entèmedyè","Avanse"];
 
 /* ---------- state ---------- */
-const KEY="lekol-anliy-demo-v5";
+const KEY="lekol-anliy-demo-v6";
 function seed(){
   const now=Date.now(),sales=[],orders=[];
   const PEOPLE=[["Marie Joseph","capcut","full",2,"MonCash"],["Jean-Marc Pierre","capcut","two",12,"NatCash",1],["Nadia Louis","capcut","full",20,"MonCash"],["Kervens Jean","grafik","two",3,"MonCash"],["Roselande Michel","grafik","full",18,"Kat"],["Wilfrid Charles","sitphone","two",1,"MonCash"],["Daphnée Etienne","sitphone","full",25,"MonCash"],["Ricardo Baptiste","biznis","full",4,"NatCash"],["Fabiola Desir","biznis","full",16,"MonCash"],["Stevenson Augustin","biznis","full",22,"MonCash"],["Mirlande Paul","wordpress","two",9,"MonCash"],["Junior Celestin","wordpress","full",30,"Kat"],["Guerline Noel","flutter","dep",3,"MonCash"],["Peterson Alexis","feyton","dep",6,"NatCash"],["Marie Joseph","flutter","dep",1,"MonCash"]];
@@ -939,7 +987,9 @@ function seed(){
   });
   orders.sort((x,y)=>y.at-x.at);sales.sort((x,y)=>y.at-x.at);
   const props=[{id:"pc1",tid:"t3",t:"Python pou debitan",cat:"iadev",p:10000,dur:"1 mwa",lvl:1,d:"Aprann baz pwogramasyon ak Python, menm si ou pa janm kode anvan.",learn:["Varyab, kondisyon ak bouk","Ti pwogram ki itil chak jou","Premye pwojè ou ak Python"],status:"revizyon",at:now-1*DAY}];
-  return {rules:{share:70,fee:3,hold:14,min:1000},sales,orders,props,extra:[],tprof:{},cart:0,payouts:[
+  const users=[{name:"Marie Joseph",wa:"+509 3611 1000",email:"marie.joseph@example.com",h:hsh("lekol123"),interests:["video","iadev"],at:now-40*DAY,demo:1},{name:"Lovely Saint-Fort",wa:"+509 3488 2210",email:"lovely.saintfort@example.com",h:hsh("lekol123"),interests:["dizay","biznis"],at:now-2*DAY,demo:1}];
+  const apps=[{id:"ap1",name:"Jameson Pierre",wa:"+509 3155 7720",email:"jameson.pierre@example.com",doms:["video"],exp:"Fotograf ak videyograf depi 6 lane, mwen fè maryaj ak evènman nan Pòtoprens.",at:now-1*DAY,status:"nouvo",demo:1}];
+  return {rules:{share:70,fee:3,hold:14,min:1000},sales,orders,props,users,apps,session:null,extra:[],tprof:{},cart:0,payouts:[
     {id:"p1",tid:"t1",amt:5000,method:"MonCash",at:now-10*DAY,status:"peye"},
     {id:"p2",tid:"t2",amt:8000,method:"NatCash",at:now-2*DAY,status:"an atant"}]};
 }
@@ -1076,7 +1126,6 @@ document.addEventListener("click",e=>{
   const t3=e.target.closest("[data-tab3]");if(t3){tabSt=t3.dataset.tab3;renderCourses()}
   const dt=e.target.closest("[data-tab]");if(dt){tabSt=dt.dataset.tab;filterCat=null;renderCourses()}
   const gt=e.target.closest("[data-goto]");if(gt){$("drawer").hidden=true;setTimeout(()=>$(gt.dataset.goto).scrollIntoView({behavior:"smooth",block:"center"}),80)}
-  if(e.target.closest("#loginBtn")){$("drawer").hidden=true;toast("Koneksyon an ap mache lè backend la pare.")}
   const vw=e.target.closest("[data-view]");if(vw)openCourse(course(vw.dataset.view));
   const b=e.target.closest("[data-buy]");
   if(b)startCheckout(b.dataset.buy);
@@ -1114,7 +1163,7 @@ function ckProblems(){const e=[];
   if(CK.wa.replace(/\D/g,"").length<8)e.push(["ckWa","yon nimewo WhatsApp ki gen omwen 8 chif"]);
   if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(CK.email.trim()))e.push(["ckEmail","yon imèl ki valab"]);
   return e}
-function startCheckout(id){const c=course(id);CK.cid=id;CK.plan=c.st=="now"?"full":"dep";CK.step=1;CK.busy=false;CK.tried=false;
+function startCheckout(id){const c=course(id),u=me();if(u){CK.name=CK.name||u.name;CK.wa=CK.wa||u.wa;CK.email=CK.email||u.email}CK.cid=id;CK.plan=c.st=="now"?"full":"dep";CK.step=1;CK.busy=false;CK.tried=false;
   if(location.hash=="#peye"){renderCheckout();scrollTo(0,0)}else location.hash="#peye"}
 function stepper(n){return `<div class="stepper">${[1,2,3].map(i=>`<span class="${i<n?"done":i==n?"on":""}">${i<n?'<svg class="i"><use href="#i-check"/></svg>':i}</span>`).join("<i></i>")}</div>`}
 function promoBox(){return `<div class="promo-in"><span class="k"><svg class="i"><use href="#i-tag"/></svg>Kòd pwomo</span>
@@ -1173,6 +1222,7 @@ function renderCheckout(){
     v.innerHTML=`<div class="ck-hero">${stepper(4)}<span class="okic"><svg class="i"><use href="#i-check"/></svg></span><h1>Peman <em>resevwa!</em></h1><p>Mèsi ${esc(L.name.split(" ")[0])}. Plas ou nan <b style="color:#fff">${L.c.t}</b> konfime.</p></div>
     <div class="ck-card slim"><span class="rtitle">Resi</span><div class="rrow"><span>Nimewo resi</span><b>${L.ref}</b></div><div class="rrow"><span>Peye jodi a</span><b>${fmt(L.p.today)} HTG</b></div><div class="rrow"><span>Metòd</span><b>${L.m}</b></div>${L.p.later?`<div class="rrow"><span>Rès pou peye anvan ${promoLabel}</span><b>${fmt(L.p.later)} HTG</b></div>`:""}</div>
     <div class="ck-card slim"><span class="rtitle">Sa k ap pase kounye a</span><ol class="next"><li>N ap voye konfimasyon an sou WhatsApp <b>${esc(L.wa)}</b>.</li><li>Kont etidyan w ap kreye ak <b>${esc(L.email)}</b>.</li><li>Klas yo kòmanse <b>${promoLabel}</b>.</li></ol></div>
+    ${me()?`<a class="paybtn" href="#kont" style="text-decoration:none">Ale nan espas etidyan mwen <svg class="i"><use href="#i-arrow"/></svg></a>`:`<div class="dhint"><div><b>Kreye kont ou</b><small>Pou swiv fòmasyon w ak peman w yo</small></div><button class="btn gold sm" data-goenskri="1">Kreye kont</button></div>`}
     <p class="note">Sa se yon demo: pa gen vrè lajan ki soti. ${fmt(split(L.p.today).tp)} HTG ale nan balans ${t.name} nan espas pwofesè a.</p>
     <div class="pbtns" style="grid-template-columns:1fr 1fr"><a class="bout" href="#akey" style="text-align:center;text-decoration:none">Retounen lakay</a><a class="benr full" href="#pwofese" style="text-decoration:none">Wè espas pwofesè</a></div>`;
   }
@@ -1330,6 +1380,115 @@ function propHTML(){const L=(ST.props||[]).filter(x=>x.status=="revizyon");if(!L
   <div class="tcgrid">${L.map(pr=>{const c=makeCourse(pr,"ap-"+pr.id);return `<div class="tco">${cover(c)}<div class="tb"><div class="row1">${av(teacher(pr.tid).name)}<div><b>${teacher(pr.tid).name}</b><small class="muted" style="display:block">${d(pr.at)}</small></div></div><h3>${esc(pr.t)}</h3><p class="muted small">${esc(pr.d)}</p>
     <div class="tnum"><div><small>Domèn</small><b>${CATLABEL[pr.cat]}</b></div><div><small>Dire</small><b>${pr.dur}</b></div><div><small>Pri</small><b>${fmt(pr.p)}</b></div></div>
     <div class="pbtns" style="grid-template-columns:1fr 1.3fr;margin-top:4px"><button class="bout" data-papr="${pr.id}" data-ok="0">Refize</button><button class="benr full" data-papr="${pr.id}" data-ok="1">Apwouve</button></div></div></div>`}).join("")}</div></div>`}
+/* ---------- enskripsyon & kont etidyan ---------- */
+let auTab="signup",auRole="learn",auShow=false,auDone=null,auPre=null;
+function hsh(s){let h=2166136261;for(const ch of s){h^=ch.charCodeAt(0);h=Math.imul(h,16777619)}return (h>>>0).toString(16)} /* demo sèlman, pa yon vrè chifreman */
+function users(){return ST.users||(ST.users=[])}
+function me(){return users().find(u=>u.email==ST.session)}
+function myOrders(){const u=me();return u?orders().filter(o=>o.email.toLowerCase()==u.email):[]}
+function updUser(){const u=me(),ub=$("userBtn");
+  ub.innerHTML=u?`<span class="av" style="--avc:${avc(u.name)};width:32px;height:32px;border-radius:50%;font-size:12px">${esc(ini(u.name))}</span>`:`<svg class="i"><use href="#i-user"/></svg>`;
+  ub.setAttribute("aria-label",u?"Kont mwen":"Konekte");
+  $("loginBtn").innerHTML=u?`<svg class="i"><use href="#i-user"/></svg>Kont mwen`:`<svg class="i"><use href="#i-login"/></svg>Konekte`}
+function pwScore(p){let s=0;if(p.length>=6)s++;if(p.length>=10)s++;if(/[0-9]/.test(p)&&/[a-zA-Z]/.test(p))s++;if(/[^a-zA-Z0-9]/.test(p)||/[A-Z]/.test(p))s++;return s}
+function renderAuth(){
+  const v=$("v-enskri"),pre=auPre||{};
+  const aside=`<aside class="aside"><span class="logo" style="color:#fff"><span class="mk"></span>Lekòl<b>Anliy</b></span>
+    <h1>${auTab=="login"?"Bon retou!<em>Kontinye aprann.</em>":"Kreye kont ou.<em>Kòmanse aprann.</em>"}</h1>
+    <ul class="perks"><li><svg class="i"><use href="#i-check"/></svg>Kou an kreyòl, sou telefòn ou</li><li><svg class="i"><use href="#i-check"/></svg>Peye an 2 fwa ak MonCash oswa NatCash</li><li><svg class="i"><use href="#i-check"/></svg>Swiv fòmasyon ak peman ou nan yon sèl kote</li></ul>
+    <div class="stack">${["img/etidyan-wouj.webp","img/etidyan-oranj.webp","img/pwofese-wouj.webp","img/etidyan-kob.webp"].map(s=>`<img src="${s}" alt="" loading="lazy">`).join("")}<span>${COURSES.length} fòmasyon k ap tann ou</span></div></aside>`;
+  if(auDone){v.innerHTML=`<div class="auth">${aside}<div class="aform done"><span class="okic"><svg class="i"><use href="#i-check"/></svg></span><h2>Nou resevwa demann ou!</h2><p class="muted">Mèsi ${esc(auDone.split(" ")[0])}. Ekip Lekòl Anliy ap gade pwofil ou epi kontakte w sou WhatsApp nan 48 èdtan.</p><a class="btn gold" href="#akey" style="width:100%">Retounen lakay</a></div></div>`;return}
+  const tabs=`<div class="seg2" role="tablist"><button role="tab" class="${auTab=="signup"?"on":""}" data-au="signup">Kreye kont</button><button role="tab" class="${auTab=="login"?"on":""}" data-au="login">Konekte</button></div>`;
+  const pw=(id,ph)=>`<label class="fld" for="${id}"><span><svg class="i"><use href="#i-lock"/></svg>Modpas <i>*</i></span><div class="pw"><input id="${id}" type="${auShow?"text":"password"}" autocomplete="${auTab=="login"?"current-password":"new-password"}" placeholder="${ph}"><button type="button" class="eye" data-eye="1" aria-label="${auShow?"Kache":"Montre"} modpas la">${auShow?"Kache":"Montre"}</button></div></label>`;
+  if(auTab=="login"){
+    v.innerHTML=`<div class="auth">${aside}<form class="aform" id="loginForm" novalidate>${tabs}
+      <div><h2>Konekte</h2><p class="muted">Antre nan espas etidyan w.</p></div>
+      <label class="fld" for="liEmail"><span><svg class="i"><use href="#i-mail"/></svg>Imèl <i>*</i></span><input id="liEmail" type="email" autocomplete="email" placeholder="non@imel.com"></label>
+      ${pw("liPw","Modpas ou")}
+      <button type="button" class="linkbtn" data-forgot="1">Ou bliye modpas ou?</button>
+      <p class="ckerr" id="auErr" hidden></p>
+      <button class="paybtn" type="submit">Konekte <svg class="i"><use href="#i-arrow"/></svg></button>
+      <div class="dhint"><div><b>Kont demo</b><small>marie.joseph@example.com · lekol123</small></div><button type="button" class="btn g sm" data-demo="1">Itilize l</button></div>
+      <p class="muted small" style="text-align:center">Ou pa gen kont? <button type="button" class="linkbtn" data-au="signup" style="padding:0">Kreye youn</button></p></form></div>`;
+    return}
+  v.innerHTML=`<div class="auth">${aside}<form class="aform" id="signupForm" novalidate>${tabs}
+    <div><h2>Kreye kont ou</h2><p class="muted">Sa pran mwens pase 1 minit.</p></div>
+    <div class="roles"><button type="button" class="rc ${auRole=="learn"?"on":""}" data-role="learn"><span class="ri"><svg class="i"><use href="#i-grad"/></svg></span><b>Mwen vle aprann</b><small>Enskri nan fòmasyon yo</small></button><button type="button" class="rc ${auRole=="teach"?"on":""}" data-role="teach"><span class="ri"><svg class="i"><use href="#i-board"/></svg></span><b>Mwen vle anseye</b><small>Touche ${ST.rules.share}% sou chak vant</small></button></div>
+    <label class="fld" for="suName"><span><svg class="i"><use href="#i-user"/></svg>Non konplè <i>*</i></span><input id="suName" autocomplete="name" placeholder="Egzanp: Marie Joseph" value="${esc(pre.name||"")}"></label>
+    <label class="fld" for="suWa"><span><svg class="i"><use href="#i-tel"/></svg>Nimewo WhatsApp <i>*</i></span><input id="suWa" type="tel" inputmode="tel" autocomplete="tel" placeholder="+509 3XXX XXXX" value="${esc(pre.wa||"")}"></label>
+    <label class="fld" for="suEmail"><span><svg class="i"><use href="#i-mail"/></svg>Imèl <i>*</i></span><input id="suEmail" type="email" autocomplete="email" placeholder="non@imel.com" value="${esc(pre.email||"")}"></label>
+    ${pw("suPw","Omwen 6 karaktè")}
+    <div class="meter" id="pwMeter"><i></i><i></i><i></i><i></i><small id="pwTxt">Mete omwen 6 karaktè</small></div>
+    <div class="fld"><span><svg class="i"><use href="#i-spark"/></svg>${auRole=="learn"?"Kisa ki enterese w?":"Kisa ou ka anseye?"}</span><div class="fchips" style="flex-wrap:wrap" id="suInt">${CATS.map(c=>`<button type="button" class="fchip" style="--fc:${c.dot}" data-int="${c.id}">${c.t}</button>`).join("")}</div></div>
+    ${auRole=="teach"?`<label class="fld" for="suExp"><span><svg class="i"><use href="#i-pen"/></svg>Eksperyans ou <i>*</i></span><textarea id="suExp" class="ta" rows="3" placeholder="Egzanp: Mwen se designer depi 5 lane, mwen travay pou…"></textarea></label>`:""}
+    <label class="chk" for="suTerms"><input id="suTerms" type="checkbox"><span>Mwen dakò ak <a href="#akey">kondisyon itilizasyon</a> yo ak <a href="#akey">règ konfidansyalite</a> a.</span></label>
+    <p class="ckerr" id="auErr" hidden></p>
+    <button class="paybtn" type="submit">${auRole=="learn"?"Kreye kont mwen":"Voye demann mwen"} <svg class="i"><use href="#i-arrow"/></svg></button>
+    <p class="muted small" style="text-align:center">Ou gen yon kont deja? <button type="button" class="linkbtn" data-au="login" style="padding:0">Konekte</button></p></form></div>`;
+}
+function renderKont(){
+  const u=me(),v=$("v-kont");if(!u){v.innerHTML="";return}
+  const O=myOrders(),paid=O.reduce((a,o)=>a+o.paid,0),rest=O.reduce((a,o)=>a+o.total-o.paid,0),days=Math.max(0,Math.ceil((PROMO_DATE-Date.now())/DAY));
+  v.innerHTML=`<div class="ahero"><div class="ahtop"><div class="who">${av(u.name,1)}<div><small>Espas etidyan · manm depi ${dt(u.at)}</small><b>Bonjou, ${esc(u.name.split(" ")[0])}</b><small style="color:var(--gold)">${esc(u.email)}</small></div></div><button class="reset2" data-logout="1">Dekonekte</button></div>
+    <div class="abig"><div><span class="lbl">Klas yo kòmanse nan</span><div class="num">${days}<small>jou</small></div><span class="trend"><svg class="i"><use href="#i-cal"/></svg>Rantre ${promoLabel}</span></div></div>
+    <div class="qa"><a class="gold2 qal" href="#kou"><svg class="i"><use href="#i-plus"/></svg>Chwazi yon lòt fòmasyon</a>${rest?`<button data-kpay="${O.find(o=>o.paid<o.total).id}"><svg class="i"><use href="#i-wallet"/></svg>Peye rès la <i>${fmt(rest)}</i></button>`:""}</div></div>
+  <div class="k4"><div class="kc" style="--kcol:#6d5fd8"><span class="ic"><svg class="i"><use href="#i-grad"/></svg></span><small>Fòmasyon mwen</small><b>${O.length}</b></div>
+    <div class="kc" style="--kcol:var(--ok)"><span class="ic"><svg class="i"><use href="#i-check"/></svg></span><small>Mwen peye</small><b>${fmt(paid)}<em>HTG</em></b></div>
+    <div class="kc" style="--kcol:var(--warn)"><span class="ic"><svg class="i"><use href="#i-alert"/></svg></span><small>Rès pou peye</small><b>${fmt(rest)}<em>HTG</em></b></div>
+    <div class="kc" style="--kcol:var(--gold)"><span class="ic"><svg class="i"><use href="#i-spark"/></svg></span><small>Enterè</small><b style="font-size:16px;white-space:normal">${(u.interests||[]).map(i=>cat0(i).t).join(", ")||"—"}</b></div></div>
+  <div class="card2"><div class="ch"><div><h3>Fòmasyon mwen yo</h3><small>Peman ak pwochen etap pou chak fòmasyon</small></div></div>
+    ${O.length?`<div class="tcgrid">${O.map(o=>{const c=course(o.cid),r=o.total-o.paid,S2=OST[ost(o)];return `<div class="tco">${cover(c)}<div class="tb"><div class="row1"><span class="bdg2" style="--bc:${S2[1]}">${S2[0]}</span><small class="muted">Resi ${o.id}</small></div><h3>${c.t}</h3><small class="muted">Pwofesè: ${teacher(c.tid).name} · ${c.dur}</small>
+      <div class="prog"><i style="width:${o.paid/o.total*100}%"></i></div><div class="rrow"><span>Peye ${fmt(o.paid)} / ${fmt(o.total)} HTG</span><b>${Math.round(o.paid/o.total*100)}%</b></div>
+      ${r?`<button class="benr full" data-kpay="${o.id}">Peye rès la · ${fmt(r)} HTG</button>`:`<button class="benr full" data-learn="${o.id}">Kòmanse aprann</button>`}</div></div>`}).join("")}</div>`
+      :`<div class="empty"><b style="display:block;color:var(--ink);font-size:17px;margin-bottom:6px">Ou poko enskri nan okenn fòmasyon</b>Chwazi youn epi peye ak MonCash, NatCash oswa kat.<br><a class="btn gold" href="#kou" style="margin-top:14px;display:inline-flex">Wè fòmasyon yo</a></div>`}</div>`;
+}
+function payRest(id){const o=orders().find(x=>x.id==id);if(!o)return;const c=course(o.cid),r=o.total-o.paid;let m="moncash";
+  const draw=()=>{$("mbox").innerHTML=`<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px"><div><span class="stepchip" style="background:var(--gold-soft);color:var(--gold-text)"><svg class="i"><use href="#i-wallet"/></svg>Peye rès la</span><h2 style="font-size:22px;margin-top:10px">${c.t}</h2></div><button class="iconbtn" data-mclose aria-label="Fèmen"><svg class="i"><use href="#i-x"/></svg></button></div>
+    <div class="paynow"><div><span>Pou peye kounye a</span><b>${fmt(r)} HTG</b></div><svg class="i"><use href="#i-wallet"/></svg></div>
+    <div class="meths">${METHODS.map(x=>`<button class="meth ${m==x.id?"on":""}" data-rm="${x.id}"><span class="mic" style="background:${x.bg}"><svg class="i"><use href="#${x.ic}"/></svg></span><b>${x.t}</b><small>${x.id=="card"?usd(r)+" USD":x.s}</small></button>`).join("")}</div>
+    <button class="paybtn" id="rpGo">Peye ${fmt(r)} HTG ak ${METHODS.find(x=>x.id==m).t}</button><p class="secure">Demo: pa gen vrè lajan ki soti.</p>`};
+  draw();$("modal").hidden=false;
+  $("mbox").onclick=e=>{const b=e.target.closest("[data-rm]");if(b){m=b.dataset.rm;draw();return}
+    const g=e.target.closest("#rpGo");if(g){g.disabled=true;g.textContent="Ap konekte…";setTimeout(()=>{const t0=Date.now(),mn=METHODS.find(x=>x.id==m).t;
+      o.pays.push({amt:r,at:t0,method:mn,kind:o.plan=="dep"?"Rès rezèvasyon":"Versman 2/2"});o.paid=o.total;ST.sales.unshift({id:"s"+t0,cid:o.cid,at:t0,amt:r,kind:"Rès peman",oid:o.id});
+      save();$("modal").hidden=true;$("mbox").onclick=null;render();renderKont();toast(`Mèsi! ${fmt(r)} HTG peye. Fòmasyon an peye nèt.`)},1200)}}}
+function auErr(t){const e=$("auErr");e.hidden=!t;e.textContent=t||""}
+document.addEventListener("submit",e=>{
+  if(e.target.id=="signupForm"){e.preventDefault();
+    const name=$("suName").value.trim(),wa=$("suWa").value.trim(),email=$("suEmail").value.trim().toLowerCase(),pw=$("suPw").value,ints=[...document.querySelectorAll("#suInt .on")].map(x=>x.dataset.int),exp=$("suExp")?$("suExp").value.trim():"";
+    const bad=[];if(name.length<2)bad.push(["suName","non konplè ou"]);if(wa.replace(/\D/g,"").length<8)bad.push(["suWa","yon nimewo WhatsApp ki valab"]);if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email))bad.push(["suEmail","yon imèl ki valab"]);if(pw.length<6)bad.push(["suPw","yon modpas ki gen omwen 6 karaktè"]);if(auRole=="teach"&&exp.length<15)bad.push(["suExp","eksperyans ou (omwen 15 lèt)"]);
+    document.querySelectorAll("#signupForm input,#signupForm textarea").forEach(x=>x.classList.remove("bad"));bad.forEach(b=>$(b[0]).classList.add("bad"));
+    if(bad.length){auErr("Tanpri mete "+bad.map(b=>b[1]).join(", ")+".");$(bad[0][0]).focus();return}
+    if(!$("suTerms").checked){auErr("Ou dwe dakò ak kondisyon yo pou kontinye.");return}
+    if(auRole=="teach"){ST.apps=ST.apps||[];ST.apps.unshift({id:"ap"+Date.now(),name,wa,email,doms:ints,exp,at:Date.now(),status:"nouvo"});save();auDone=name;renderAuth();render();scrollTo(0,0);return}
+    if(users().some(u=>u.email==email)){auErr("Gen yon kont ak imèl sa a deja. Eseye konekte.");return}
+    users().push({name,wa,email,h:hsh(pw),interests:ints,at:Date.now()});ST.session=email;save();auPre=null;updUser();render();location.hash="#kont";toast(`Byenveni, ${name.split(" ")[0]}! Kont ou kreye.`)}
+  if(e.target.id=="loginForm"){e.preventDefault();const email=$("liEmail").value.trim().toLowerCase(),pw=$("liPw").value,u=users().find(x=>x.email==email);
+    if(!email||!pw){auErr("Mete imèl ou ak modpas ou.");return}
+    if(!u||u.h!==hsh(pw)){auErr("Imèl la oswa modpas la pa bon. Verifye yo epi eseye ankò.");return}
+    ST.session=email;save();updUser();render();location.hash="#kont";toast(`Bon retou, ${u.name.split(" ")[0]}!`)}
+});
+document.addEventListener("input",e=>{if(e.target.id=="suPw"){const sc=pwScore(e.target.value),L=["Twò kout","Fèb","Mwayen","Bon","Fò"],C=["#e5484d","#e5484d","#e8a93a","#1f9d5c","#1f9d5c"];
+  document.querySelectorAll("#pwMeter i").forEach((x,i)=>x.style.background=i<sc?C[sc]:"");$("pwTxt").textContent=e.target.value?L[sc]:"Mete omwen 6 karaktè"}});
+document.addEventListener("click",e=>{
+  const a=e.target.closest("[data-au]");if(a){auTab=a.dataset.au;auDone=null;renderAuth();return}
+  const r=e.target.closest("[data-role]");if(r){const keep={name:$("suName").value,wa:$("suWa").value,email:$("suEmail").value};auRole=r.dataset.role;auPre=keep;renderAuth();return}
+  if(e.target.closest("[data-eye]")){const ids=["suPw","liPw"].filter(i=>$(i));auShow=!auShow;ids.forEach(i=>{$(i).type=auShow?"text":"password"});document.querySelectorAll("[data-eye]").forEach(b=>{b.textContent=auShow?"Kache":"Montre"});return}
+  const it=e.target.closest("[data-int]");if(it){it.classList.toggle("on");return}
+  if(e.target.closest("[data-demo]")){$("liEmail").value="marie.joseph@example.com";$("liPw").value="lekol123";return}
+  if(e.target.closest("[data-forgot]")){toast("Ekri nou sou WhatsApp pou nou ba w yon nouvo modpas.");return}
+  if(e.target.closest("[data-logout]")){ST.session=null;save();updUser();location.hash="#akey";toast("Ou dekonekte.");return}
+  const kp=e.target.closest("[data-kpay]");if(kp){payRest(kp.dataset.kpay);return}
+  if(e.target.closest("[data-learn]")){toast(`Leson yo ap louvri ${promoLabel}. N ap voye lyen an sou WhatsApp ou.`);return}
+  if(e.target.closest("#loginBtn")){$("drawer").hidden=true;if(me()){location.hash="#kont"}else{auTab="login";auDone=null;location.hash="#enskri";renderAuth()}return}
+  if(e.target.closest("[data-goenskri]")){const L=CK.last;auPre=L?{name:L.name,wa:L.wa,email:L.email}:null;auTab="signup";auRole="learn";auDone=null;location.hash="#enskri";renderAuth();return}
+  const ap=e.target.closest("[data-appok]");if(ap){const x=(ST.apps||[]).find(y=>y.id==ap.dataset.appok);x.status=ap.dataset.v;save();render();toast(x.status=="kontakte"?"Make kòm kontakte.":"Demann nan achive.");return}
+});
+function appsHTML(){const L=(ST.apps||[]).filter(x=>x.status=="nouvo");if(!L.length)return"";
+  return `<div class="card2"><div class="ch"><div><h3>Moun ki vle anseye</h3><small>Nouvo demann ki soti nan paj enskripsyon an</small></div><span class="bdg2" style="--bc:var(--gold-text)">${L.length} nouvo</span></div><div class="scards">${L.map(x=>`<div class="scard" style="cursor:default"><div class="top">${av(x.name)}<div><b>${esc(x.name)}</b><small>${esc(x.wa)} · ${esc(x.email)}</small></div></div><div class="cs">${x.doms.map(dd=>`<span>${cat0(dd).t}</span>`).join("")||"<span>Pa presize</span>"}</div><p class="muted small">${esc(x.exp)}</p>
+    <div class="actrow"><a class="btn wa2 sm" href="${waLink(x,`Bonjou ${x.name.split(" ")[0]}, se Lekòl Anliy. Nou resevwa demann ou pou anseye. Ann pale!`)}" target="_blank" rel="noopener" data-appok="${x.id}" data-v="kontakte">Kontakte sou WhatsApp</a><button class="btn g sm" data-appok="${x.id}" data-v="achive">Achive</button></div>${x.demo?'<small class="muted">Egzanp fiktif</small>':""}</div>`).join("")}</div></div>`}
+function accHTML(){const U=users().filter(u=>!orders().some(o=>o.email.toLowerCase()==u.email));if(!U.length)return"";
+  return `<div class="card2"><div class="ch"><div><h3>Kont ki poko achte</h3><small>Bon moun pou voye yon ti mesaj</small></div></div><div class="scards">${U.map(u=>`<div class="scard" style="cursor:default"><div class="top">${av(u.name)}<div><b>${esc(u.name)}</b><small>${esc(u.wa)} · ${esc(u.email)}</small></div></div><div class="cs">${(u.interests||[]).map(i=>`<span>${cat0(i).t}</span>`).join("")||"<span>Pa gen enterè</span>"}</div><a class="btn wa2 sm" style="justify-content:center" href="${waLink(u,`Bonjou ${u.name.split(" ")[0]}, se Lekòl Anliy! Mèsi paske ou kreye kont ou. Èske w bezwen èd pou chwazi yon fòmasyon?`)}" target="_blank" rel="noopener">Ekri l sou WhatsApp</a></div>`).join("")}</div></div>`}
 /* ---------- admin ---------- */
 let aTab="apesi",aQ="",aF="all",aRange=14;
 const ost=o=>o.paid>=o.total?"full":o.plan=="dep"?"dep":"part";
@@ -1359,7 +1518,7 @@ function aHero(){
     ${spark(d7.map(x=>x.v),"#f0b44a",150,60)}</div>
   <div class="qa"><button class="gold2" data-atab="peman" data-af2="part"><svg class="i"><use href="#i-alert"/></svg>Rès pou kolekte <i>${rest}</i></button><button data-atab="pwofese"><svg class="i"><use href="#i-wallet"/></svg>Peye pwofesè <i>${pend}</i></button><button id="csvBtn"><svg class="i"><use href="#i-copy"/></svg>Kopye CSV</button></div>`;
 }
-function aTabs(){const pend=ST.payouts.filter(p=>p.status==="an atant").length+(ST.props||[]).filter(x=>x.status=="revizyon").length,rest=orders().filter(o=>o.paid<o.total).length;
+function aTabs(){const pend=ST.payouts.filter(p=>p.status==="an atant").length+(ST.props||[]).filter(x=>x.status=="revizyon").length+(ST.apps||[]).filter(x=>x.status=="nouvo").length,rest=orders().filter(o=>o.paid<o.total).length;
   $("atabs").innerHTML=[["apesi","Apèsi","i-pie"],["peman","Peman","i-wallet",rest],["etidyan","Etidyan","i-users"],["pwofese","Pwofesè","i-user",pend],["regl","Règ","i-gear"]].map(([k,t,ic,n])=>`<button role="tab" aria-selected="${aTab==k}" class="${aTab==k?"on":""}" data-atab="${k}"><svg class="i"><use href="#${ic}"/></svg>${t}${n?`<i>${n}</i>`:""}</button>`).join("")}
 function renderAdmin(){
   aHero();aTabs();const v=$("aView"),O=orders();
@@ -1399,11 +1558,11 @@ function renderAdmin(){
     const m={};O.forEach(o=>{const k=o.email.toLowerCase();(m[k]=m[k]||{name:o.name,wa:o.wa,email:o.email,os:[]}).os.push(o)});
     const L=Object.values(m).sort((x,y)=>Math.max(...y.os.map(o=>o.at))-Math.max(...x.os.map(o=>o.at)));
     v.innerHTML=`<div class="card2"><div class="ch"><div><h3>${L.length} etidyan</h3><small>Peze yon kat pou wè peman yo</small></div></div><div class="scards">${L.map(x=>{const pd=x.os.reduce((a,o)=>a+o.paid,0),rs=x.os.reduce((a,o)=>a+o.total-o.paid,0);
-      return `<button class="scard" data-oid="${x.os[0].id}"><div class="top">${av(x.name)}<div><b>${esc(x.name)}</b><small>${esc(x.wa)} · ${esc(x.email)}</small></div></div><div class="cs">${x.os.map(o=>`<span>${ctitle(course(o.cid))}</span>`).join("")}</div><div class="ft"><span>Peye <b>${fmt(pd)}</b></span>${rs?`<span class="bdg2" style="--bc:var(--warn)">Rès ${fmt(rs)}</span>`:`<span class="bdg2" style="--bc:var(--ok)">À jou</span>`}</div></button>`}).join("")}</div></div>`;
+      return `<button class="scard" data-oid="${x.os[0].id}"><div class="top">${av(x.name)}<div><b>${esc(x.name)}</b><small>${esc(x.wa)} · ${esc(x.email)}</small></div></div><div class="cs">${x.os.map(o=>`<span>${ctitle(course(o.cid))}</span>`).join("")}</div><div class="ft"><span>Peye <b>${fmt(pd)}</b></span>${rs?`<span class="bdg2" style="--bc:var(--warn)">Rès ${fmt(rs)}</span>`:`<span class="bdg2" style="--bc:var(--ok)">À jou</span>`}</div></button>`}).join("")}</div></div>${accHTML()}`;
   } else if(aTab=="pwofese"){
     let owed=0;TEACHERS.forEach(t=>{const b=balance(t.id);owed+=b.total-b.paid});
     v.innerHTML=`<div class="k4" style="grid-template-columns:repeat(auto-fit,minmax(160px,1fr))"><div class="kc" style="--kcol:var(--warn)"><span class="ic"><svg class="i"><use href="#i-wallet"/></svg></span><small>Lekòl la dwe pwofesè yo</small><b>${fmt(owed)}<em>HTG</em></b></div><div class="kc" style="--kcol:var(--gold)"><span class="ic"><svg class="i"><use href="#i-alert"/></svg></span><small>Demann an atant</small><b>${ST.payouts.filter(p=>p.status==="an atant").length}</b></div></div>
-    ${propHTML()}
+    ${appsHTML()}${propHTML()}
     <div class="tcards">${TEACHERS.map(t=>{const b=balance(t.id),reqs=ST.payouts.filter(p=>p.tid==t.id&&p.status==="an atant"),cs=COURSES.filter(c=>c.tid==t.id);
       return `<div class="tcard"><div class="top">${av(t.name,1)}<div><b style="font-size:17px">${t.name}</b><small>${t.pay}</small><small>${cs.length} fòmasyon</small></div></div>
       <div class="nums"><div><small>Total touche</small><b>${fmt(b.total)}</b></div><div><small>An atant</small><b>${fmt(b.pending)}</b></div><div><small>Disponib</small><b style="color:var(--ok)">${fmt(b.withdrawable)}</b></div></div>
@@ -1457,9 +1616,11 @@ document.addEventListener("click",e=>{
 document.addEventListener("input",e=>{if(e.target.id=="aQ"){aQ=e.target.value;aList()}});
 applyExtras();
 
-function render(){renderCourses();renderTeacher();renderAdmin()}
+function render(){renderCourses();renderTeacher();renderAdmin();updUser()}
 function route(){
-  const v=(location.hash||"#akey").slice(1),ok=["akey","kou","peye","pwofese","admin"].includes(v)?v:"akey";
+  const v0=(location.hash||"#akey").slice(1);if(v0=="kont"&&!me()){auTab="login";location.replace("#enskri");return}
+  const v=v0,ok=["akey","kou","peye","enskri","kont","pwofese","admin"].includes(v)?v:"akey";
+  if(ok=="enskri")renderAuth();if(ok=="kont")renderKont();
   if(ok=="peye"){if(CK.step==3&&!CK.last)CK.step=1;if(CK.step==2&&ckProblems().length)CK.step=1;renderCheckout()}
   document.querySelectorAll("section.view").forEach(s=>s.hidden=s.id!=="v-"+ok);
   document.querySelectorAll("nav.desk a").forEach(a=>a.classList.toggle("on",a.dataset.v===ok));
