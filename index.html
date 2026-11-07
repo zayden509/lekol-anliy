@@ -9,73 +9,135 @@
 </head>
 <body>
 <style>
-/* Layout: sticky top bar + hash-routed views (akèy, kou, pwofesè, admin). Sea-blue ground, mango accent. */
+/* Layout: trust strip + sticky header w/ search, dark gold hero slider, category rail, hash-routed views, mobile bottom tab bar. */
 :root{
-  --bg:#f3f6fa; --surface:#ffffff; --ink:#0f2238; --muted:#5a6b80; --line:#dbe3ec;
-  --brand:#0d4f8b; --brand-ink:#ffffff; --mango:#f2a516; --mango-ink:#2a1a00;
-  --ok:#1f8a5b; --warn:#b7791f; --bad:#c0392b; --soft:#e6eef7;
-  --display:"Bricolage Grotesque", "Trebuchet MS", system-ui, sans-serif;
-  --body:"Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --bg:#f2f2f4; --surface:#ffffff; --ink:#14161c; --muted:#646a78; --line:#e2e3e8;
+  --gold:#e8a93a; --gold-ink:#1d1300; --gold-soft:#fbf1dc;
+  --hero:#0a0f1c; --hero-ink:#ffffff; --hero-muted:#c3c8d4;
+  --brand:#14161c; --soft:#f6f6f8;
+  --ok:#1f8a5b; --warn:#b7791f; --bad:#c0392b;
+  --c1:#fdf3dd; --c2:#eef0ff; --c3:#e6f6ee; --c4:#fde9e4; --c5:#e7f2fb;
+  --display:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
+  --body:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#0b1522; --surface:#122133; --ink:#e8eef6; --muted:#9aabbf; --line:#23364c;
-  --brand:#4a9be0; --brand-ink:#06121f; --mango:#f5b43a; --mango-ink:#2a1a00;
-  --ok:#3ccf8e; --warn:#e9b35a; --bad:#ef6f61; --soft:#18304a; color-scheme:dark}}
+  --bg:#0c0e13; --surface:#151821; --ink:#eef0f4; --muted:#9aa1b0; --line:#262a35;
+  --gold:#f0b44a; --gold-ink:#1d1300; --gold-soft:#2b2312;
+  --hero:#05070d; --hero-ink:#ffffff; --hero-muted:#b4bac8;
+  --brand:#eef0f4; --soft:#1b1f2a;
+  --ok:#3ccf8e; --warn:#e9b35a; --bad:#ef6f61;
+  --c1:#2b2312; --c2:#1d2038; --c3:#13281e; --c4:#2c1a16; --c5:#142231; color-scheme:dark}}
 :root[data-theme="dark"]{
-  --bg:#0b1522; --surface:#122133; --ink:#e8eef6; --muted:#9aabbf; --line:#23364c;
-  --brand:#4a9be0; --brand-ink:#06121f; --mango:#f5b43a; --mango-ink:#2a1a00;
-  --ok:#3ccf8e; --warn:#e9b35a; --bad:#ef6f61; --soft:#18304a; color-scheme:dark}
+  --bg:#0c0e13; --surface:#151821; --ink:#eef0f4; --muted:#9aa1b0; --line:#262a35;
+  --gold:#f0b44a; --gold-ink:#1d1300; --gold-soft:#2b2312;
+  --hero:#05070d; --hero-ink:#ffffff; --hero-muted:#b4bac8;
+  --brand:#eef0f4; --soft:#1b1f2a;
+  --ok:#3ccf8e; --warn:#e9b35a; --bad:#ef6f61;
+  --c1:#2b2312; --c2:#1d2038; --c3:#13281e; --c4:#2c1a16; --c5:#142231; color-scheme:dark}
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--ink);font:16px/1.55 var(--body)}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
-.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:1100px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+svg.i{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+/* trust strip */
+.trust{background:var(--soft);border-bottom:1px solid var(--line);font-size:13px;font-weight:500}
+.trust .wrap{display:flex;gap:22px;padding-block:8px;overflow-x:auto;white-space:nowrap;scrollbar-width:none}
+.trust span{display:flex;align-items:center;gap:6px}
+.trust svg.i{width:17px;height:17px;color:var(--gold)}
+
+/* header */
 header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
-header.top .wrap{display:flex;align-items:center;gap:16px;padding-block:12px;flex-wrap:wrap}
-.logo{font:800 22px var(--display);color:var(--brand);text-decoration:none;display:flex;align-items:center;gap:8px}
-.logo span{width:26px;height:26px;border-radius:7px;background:var(--mango);display:inline-block;transform:rotate(45deg)}
-nav{display:flex;gap:4px;flex-wrap:wrap;margin-left:auto}
-nav a{padding:7px 12px;border-radius:999px;color:var(--muted);text-decoration:none;font-weight:600;font-size:14px}
-nav a.on{background:var(--soft);color:var(--brand)}
-h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.15}
-h1{font-size:clamp(32px,6vw,54px);font-weight:800}
-h2{font-size:26px}
-h3{font-size:18px}
+.hrow{display:flex;align-items:center;gap:14px;padding-block:10px}
+.iconbtn{background:none;border:0;color:var(--ink);padding:8px;border-radius:10px;cursor:pointer;display:flex;position:relative;text-decoration:none}
+.iconbtn:hover{background:var(--soft)}
+.badge{position:absolute;top:2px;right:0;background:var(--gold);color:var(--gold-ink);font-size:10px;font-weight:800;min-width:17px;height:17px;border-radius:9px;display:flex;align-items:center;justify-content:center;padding:0 4px}
+.logo{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--ink);font:800 23px/1 var(--display);letter-spacing:-.02em}
+.logo .mk{width:38px;height:38px;border-radius:11px;background:var(--hero);display:flex;align-items:center;justify-content:center;position:relative}
+.logo .mk::before{content:"";width:18px;height:12px;background:var(--gold);clip-path:polygon(50% 0,100% 40%,50% 80%,0 40%)}
+.logo .mk::after{content:"";position:absolute;width:3px;height:9px;background:var(--gold);right:9px;top:19px;border-radius:2px}
+.logo b{color:var(--gold)}
+.hright{margin-left:auto;display:flex;align-items:center;gap:2px}
+nav.desk{display:flex;gap:2px;margin-left:18px}
+nav.desk a{padding:8px 12px;border-radius:999px;color:var(--muted);text-decoration:none;font-weight:600;font-size:14px}
+nav.desk a.on{background:var(--gold-soft);color:var(--ink)}
+.search{padding-bottom:12px}
+.search label{display:flex;align-items:center;gap:10px;background:var(--soft);border:1px solid var(--line);border-radius:14px;padding:0 14px}
+.search svg.i{color:var(--muted)}
+.search input{border:0;background:transparent;padding:13px 0;font:16px var(--body);color:var(--ink);width:100%;outline:none}
+.search label:focus-within{border-color:var(--gold)}
+
+/* drawer */
+.drawer{position:fixed;inset:0;z-index:30;display:flex}
+.drawer .scrim{position:absolute;inset:0;background:rgba(5,7,13,.5)}
+.drawer .sheet{position:relative;background:var(--surface);width:min(300px,85vw);height:100%;padding:calc(20px + env(safe-area-inset-top,0px)) 20px 20px max(20px,env(safe-area-inset-left,0px));display:flex;flex-direction:column;gap:4px}
+.drawer .sheet a{padding:12px;border-radius:10px;color:var(--ink);text-decoration:none;font-weight:600;display:flex;gap:12px;align-items:center}
+.drawer .sheet a:hover{background:var(--soft)}
+
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.1}
+h2{font-size:clamp(24px,4.5vw,32px);font-weight:800;letter-spacing:-.02em}
+h3{font-size:17px}
 p{margin:0}
 .muted{color:var(--muted)}
-section.view{padding-block:28px 56px;display:flex;flex-direction:column;gap:28px}
-.hero{display:grid;grid-template-columns:1.2fr 1fr;gap:28px;align-items:center}
-.hero > *{min-width:0}
-.hero p.lead{font-size:18px;color:var(--muted);margin-top:14px;max-width:52ch}
-.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
-.btn{border:0;border-radius:10px;padding:11px 18px;font:700 15px var(--body);cursor:pointer;text-decoration:none;display:inline-block}
-.btn.p{background:var(--brand);color:var(--brand-ink)}
-.btn.m{background:var(--mango);color:var(--mango-ink)}
-.btn.g{background:transparent;color:var(--brand);border:1.5px solid var(--line)}
-.btn.sm{padding:7px 12px;font-size:13px;border-radius:8px}
-.btn:focus-visible,nav a:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--mango);outline-offset:2px}
+section.view{padding-block:20px 48px;display:flex;flex-direction:column;gap:26px}
+
+/* hero */
+.hero{background:var(--hero);color:var(--hero-ink);border-radius:26px;padding:clamp(26px,5vw,48px);position:relative;overflow:hidden;min-height:330px;display:flex;flex-direction:column;justify-content:space-between;gap:24px;box-shadow:0 14px 40px rgba(5,7,13,.18)}
+.hero::after{content:"";position:absolute;right:-80px;top:-60px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--gold) 22%,transparent),transparent 65%);pointer-events:none}
+.slide{display:flex;flex-direction:column;gap:14px;max-width:560px;position:relative;z-index:1}
+.eyebrow{color:var(--gold);font-weight:700;font-size:13px;letter-spacing:.14em;text-transform:uppercase}
+.hero h1{font-size:clamp(42px,9vw,68px);font-weight:800;letter-spacing:-.035em;line-height:.98}
+.hero h1 em{font-style:normal;color:var(--gold);display:block}
+.hero p{color:var(--hero-muted);font-size:17px;max-width:40ch}
+.dots{display:flex;gap:8px;position:relative;z-index:1}
+.dots button{width:11px;height:11px;border-radius:6px;border:0;background:#4a5060;cursor:pointer;padding:0;transition:width .25s}
+.dots button.on{width:34px;background:var(--gold)}
+.btn{border:0;border-radius:14px;padding:13px 22px;font:700 16px var(--body);cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:10px;width:fit-content}
+.btn.gold{background:var(--gold);color:var(--gold-ink);box-shadow:0 8px 24px color-mix(in srgb,var(--gold) 35%,transparent)}
+.btn.dark{background:var(--ink);color:var(--surface)}
+.btn.g{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.btn.sm{padding:7px 12px;font-size:13px;border-radius:9px}
 .btn:disabled{opacity:.45;cursor:not-allowed}
-.split{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px;display:flex;flex-direction:column;gap:12px}
-.splitbar{display:flex;height:34px;border-radius:8px;overflow:hidden;font-weight:700;font-size:13px}
-.splitbar div{display:flex;align-items:center;justify-content:center}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.stat{background:var(--soft);border-radius:12px;padding:14px}
-.stat b{display:block;font:800 24px var(--display);font-variant-numeric:tabular-nums}
-.stat small{color:var(--muted);font-size:13px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
-.card .art{height:96px;display:flex;align-items:flex-end;padding:12px;font:800 15px var(--display);color:#fff}
+.btn:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+
+/* category rail */
+.head{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap}
+.more{color:var(--ink);font-weight:700;text-decoration:none;display:flex;align-items:center;gap:4px;font-size:15px}
+.rail{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(270px,78%);gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px;scrollbar-width:none}
+@media (min-width:800px){.rail{grid-auto-columns:minmax(0,1fr)}}
+.cat{scroll-snap-align:start;border-radius:20px;padding:18px;display:flex;align-items:center;gap:14px;border:1px solid color-mix(in srgb,var(--gold) 25%,var(--line));cursor:pointer;text-align:left;font:inherit;color:var(--ink)}
+.cat .ic{width:58px;height:58px;border-radius:16px;background:var(--surface);display:flex;align-items:center;justify-content:center;flex:none}
+.cat .ic svg.i{width:28px;height:28px}
+.cat div.t{min-width:0;flex:1}
+.cat small{color:var(--muted);font-size:13px;display:block}
+.cat .go{width:30px;height:30px;border-radius:50%;background:var(--surface);display:flex;align-items:center;justify-content:center;flex:none}
+.cat .go svg.i{width:16px;height:16px}
+
+/* course cards */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column}
+.card .art{height:100px;display:flex;align-items:flex-end;justify-content:space-between;padding:12px;background:var(--hero);color:var(--hero-ink);position:relative}
+.card .art .lv{font-size:12px;font-weight:700;background:rgba(255,255,255,.12);padding:3px 9px;border-radius:999px}
+.card .art .tag{font:800 13px var(--display);color:var(--gold);letter-spacing:.06em;text-transform:uppercase}
 .card .in{padding:14px;display:flex;flex-direction:column;gap:6px;flex:1}
 .card .row{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:8px}
 .price{font:800 18px var(--display);font-variant-numeric:tabular-nums}
-.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.step{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:6px}
-.step .n{width:28px;height:28px;border-radius:50%;background:var(--mango);color:var(--mango-ink);display:flex;align-items:center;justify-content:center;font-weight:800}
-.panel{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:14px}
+.btn.add{background:var(--gold);color:var(--gold-ink);padding:8px 14px;font-size:14px;border-radius:10px}
+
+/* teacher promo */
+.promo{background:var(--gold-soft);border-radius:22px;padding:22px;display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center}
+.promo > *{min-width:0}
+.split3{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.split3 span{background:var(--surface);border-radius:10px;padding:8px 12px;font-size:13px}
+.split3 b{font:800 18px var(--display);display:block;font-variant-numeric:tabular-nums}
+
+/* dashboards */
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:14px}
 .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-.kpi{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px}
 .kpi small{color:var(--muted);font-size:13px;display:block}
 .kpi b{font:800 22px var(--display);font-variant-numeric:tabular-nums}
-.kpi.hl{border-color:var(--ok)}
+.kpi.hl{border-color:var(--gold);background:var(--gold-soft)}
 .tblwrap{overflow-x:auto}
 table{width:100%;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums}
 th,td{padding:10px 8px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap}
@@ -84,82 +146,125 @@ td.r,th.r{text-align:right}
 .pill{display:inline-block;padding:2px 9px;border-radius:999px;font-size:12px;font-weight:700}
 .pill.ok{background:color-mix(in srgb,var(--ok) 16%,transparent);color:var(--ok)}
 .pill.warn{background:color-mix(in srgb,var(--warn) 18%,transparent);color:var(--warn)}
-.pill.bad{background:color-mix(in srgb,var(--bad) 16%,transparent);color:var(--bad)}
 .form{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .form label{display:flex;flex-direction:column;gap:4px;font-size:13px;font-weight:600;color:var(--muted)}
-input,select{font:15px var(--body);padding:10px;border-radius:9px;border:1px solid var(--line);background:var(--bg);color:var(--ink);width:100%}
+.form input,.form select,select{font:15px var(--body);padding:10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink);width:100%}
 .note{background:var(--soft);border-radius:10px;padding:12px 14px;font-size:14px}
-.demo{display:inline-block;background:var(--mango);color:var(--mango-ink);font-size:11px;font-weight:800;padding:2px 8px;border-radius:6px;letter-spacing:.05em}
-.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:11px 18px;border-radius:10px;font-weight:600;z-index:20}
-.head{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap}
+.demo{display:inline-block;background:var(--gold);color:var(--gold-ink);font-size:11px;font-weight:800;padding:2px 8px;border-radius:6px;letter-spacing:.05em}
 .sel{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:7px 14px;font:600 14px var(--body);cursor:pointer}
+.chip.on{background:var(--ink);color:var(--surface);border-color:var(--ink)}
+
+/* chat + toast + bottom nav */
+.chatbtn{position:fixed;right:max(18px,calc(env(safe-area-inset-right,0px) + 18px));bottom:calc(92px + env(safe-area-inset-bottom,0px));width:60px;height:60px;border-radius:50%;background:var(--hero);color:var(--hero-ink);border:0;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:15;box-shadow:0 10px 26px rgba(5,7,13,.3)}
+.chatbtn svg.i{width:28px;height:28px}
+.chatbox{position:fixed;right:max(18px,calc(env(safe-area-inset-right,0px) + 18px));bottom:calc(162px + env(safe-area-inset-bottom,0px));width:min(320px,calc(100vw - 36px));background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px;z-index:15;display:flex;flex-direction:column;gap:10px;box-shadow:0 14px 40px rgba(5,7,13,.2)}
+.chatbox .q{background:var(--soft);border-radius:12px;padding:10px 12px;font-size:14px}
+.chatbox .q b{display:block;font-size:14px}
+.toast{position:fixed;left:50%;bottom:calc(96px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--surface);padding:11px 18px;border-radius:12px;font-weight:600;z-index:25;width:max-content;max-width:calc(100vw - 32px)}
+nav.tabs{position:fixed;left:0;right:0;bottom:0;z-index:12;background:var(--surface);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(5,1fr);gap:4px;padding:8px max(8px,env(safe-area-inset-right,0px)) calc(8px + env(safe-area-inset-bottom,0px)) max(8px,env(safe-area-inset-left,0px))}
+nav.tabs a{display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 2px;border-radius:14px;color:var(--muted);text-decoration:none;font-size:12px;font-weight:600}
+nav.tabs a.on{background:var(--gold-soft);color:var(--gold)}
+nav.tabs a.on span{color:var(--gold)}
 footer{border-top:1px solid var(--line);padding-block:20px;font-size:13px;color:var(--muted)}
-@media (max-width:800px){
-  .hero{grid-template-columns:1fr}
-  .steps{grid-template-columns:1fr 1fr}
-  .kpis{grid-template-columns:1fr 1fr}
-  .form{grid-template-columns:1fr}
-}
-@media (max-width:440px){.steps{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr 1fr}.stat b{font-size:19px}}
+main{padding-bottom:84px}
+@media (min-width:900px){nav.tabs{display:none}main{padding-bottom:0}.chatbtn{bottom:calc(24px + env(safe-area-inset-bottom,0px))}.chatbox{bottom:calc(94px + env(safe-area-inset-bottom,0px))}.toast{bottom:28px}.menu{display:none!important}}
+@media (max-width:899px){nav.desk{display:none}}
+@media (max-width:800px){.kpis{grid-template-columns:1fr 1fr}.form{grid-template-columns:1fr}.promo{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-head" viewBox="0 0 24 24"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="14" width="4" height="6" rx="1.5"/><rect x="17" y="14" width="4" height="6" rx="1.5"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></symbol>
+  <symbol id="i-cart" viewBox="0 0 24 24"><path d="M3 4h2l2 11h11l2-8H6.5"/><circle cx="9" cy="19.5" r="1.3"/><circle cx="17" cy="19.5" r="1.3"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M4 11 12 4l8 7v9h-5v-6H9v6H4z"/></symbol>
+  <symbol id="i-bag" viewBox="0 0 24 24"><path d="M5 8h14l-1 13H6z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></symbol>
+  <symbol id="i-board" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M12 4c4.6 0 8 3.1 8 7s-3.4 7-8 7c-1 0-2-.1-2.9-.4L5 19l1.2-3.3C4.8 14.4 4 12.8 4 11c0-3.9 3.4-7 8-7z"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></symbol>
+  <symbol id="i-lang" viewBox="0 0 24 24"><path d="M4 5h9M8.5 3v2M6 5c1 4 3.5 7 6 8M11 5c-1 4-4 7.5-7 9"/><path d="m13 21 4-9 4 9M14.5 18h5"/></symbol>
+  <symbol id="i-laptop" viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="10" rx="1.5"/><path d="M2 19h20"/></symbol>
+  <symbol id="i-grad" viewBox="0 0 24 24"><path d="m2 9 10-5 10 5-10 5z"/><path d="M6 11v5c3 2.5 9 2.5 12 0v-5M22 9v6"/></symbol>
+  <symbol id="i-calc" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 12h.01M12 12h.01M16 12h.01M8 16h.01M12 16h.01M16 16h.01"/></symbol>
+  <symbol id="i-pen" viewBox="0 0 24 24"><path d="m4 20 4-1 11-11-3-3L5 16z"/><path d="m14 7 3 3"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+</svg>
+
+<div class="trust"><div class="wrap">
+  <span><svg class="i"><use href="#i-bolt"/></svg>Aksè touswit</span>
+  <span><svg class="i"><use href="#i-shield"/></svg>Peman an sekirite</span>
+  <span><svg class="i"><use href="#i-head"/></svg>Sipò 24/7</span>
+</div></div>
+
 <header class="top"><div class="wrap">
-  <a class="logo" href="#akey"><span></span>Lekòl Anliy</a>
-  <nav>
-    <a href="#akey" data-v="akey">Akèy</a>
-    <a href="#kou" data-v="kou">Kou yo</a>
-    <a href="#pwofese" data-v="pwofese">Espas pwofesè</a>
-    <a href="#admin" data-v="admin">Admin</a>
-  </nav>
+  <div class="hrow">
+    <button class="iconbtn menu" id="menuBtn" aria-label="Meni"><svg class="i"><use href="#i-menu"/></svg></button>
+    <a class="logo" href="#akey"><span class="mk"></span>Lekòl<b>Anliy</b></a>
+    <nav class="desk">
+      <a href="#akey" data-v="akey">Akèy</a>
+      <a href="#kou" data-v="kou">Kou yo</a>
+      <a href="#pwofese" data-v="pwofese">Pwofesè</a>
+      <a href="#admin" data-v="admin">Admin</a>
+    </nav>
+    <div class="hright">
+      <a class="iconbtn" href="#pwofese" aria-label="Kont"><svg class="i"><use href="#i-user"/></svg></a>
+      <button class="iconbtn" id="cartBtn" aria-label="Panye"><svg class="i"><use href="#i-cart"/></svg><span class="badge" id="cartN" hidden>0</span></button>
+    </div>
+  </div>
+  <div class="search"><label for="q"><svg class="i"><use href="#i-search"/></svg><input id="q" type="search" placeholder="Chèche yon kou, yon pwofesè oswa yon matyè" autocomplete="off"></label></div>
 </div></header>
+
+<div class="drawer" id="drawer" hidden>
+  <div class="scrim" data-close></div>
+  <div class="sheet">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px"><span class="logo"><span class="mk"></span>Lekòl<b>Anliy</b></span><button class="iconbtn" data-close aria-label="Fèmen"><svg class="i"><use href="#i-x"/></svg></button></div>
+    <a href="#akey"><svg class="i"><use href="#i-home"/></svg>Akèy</a>
+    <a href="#kou"><svg class="i"><use href="#i-bag"/></svg>Tout kou yo</a>
+    <a href="#pwofese"><svg class="i"><use href="#i-user"/></svg>Espas pwofesè</a>
+    <a href="#admin"><svg class="i"><use href="#i-board"/></svg>Panèl admin</a>
+  </div>
+</div>
 
 <main class="wrap">
 
 <!-- AKEY -->
 <section class="view" id="v-akey">
-  <div class="hero">
-    <div>
-      <h1>Aprann ak pi bon pwofesè Ayiti yo, kote w ye a.</h1>
-      <p class="lead">Kou an liy an kreyòl ak franse: anglè, enfòmatik, kontablite, preparasyon Bakaloreya. Peye ak MonCash oswa NatCash, epi aprann sou telefòn ou.</p>
-      <div class="btns">
-        <a class="btn p" href="#kou">Gade kou yo</a>
-        <a class="btn m" href="#pwofese">Vin anseye</a>
-      </div>
-    </div>
-    <div class="split">
-      <h3>Pou chak kou ki vann 2,000 HTG</h3>
-      <div class="splitbar">
-        <div style="width:3%;background:var(--line)"></div>
-        <div style="width:67.9%;background:var(--ok);color:#fff">Pwofesè 70%</div>
-        <div style="width:29.1%;background:var(--mango);color:var(--mango-ink)">Lekòl 30%</div>
-      </div>
-      <div class="stats">
-        <div class="stat"><b>60</b><small>HTG frè peman</small></div>
-        <div class="stat"><b>1,358</b><small>HTG pou pwofesè</small></div>
-        <div class="stat"><b>582</b><small>HTG pou lekòl</small></div>
-      </div>
-      <p class="muted" style="font-size:13px">Pwofesè yo resevwa lajan yo chak 15 jou, dirèk sou MonCash, NatCash oswa kont bank yo.</p>
-    </div>
+  <div class="hero" id="hero">
+    <div class="slide" id="slide"></div>
+    <div class="dots" id="dots"></div>
   </div>
 
-  <div class="head"><h2>Kou popilè</h2><a href="#kou" class="btn g sm">Tout kou yo</a></div>
+  <div class="head"><h2>Chwazi sa w bezwen</h2><a class="more" href="#kou">Wè tout <svg class="i" style="width:18px;height:18px"><use href="#i-chev"/></svg></a></div>
+  <div class="rail" id="cats"></div>
+
+  <div class="head"><h2>Kou popilè</h2><a class="more" href="#kou">Wè tout <svg class="i" style="width:18px;height:18px"><use href="#i-chev"/></svg></a></div>
   <div class="grid" id="homeCourses"></div>
 
-  <h2>Kijan pwofesè yo touche</h2>
-  <div class="steps">
-    <div class="step"><div class="n">1</div><h3>Enskri</h3><p class="muted">Kreye kont ou, mete NIF ou ak nimewo MonCash ou, epi siyen kontra a.</p></div>
-    <div class="step"><div class="n">2</div><h3>Mete kou</h3><p class="muted">Anrejistre videyo ou, ekri leson yo. Ekip la verifye kou a anvan li parèt.</p></div>
-    <div class="step"><div class="n">3</div><h3>Elèv achte</h3><p class="muted">70% chak vant ale nan balans ou. Li vin disponib apre 14 jou.</p></div>
-    <div class="step"><div class="n">4</div><h3>Retire lajan</h3><p class="muted">Mande retrè depi w gen 1,000 HTG. Ou resevwa l nan 15 jou pou pi plis.</p></div>
+  <div class="promo">
+    <div>
+      <span class="eyebrow">Pou pwofesè</span>
+      <h2 style="margin-top:6px">Anseye sa w konnen, touche chak 15 jou.</h2>
+      <p class="muted" style="margin-top:8px">Pou chak kou 2,000 HTG ki vann, apre 3% frè peman:</p>
+      <div class="split3">
+        <span><b>1,358 HTG</b>pou pwofesè (70%)</span>
+        <span><b>582 HTG</b>pou lekòl la (30%)</span>
+      </div>
+    </div>
+    <a class="btn dark" href="#pwofese">Vin anseye <svg class="i" style="width:18px;height:18px"><use href="#i-arrow"/></svg></a>
   </div>
 </section>
 
 <!-- KOU -->
 <section class="view" id="v-kou" hidden>
-  <div class="head">
-    <div><h2>Tout kou yo</h2><p class="muted">Klike "Achte" pou similye yon vant. W ap wè lajan an parèt nan espas pwofesè a.</p></div>
-  </div>
+  <div class="head"><div><h2>Tout kou yo</h2><p class="muted" id="kouSub">Peze "Achte" pou similye yon vant. W ap wè lajan an parèt nan espas pwofesè a.</p></div></div>
+  <div class="chips" id="chips"></div>
   <div class="grid" id="allCourses"></div>
 </section>
 
@@ -176,17 +281,11 @@ footer{border-top:1px solid var(--line);padding-block:20px;font-size:13px;color:
       <label for="wdAmount">Montan (HTG)<input id="wdAmount" type="number" min="1000" step="50" placeholder="Minimòm 1,000"></label>
       <label for="wdMethod">Metòd<select id="wdMethod"><option>MonCash</option><option>NatCash</option><option>Virman bank</option><option>PayPal (dyaspora)</option></select></label>
     </div>
-    <div class="btns" style="margin-top:0"><button class="btn p" id="wdBtn">Voye demann nan</button></div>
+    <button class="btn gold" id="wdBtn">Voye demann nan</button>
     <p class="note" id="wdNote"></p>
   </div>
-  <div class="panel">
-    <h3>Vant mwen yo</h3>
-    <div class="tblwrap"><table id="tSales"></table></div>
-  </div>
-  <div class="panel">
-    <h3>Istorik retrè</h3>
-    <div class="tblwrap"><table id="tPayouts"></table></div>
-  </div>
+  <div class="panel"><h3>Vant mwen yo</h3><div class="tblwrap"><table id="tSales"></table></div></div>
+  <div class="panel"><h3>Istorik retrè</h3><div class="tblwrap"><table id="tPayouts"></table></div></div>
 </section>
 
 <!-- ADMIN -->
@@ -196,14 +295,8 @@ footer{border-top:1px solid var(--line);padding-block:20px;font-size:13px;color:
     <button class="btn g sm" id="resetBtn">Rekòmanse demo a</button>
   </div>
   <div class="kpis" id="aKpis"></div>
-  <div class="panel">
-    <h3>Demann retrè an atant</h3>
-    <div class="tblwrap"><table id="aPending"></table></div>
-  </div>
-  <div class="panel">
-    <h3>Balans chak pwofesè</h3>
-    <div class="tblwrap"><table id="aTeachers"></table></div>
-  </div>
+  <div class="panel"><h3>Demann retrè an atant</h3><div class="tblwrap"><table id="aPending"></table></div></div>
+  <div class="panel"><h3>Balans chak pwofesè</h3><div class="tblwrap"><table id="aTeachers"></table></div></div>
   <div class="panel">
     <h3>Règ peman yo</h3>
     <div class="form">
@@ -212,141 +305,192 @@ footer{border-top:1px solid var(--line);padding-block:20px;font-size:13px;color:
       <label for="rHold">Jou an atant anvan disponib<input id="rHold" type="number" min="0" max="60"></label>
       <label for="rMin">Retrè minimòm (HTG)<input id="rMin" type="number" min="0" step="50"></label>
     </div>
-    <div class="btns" style="margin-top:0"><button class="btn p" id="saveRules">Anrejistre règ yo</button></div>
+    <button class="btn gold" id="saveRules">Anrejistre règ yo</button>
   </div>
 </section>
+
+<footer>Lekòl Anliy · Vèsyon demo. Peman yo similye, pa gen vrè lajan ki sikile.</footer>
 </main>
 
-<footer><div class="wrap">Lekòl Anliy · Vèsyon demo. Peman yo similye, pa gen vrè lajan ki sikile.</div></footer>
+<button class="chatbtn" id="chatBtn" aria-label="Sipò"><svg class="i"><use href="#i-chat"/></svg></button>
+<div class="chatbox" id="chatbox" hidden>
+  <div style="display:flex;justify-content:space-between;align-items:center"><h3>Kijan nou ka ede w?</h3><button class="iconbtn" id="chatX" aria-label="Fèmen"><svg class="i"><use href="#i-x"/></svg></button></div>
+  <div class="q"><b>Kijan pou m peye?</b>MonCash, NatCash, kat bank oswa PayPal pou dyaspora.</div>
+  <div class="q"><b>Konbyen tan m gen aksè?</b>Pou tout tan. Ou ka gade leson yo otan fwa w vle.</div>
+  <div class="q"><b>Kijan pou m vin pwofesè?</b>Peze "Vin anseye" sou paj akèy la.</div>
+</div>
+
+<nav class="tabs">
+  <a href="#akey" data-v="akey"><svg class="i"><use href="#i-home"/></svg><span>Akèy</span></a>
+  <a href="#kou" data-v="kou" data-focus="1"><svg class="i"><use href="#i-search"/></svg><span>Chèche</span></a>
+  <a href="#kou" data-v="kou"><svg class="i"><use href="#i-bag"/></svg><span>Kou yo</span></a>
+  <a href="#pwofese" data-v="pwofese"><svg class="i"><use href="#i-user"/></svg><span>Pwofesè</span></a>
+  <a href="#admin" data-v="admin"><svg class="i"><use href="#i-board"/></svg><span>Admin</span></a>
+</nav>
+
 <div class="toast" id="toast" hidden></div>
 
 <script>
+const $=id=>document.getElementById(id);
 const fmt=n=>Math.round(n).toLocaleString("en-US");
 const DAY=86400000;
-const COLORS=["#0d4f8b","#1f8a5b","#8a3fb0","#c0562b","#0f7c8c","#b7791f"];
+const CATS=[
+  {id:"lang",t:"Lang",s:"Anglè, franse, panyòl",ic:"i-lang",bg:"--c1"},
+  {id:"info",t:"Enfòmatik",s:"Excel, Word, pwogramasyon",ic:"i-laptop",bg:"--c2"},
+  {id:"bak",t:"Preparasyon Bak",s:"Matematik, fizik, filo",ic:"i-grad",bg:"--c3"},
+  {id:"biz",t:"Biznis ak kontablite",s:"Jesyon, kontablite, vant",ic:"i-calc",bg:"--c4"},
+  {id:"art",t:"Grafis ak kreyasyon",s:"Canva, foto, videyo",ic:"i-pen",bg:"--c5"}
+];
+const SLIDES=[
+  {e:"Aprann an liy",a:"Aprann.",b:"Kote w ye.",p:"Kou an kreyòl ak franse ak pi bon pwofesè Ayiti yo, sou telefòn ou.",cta:"Gade kou yo",h:"#kou"},
+  {e:"Peman fasil",a:"Peye ak",b:"MonCash.",p:"MonCash, NatCash, kat bank oswa PayPal pou fanmi nan dyaspora.",cta:"Kòmanse kounye a",h:"#kou"},
+  {e:"Bak 2027",a:"Pare pou",b:"Bak la.",p:"Leson, egzèsis ak egzamen pratik pou chak matyè.",cta:"Wè kou Bak yo",h:"#kou",cat:"bak"},
+  {e:"Pou pwofesè",a:"Anseye.",b:"Touche.",p:"70% chak vant ale nan pòch ou, peye chak 15 jou.",cta:"Vin anseye",h:"#pwofese"}
+];
 const TEACHERS=[
   {id:"t1",name:"Jean-Robert Pierre",pay:"MonCash 509-37xx-xx12"},
   {id:"t2",name:"Nadège Louis",pay:"NatCash 509-44xx-xx87"},
   {id:"t3",name:"Wilson Joseph",pay:"Unibank ••• 4471"}
 ];
 const COURSES=[
-  {id:"c1",t:"Anglè pou debitan",tid:"t2",p:2000,lv:"12 leson"},
-  {id:"c2",t:"Excel pou travay",tid:"t1",p:1500,lv:"9 leson"},
-  {id:"c3",t:"Kontablite debaz",tid:"t3",p:3500,lv:"16 leson"},
-  {id:"c4",t:"Prepare Bak: Matematik",tid:"t1",p:2500,lv:"20 leson"},
-  {id:"c5",t:"Grafis ak Canva",tid:"t2",p:1000,lv:"6 leson"},
-  {id:"c6",t:"Pwogramasyon web",tid:"t3",p:6000,lv:"30 leson"}
+  {id:"c1",t:"Anglè pou debitan",tid:"t2",p:2000,lv:"12 leson",cat:"lang"},
+  {id:"c2",t:"Excel pou travay",tid:"t1",p:1500,lv:"9 leson",cat:"info"},
+  {id:"c3",t:"Kontablite debaz",tid:"t3",p:3500,lv:"16 leson",cat:"biz"},
+  {id:"c4",t:"Prepare Bak: Matematik",tid:"t1",p:2500,lv:"20 leson",cat:"bak"},
+  {id:"c5",t:"Grafis ak Canva",tid:"t2",p:1000,lv:"6 leson",cat:"art"},
+  {id:"c6",t:"Pwogramasyon web",tid:"t3",p:6000,lv:"30 leson",cat:"info"},
+  {id:"c7",t:"Franse pou entèvyou",tid:"t2",p:1800,lv:"10 leson",cat:"lang"},
+  {id:"c8",t:"Prepare Bak: Fizik",tid:"t1",p:2500,lv:"18 leson",cat:"bak"}
 ];
-const KEY="lekol-anliy-demo-v1";
+const KEY="lekol-anliy-demo-v2";
 function seed(){
   const now=Date.now(),sales=[];
-  const plan=[["c1",2],["c1",5],["c1",20],["c2",3],["c2",18],["c3",1],["c3",25],["c4",4],["c4",16],["c4",22],["c5",9],["c6",30],["c6",12]];
-  plan.forEach(([c,d],i)=>sales.push({id:"s"+i,cid:c,at:now-d*DAY,method:i%3?"MonCash":"NatCash"}));
-  return {rules:{share:70,fee:3,hold:14,min:1000},sales,payouts:[
+  [["c1",2],["c1",5],["c1",20],["c2",3],["c2",18],["c3",1],["c3",25],["c4",4],["c4",16],["c4",22],["c5",9],["c6",30],["c6",12]]
+    .forEach(([c,d],i)=>sales.push({id:"s"+i,cid:c,at:now-d*DAY}));
+  return {rules:{share:70,fee:3,hold:14,min:1000},sales,cart:0,payouts:[
     {id:"p1",tid:"t1",amt:2000,method:"MonCash",at:now-10*DAY,status:"peye"},
-    {id:"p2",tid:"t3",amt:3000,method:"Virman bank",at:now-2*DAY,status:"an atant"}
-  ]};
+    {id:"p2",tid:"t3",amt:3000,method:"Virman bank",at:now-2*DAY,status:"an atant"}]};
 }
-let S;
-try{S=JSON.parse(localStorage.getItem(KEY))}catch(e){}
+let S;try{S=JSON.parse(localStorage.getItem(KEY))}catch(e){}
 if(!S||!S.rules)S=seed();
 function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
-const course=id=>COURSES.find(c=>c.id===id);
-const teacher=id=>TEACHERS.find(t=>t.id===id);
-function split(price){const fee=price*S.rules.fee/100,net=price-fee,tp=net*S.rules.share/100;return{fee,net,tp,sp:net-tp}}
+const course=id=>COURSES.find(c=>c.id===id), teacher=id=>TEACHERS.find(t=>t.id===id), cat=id=>CATS.find(c=>c.id===id);
+function split(p){const fee=p*S.rules.fee/100,net=p-fee,tp=net*S.rules.share/100;return{fee,tp,sp:net-tp}}
 function balance(tid){
   const now=Date.now();let pending=0,avail=0,total=0;
-  S.sales.forEach(s=>{const c=course(s.cid);if(c.tid!==tid)return;const tp=split(c.p).tp;total+=tp;
-    if(now-s.at>=S.rules.hold*DAY)avail+=tp;else pending+=tp});
+  S.sales.forEach(s=>{const c=course(s.cid);if(c.tid!==tid)return;const tp=split(c.p).tp;total+=tp;(now-s.at>=S.rules.hold*DAY)?avail+=tp:pending+=tp});
   const req=S.payouts.filter(p=>p.tid===tid);
   const paid=req.filter(p=>p.status==="peye").reduce((a,p)=>a+p.amt,0);
   const waiting=req.filter(p=>p.status==="an atant").reduce((a,p)=>a+p.amt,0);
-  return{total,pending,withdrawable:Math.max(0,avail-paid-waiting),paid,waiting};
+  return{total,pending,withdrawable:Math.max(0,avail-paid-waiting),paid};
 }
-function toast(m){const t=document.getElementById("toast");t.textContent=m;t.hidden=false;clearTimeout(toast.h);toast.h=setTimeout(()=>t.hidden=true,2600)}
+function toast(m){const t=$("toast");t.textContent=m;t.hidden=false;clearTimeout(toast.h);toast.h=setTimeout(()=>t.hidden=true,2600)}
 const d=ts=>new Date(ts).toLocaleDateString("fr-HT",{day:"2-digit",month:"short"});
 
-function courseCard(c,i){
-  return `<article class="card"><div class="art" style="background:${COLORS[i%COLORS.length]}">${c.lv}</div>
-  <div class="in"><h3>${c.t}</h3><p class="muted" style="font-size:14px">Ak ${teacher(c.tid).name}</p>
-  <div class="row"><span class="price">${fmt(c.p)} HTG</span><button class="btn m sm" data-buy="${c.id}">Achte</button></div></div></article>`;
+/* hero slider */
+let si=0,timer;
+function showSlide(i){
+  si=(i+SLIDES.length)%SLIDES.length;const s=SLIDES[si];
+  $("slide").innerHTML=`<span class="eyebrow">${s.e}</span><h1>${s.a}<em>${s.b}</em></h1><p>${s.p}</p>
+    <a class="btn gold" href="${s.h}" ${s.cat?`data-cat="${s.cat}"`:""}>${s.cta} <svg class="i" style="width:20px;height:20px"><use href="#i-arrow"/></svg></a>`;
+  $("dots").innerHTML=SLIDES.map((_,k)=>`<button class="${k===si?"on":""}" data-dot="${k}" aria-label="Bànyè ${k+1}"></button>`).join("");
 }
+function auto(){clearInterval(timer);if(!matchMedia("(prefers-reduced-motion: reduce)").matches)timer=setInterval(()=>showSlide(si+1),5000)}
+$("dots").addEventListener("click",e=>{const b=e.target.closest("[data-dot]");if(b){showSlide(+b.dataset.dot);auto()}});
+let tx=null;$("hero").addEventListener("touchstart",e=>tx=e.touches[0].clientX,{passive:true});
+$("hero").addEventListener("touchend",e=>{if(tx==null)return;const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>40){showSlide(si+(dx<0?1:-1));auto()}tx=null});
+
+/* categories + courses */
+let filterCat=null,query="";
+$("cats").innerHTML=CATS.map(c=>`<button class="cat" style="background:var(${c.bg})" data-cat="${c.id}">
+  <span class="ic"><svg class="i"><use href="#${c.ic}"/></svg></span><div class="t"><h3>${c.t}</h3><small>${c.s}</small></div>
+  <span class="go"><svg class="i"><use href="#i-chev"/></svg></span></button>`).join("");
+function card(c){return `<article class="card"><div class="art"><span class="tag">${cat(c.cat).t}</span><span class="lv">${c.lv}</span></div>
+  <div class="in"><h3>${c.t}</h3><p class="muted" style="font-size:14px">Ak ${teacher(c.tid).name}</p>
+  <div class="row"><span class="price">${fmt(c.p)} HTG</span><button class="btn add" data-buy="${c.id}">Achte</button></div></div></article>`}
 function renderCourses(){
-  document.getElementById("homeCourses").innerHTML=COURSES.slice(0,3).map(courseCard).join("");
-  document.getElementById("allCourses").innerHTML=COURSES.map(courseCard).join("");
+  $("homeCourses").innerHTML=COURSES.slice(0,4).map(card).join("");
+  const q=query.trim().toLowerCase();
+  const list=COURSES.filter(c=>(!filterCat||c.cat===filterCat)&&(!q||(c.t+" "+teacher(c.tid).name+" "+cat(c.cat).t).toLowerCase().includes(q)));
+  $("allCourses").innerHTML=list.map(card).join("")||`<p class="muted">Pa gen kou ki koresponn ak "${query}". Eseye yon lòt mo.</p>`;
+  $("chips").innerHTML=`<button class="chip ${!filterCat?"on":""}" data-chip="">Tout</button>`+CATS.map(c=>`<button class="chip ${filterCat===c.id?"on":""}" data-chip="${c.id}">${c.t}</button>`).join("");
+  $("cartN").textContent=S.cart||0;$("cartN").hidden=!S.cart;
 }
 document.addEventListener("click",e=>{
-  const b=e.target.closest("[data-buy]");if(!b)return;
-  const c=course(b.dataset.buy);
-  S.sales.unshift({id:"s"+Date.now(),cid:c.id,at:Date.now(),method:"MonCash"});save();
-  toast(`Vant anrejistre: ${fmt(split(c.p).tp)} HTG ale nan balans ${teacher(c.tid).name}`);render();
+  const ct=e.target.closest("[data-cat]");if(ct){filterCat=ct.dataset.cat;renderCourses();location.hash="#kou"}
+  const ch=e.target.closest("[data-chip]");if(ch){filterCat=ch.dataset.chip||null;renderCourses()}
+  const b=e.target.closest("[data-buy]");
+  if(b){const c=course(b.dataset.buy);S.sales.unshift({id:"s"+Date.now(),cid:c.id,at:Date.now()});S.cart=(S.cart||0)+1;save();
+    toast(`Achte! ${fmt(split(c.p).tp)} HTG ale nan balans ${teacher(c.tid).name}`);render()}
+  if(e.target.closest("[data-close]"))$("drawer").hidden=true;
+  if(e.target.closest(".drawer .sheet a"))$("drawer").hidden=true;
+  const tf=e.target.closest("[data-focus]");if(tf)setTimeout(()=>$("q").focus(),50);
 });
+$("q").addEventListener("input",e=>{query=e.target.value;renderCourses();if(query&&location.hash!=="#kou")location.hash="#kou"});
+$("menuBtn").addEventListener("click",()=>$("drawer").hidden=false);
+$("cartBtn").addEventListener("click",()=>toast(S.cart?`Ou achte ${S.cart} kou nan demo a.`:"Panye w vid."));
+$("chatBtn").addEventListener("click",()=>$("chatbox").hidden=!$("chatbox").hidden);
+$("chatX").addEventListener("click",()=>$("chatbox").hidden=true);
 
+/* teacher */
 function renderTeacher(){
-  const tid=document.getElementById("teacherSel").value,b=balance(tid);
-  document.getElementById("tKpis").innerHTML=`
-    <div class="kpi"><small>Total touche</small><b>${fmt(b.total)}</b> <small>HTG</small></div>
+  const tid=$("teacherSel").value,b=balance(tid);
+  $("tKpis").innerHTML=`<div class="kpi"><small>Total touche</small><b>${fmt(b.total)}</b> <small>HTG</small></div>
     <div class="kpi"><small>An atant (${S.rules.hold} jou)</small><b>${fmt(b.pending)}</b> <small>HTG</small></div>
     <div class="kpi hl"><small>Disponib pou retire</small><b>${fmt(b.withdrawable)}</b> <small>HTG</small></div>
     <div class="kpi"><small>Deja peye</small><b>${fmt(b.paid)}</b> <small>HTG</small></div>`;
-  document.getElementById("wdNote").textContent=`Ou ka retire ant ${fmt(S.rules.min)} ak ${fmt(b.withdrawable)} HTG. Kont peman: ${teacher(tid).pay}.`;
-  document.getElementById("wdBtn").disabled=b.withdrawable<S.rules.min;
+  $("wdNote").textContent=`Ou ka retire ant ${fmt(S.rules.min)} ak ${fmt(b.withdrawable)} HTG. Kont peman: ${teacher(tid).pay}.`;
+  $("wdBtn").disabled=b.withdrawable<S.rules.min;
   const now=Date.now();
-  const rows=S.sales.filter(s=>course(s.cid).tid===tid).map(s=>{const c=course(s.cid),x=split(c.p),ready=now-s.at>=S.rules.hold*DAY;
-    return `<tr><td>${d(s.at)}</td><td>${c.t}</td><td class="r">${fmt(c.p)}</td><td class="r">−${fmt(x.fee)}</td><td class="r"><b>${fmt(x.tp)}</b></td><td><span class="pill ${ready?"ok":"warn"}">${ready?"Disponib":"An atant"}</span></td></tr>`}).join("");
-  document.getElementById("tSales").innerHTML=`<tr><th>Dat</th><th>Kou</th><th class="r">Pri</th><th class="r">Frè</th><th class="r">Pati ou (${S.rules.share}%)</th><th>Eta</th></tr>${rows||'<tr><td colspan="6" class="muted">Poko gen vant.</td></tr>'}`;
+  const rows=S.sales.filter(s=>course(s.cid).tid===tid).map(s=>{const c=course(s.cid),x=split(c.p),ok=now-s.at>=S.rules.hold*DAY;
+    return `<tr><td>${d(s.at)}</td><td>${c.t}</td><td class="r">${fmt(c.p)}</td><td class="r">−${fmt(x.fee)}</td><td class="r"><b>${fmt(x.tp)}</b></td><td><span class="pill ${ok?"ok":"warn"}">${ok?"Disponib":"An atant"}</span></td></tr>`}).join("");
+  $("tSales").innerHTML=`<tr><th>Dat</th><th>Kou</th><th class="r">Pri</th><th class="r">Frè</th><th class="r">Pati ou (${S.rules.share}%)</th><th>Eta</th></tr>${rows||'<tr><td colspan="6" class="muted">Poko gen vant.</td></tr>'}`;
   const pr=S.payouts.filter(p=>p.tid===tid).map(p=>`<tr><td>${d(p.at)}</td><td>${p.method}</td><td class="r">${fmt(p.amt)}</td><td><span class="pill ${p.status==="peye"?"ok":"warn"}">${p.status==="peye"?"Peye":"An atant"}</span></td></tr>`).join("");
-  document.getElementById("tPayouts").innerHTML=`<tr><th>Dat</th><th>Metòd</th><th class="r">Montan HTG</th><th>Eta</th></tr>${pr||'<tr><td colspan="4" class="muted">Poko gen retrè.</td></tr>'}`;
+  $("tPayouts").innerHTML=`<tr><th>Dat</th><th>Metòd</th><th class="r">Montan HTG</th><th>Eta</th></tr>${pr||'<tr><td colspan="4" class="muted">Poko gen retrè.</td></tr>'}`;
 }
-document.getElementById("wdBtn").addEventListener("click",()=>{
-  const tid=document.getElementById("teacherSel").value,b=balance(tid);
-  const amt=Number(document.getElementById("wdAmount").value);
+$("wdBtn").addEventListener("click",()=>{
+  const tid=$("teacherSel").value,b=balance(tid),amt=Number($("wdAmount").value);
   if(!amt||amt<S.rules.min){toast(`Mete omwen ${fmt(S.rules.min)} HTG.`);return}
   if(amt>b.withdrawable){toast(`Ou gen sèlman ${fmt(b.withdrawable)} HTG disponib.`);return}
-  S.payouts.unshift({id:"p"+Date.now(),tid,amt,method:document.getElementById("wdMethod").value,at:Date.now(),status:"an atant"});
-  save();document.getElementById("wdAmount").value="";toast("Demann voye. Admin nan ap peye w.");render();
+  S.payouts.unshift({id:"p"+Date.now(),tid,amt,method:$("wdMethod").value,at:Date.now(),status:"an atant"});
+  save();$("wdAmount").value="";toast("Demann voye. Admin nan ap peye w.");render();
 });
 
+/* admin */
 function renderAdmin(){
   let gross=0,fees=0,school=0,owed=0;
   S.sales.forEach(s=>{const c=course(s.cid),x=split(c.p);gross+=c.p;fees+=x.fee;school+=x.sp});
   TEACHERS.forEach(t=>{const b=balance(t.id);owed+=b.total-b.paid});
-  document.getElementById("aKpis").innerHTML=`
-    <div class="kpi"><small>Vant total</small><b>${fmt(gross)}</b> <small>HTG</small></div>
+  $("aKpis").innerHTML=`<div class="kpi"><small>Vant total</small><b>${fmt(gross)}</b> <small>HTG</small></div>
     <div class="kpi"><small>Frè peman</small><b>${fmt(fees)}</b> <small>HTG</small></div>
     <div class="kpi hl"><small>Revni lekòl la</small><b>${fmt(school)}</b> <small>HTG</small></div>
     <div class="kpi"><small>Dèt pwofesè yo</small><b>${fmt(owed)}</b> <small>HTG</small></div>`;
-  const pend=S.payouts.filter(p=>p.status==="an atant").map(p=>`<tr><td>${d(p.at)}</td><td>${teacher(p.tid).name}</td><td>${p.method}</td><td>${teacher(p.tid).pay}</td><td class="r"><b>${fmt(p.amt)}</b></td><td><button class="btn p sm" data-pay="${p.id}">Make peye</button></td></tr>`).join("");
-  document.getElementById("aPending").innerHTML=`<tr><th>Dat</th><th>Pwofesè</th><th>Metòd</th><th>Kont</th><th class="r">HTG</th><th></th></tr>${pend||'<tr><td colspan="6" class="muted">Pa gen demann an atant.</td></tr>'}`;
-  document.getElementById("aTeachers").innerHTML=`<tr><th>Pwofesè</th><th class="r">Total touche</th><th class="r">An atant</th><th class="r">Disponib</th><th class="r">Peye</th></tr>`+
+  const pend=S.payouts.filter(p=>p.status==="an atant").map(p=>`<tr><td>${d(p.at)}</td><td>${teacher(p.tid).name}</td><td>${p.method}</td><td>${teacher(p.tid).pay}</td><td class="r"><b>${fmt(p.amt)}</b></td><td><button class="btn gold sm" data-pay="${p.id}">Make peye</button></td></tr>`).join("");
+  $("aPending").innerHTML=`<tr><th>Dat</th><th>Pwofesè</th><th>Metòd</th><th>Kont</th><th class="r">HTG</th><th></th></tr>${pend||'<tr><td colspan="6" class="muted">Pa gen demann an atant.</td></tr>'}`;
+  $("aTeachers").innerHTML=`<tr><th>Pwofesè</th><th class="r">Total touche</th><th class="r">An atant</th><th class="r">Disponib</th><th class="r">Peye</th></tr>`+
     TEACHERS.map(t=>{const b=balance(t.id);return `<tr><td>${t.name}</td><td class="r">${fmt(b.total)}</td><td class="r">${fmt(b.pending)}</td><td class="r">${fmt(b.withdrawable)}</td><td class="r">${fmt(b.paid)}</td></tr>`}).join("");
-  const r=S.rules;rShare.value=r.share;rFee.value=r.fee;rHold.value=r.hold;rMin.value=r.min;
+  const r=S.rules;$("rShare").value=r.share;$("rFee").value=r.fee;$("rHold").value=r.hold;$("rMin").value=r.min;
 }
-document.addEventListener("click",e=>{
-  const b=e.target.closest("[data-pay]");if(!b)return;
-  const p=S.payouts.find(x=>x.id===b.dataset.pay);p.status="peye";save();
-  toast(`${fmt(p.amt)} HTG make kòm peye pou ${teacher(p.tid).name}`);render();
-});
-document.getElementById("saveRules").addEventListener("click",()=>{
-  const v=id=>Number(document.getElementById(id).value);
+document.addEventListener("click",e=>{const b=e.target.closest("[data-pay]");if(!b)return;
+  const p=S.payouts.find(x=>x.id===b.dataset.pay);p.status="peye";save();toast(`${fmt(p.amt)} HTG make kòm peye pou ${teacher(p.tid).name}`);render()});
+$("saveRules").addEventListener("click",()=>{const v=id=>Number($(id).value);
   if(v("rShare")<1||v("rShare")>99){toast("Pati pwofesè a dwe ant 1 ak 99%.");return}
-  S.rules={share:v("rShare"),fee:v("rFee"),hold:v("rHold"),min:v("rMin")};save();toast("Règ yo anrejistre.");render();
-});
-document.getElementById("resetBtn").addEventListener("click",()=>{S=seed();save();toast("Demo a rekòmanse.");render()});
+  S.rules={share:v("rShare"),fee:v("rFee"),hold:v("rHold"),min:v("rMin")};S.cart=S.cart||0;save();toast("Règ yo anrejistre.");render()});
+$("resetBtn").addEventListener("click",()=>{S=seed();save();toast("Demo a rekòmanse.");render()});
 
-const sel=document.getElementById("teacherSel");
-sel.innerHTML=TEACHERS.map(t=>`<option value="${t.id}">${t.name}</option>`).join("");
-sel.addEventListener("change",renderTeacher);
+$("teacherSel").innerHTML=TEACHERS.map(t=>`<option value="${t.id}">${t.name}</option>`).join("");
+$("teacherSel").addEventListener("change",renderTeacher);
 
 function render(){renderCourses();renderTeacher();renderAdmin()}
 function route(){
-  const v=(location.hash||"#akey").slice(1);const ok=["akey","kou","pwofese","admin"].includes(v)?v:"akey";
+  const v=(location.hash||"#akey").slice(1),ok=["akey","kou","pwofese","admin"].includes(v)?v:"akey";
   document.querySelectorAll("section.view").forEach(s=>s.hidden=s.id!=="v-"+ok);
-  document.querySelectorAll("nav a").forEach(a=>a.classList.toggle("on",a.dataset.v===ok));
+  document.querySelectorAll("nav.desk a").forEach(a=>a.classList.toggle("on",a.dataset.v===ok));
+  document.querySelectorAll("nav.tabs a").forEach((a,i)=>a.classList.toggle("on",a.dataset.v===ok&&!(ok==="kou"&&i===1)));
   window.scrollTo(0,0);
 }
 window.addEventListener("hashchange",route);
-render();route();
+showSlide(0);auto();render();route();
 </script>
 
 </body>
