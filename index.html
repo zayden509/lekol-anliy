@@ -71,9 +71,25 @@ nav.desk a.on{background:var(--gold-soft);color:var(--ink)}
 .search label:focus-within{border-color:var(--gold)}
 .drawer{position:fixed;inset:0;z-index:30;display:flex}
 .drawer .scrim{position:absolute;inset:0;background:rgba(5,7,13,.5)}
-.drawer .sheet{position:relative;background:var(--surface);width:min(300px,85vw);height:100%;padding:calc(20px + env(safe-area-inset-top,0px)) 20px 20px max(20px,env(safe-area-inset-left,0px));display:flex;flex-direction:column;gap:4px}
-.drawer .sheet a{padding:12px;border-radius:10px;color:var(--ink);text-decoration:none;font-weight:600;display:flex;gap:12px;align-items:center}
-.drawer .sheet a:hover{background:var(--soft)}
+.drawer{justify-content:flex-end}
+.drawer .scrim{animation:fade .25s both}
+.drawer .sheet{position:relative;background:var(--surface);width:min(360px,86vw);height:100%;display:flex;flex-direction:column;animation:slidein .3s cubic-bezier(.2,.8,.2,1) both;box-shadow:-20px 0 50px rgba(5,7,13,.25)}
+@keyframes slidein{from{transform:translateX(100%)}to{transform:none}}
+@keyframes fade{from{opacity:0}}
+.drawer .dtop{display:flex;justify-content:space-between;align-items:center;padding:calc(16px + env(safe-area-inset-top,0px)) max(18px,env(safe-area-inset-right,0px)) 16px 22px;border-bottom:1px solid var(--line)}
+.drawer .dx{width:48px;height:48px;border-radius:14px;border:1px solid var(--line);background:var(--surface);color:var(--ink);display:flex;align-items:center;justify-content:center;cursor:pointer}
+.drawer .dbody{flex:1;overflow-y:auto;padding:16px max(16px,env(safe-area-inset-right,0px)) 16px 16px;display:flex;flex-direction:column;gap:4px}
+.drawer .dbody > a{padding:16px 18px;border-radius:16px;color:var(--ink);text-decoration:none;font-size:18px;font-weight:500;display:flex;gap:12px;align-items:center;border:1px solid transparent}
+.drawer .dbody > a:hover{background:var(--soft)}
+.drawer .dbody > a.on{background:var(--gold-soft);border-color:color-mix(in srgb,var(--gold) 40%,transparent);color:var(--gold-text);font-weight:700}
+.drawer .dbody > a .bdg{margin-left:auto;background:var(--gold);color:var(--gold-ink);font-size:11px;font-weight:800;letter-spacing:.08em;padding:4px 10px;border-radius:999px}
+.drawer .rdot{width:11px;height:11px;border-radius:50%;background:#e5484d;box-shadow:0 0 0 4px color-mix(in srgb,#e5484d 25%,transparent)}
+.drawer .join{margin-top:12px;border:1px solid var(--line);background:var(--soft);border-radius:20px;padding:18px;display:flex;flex-direction:column;gap:10px}
+.drawer .join h3{display:flex;align-items:center;gap:10px;font-size:17px}
+.drawer .join h3 svg.i{color:var(--gold-text)}
+.drawer .join .btn{width:100%;border-radius:14px}
+.drawer .dfoot{border-top:1px solid var(--line);padding:16px max(18px,env(safe-area-inset-right,0px)) calc(16px + env(safe-area-inset-bottom,0px)) 18px;display:flex;flex-direction:column;gap:12px}
+.drawer .dfoot .btn{width:100%;border-radius:999px;padding:16px;font-size:17px}
 
 section.view{padding-block:20px 48px;display:flex;flex-direction:column;gap:26px}
 
@@ -274,6 +290,40 @@ td.r,th.r{text-align:right}
 @media (max-width:900px){.foot .wrap{grid-template-columns:1fr 1fr}.foot .wrap > :first-child{grid-column:1/-1}}
 @media (max-width:480px){.foot .wrap{grid-template-columns:1fr}}
 
+/* team collage + stats */
+.kreyol{display:inline-flex;align-items:center;gap:12px;background:var(--ink);color:var(--surface);border-radius:999px;padding:6px 18px 6px 6px;font-weight:700;width:fit-content}
+.kreyol .kc{width:34px;height:34px;border-radius:50%;background:var(--gold);color:var(--gold-ink);display:flex;align-items:center;justify-content:center}
+.kreyol svg.i{width:18px;height:18px}
+.stats3{display:grid;grid-template-columns:repeat(3,1fr);background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:18px 6px;box-shadow:0 10px 30px rgba(10,15,28,.05)}
+.stats3 > div{padding:0 14px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.stats3 > div + div{border-left:1px solid var(--line)}
+.stats3 b{font:800 clamp(26px,7vw,36px)/1 var(--display);letter-spacing:-.03em;font-variant-numeric:tabular-nums;white-space:nowrap}
+.stats3 b.g{color:var(--gold-text)}
+.stats3 small{display:flex;align-items:center;gap:7px;color:var(--muted);font-size:14px;font-weight:500}
+.pulse{width:9px;height:9px;border-radius:50%;background:var(--pc);position:relative;flex:none}
+.pulse::after{content:"";position:absolute;inset:-5px;border-radius:50%;background:var(--pc);opacity:.35;animation:pulse 1.6s ease-out infinite}
+@keyframes pulse{0%{transform:scale(.4);opacity:.5}100%{transform:scale(1.4);opacity:0}}
+.team{position:relative;aspect-ratio:16/10.5;max-width:100%;border-radius:26px;overflow:hidden;background:#f5f5f6;border:1px solid var(--line);box-shadow:0 10px 30px rgba(10,15,28,.06)}
+.team .lead{position:absolute;left:-2%;bottom:0;height:96%;width:auto;max-width:none;z-index:2;-webkit-mask-image:linear-gradient(90deg,#000 78%,transparent 100%);mask-image:linear-gradient(90deg,#000 78%,transparent 100%)}
+.team .tile{position:absolute;border-radius:10px;overflow:hidden;z-index:1;opacity:0;animation:tile 7s cubic-bezier(.2,.8,.2,1) infinite both;box-shadow:0 6px 18px rgba(10,15,28,.18)}
+.team .tile img{width:100%;height:100%;object-fit:cover;display:block}
+@keyframes tile{0%{opacity:0;transform:scale(.7) translateY(14px)}7%{opacity:1;transform:none}82%{opacity:1;transform:none}92%,100%{opacity:0;transform:scale(.96)}}
+.team .tl{position:absolute;right:3%;bottom:5%;z-index:3;background:#14161c;color:#fff;border-radius:999px;padding:7px 14px;font-weight:700;font-size:13px;display:flex;align-items:center;gap:8px}
+.team .tl::before{content:"";width:7px;height:7px;border-radius:50%;background:#e8a93a}
+@media (prefers-reduced-motion:reduce){.team .tile{animation:none;opacity:1}.pulse::after{animation:none}}
+.tabs3{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;background:var(--soft);border:1px solid var(--line);border-radius:18px;padding:5px}
+.tabs3 button{border:0;background:transparent;border-radius:14px;padding:9px 4px;font:600 14px var(--body);color:var(--muted);cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:1px}
+.tabs3 button small{font-size:12px;font-variant-numeric:tabular-nums}
+.tabs3 button.on{background:var(--surface);color:var(--ink);box-shadow:0 2px 8px rgba(10,15,28,.08)}
+.doms{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.dom{display:flex;align-items:center;gap:10px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:16px;padding:12px 12px 12px 14px;font:600 14px var(--body);cursor:pointer;text-align:left}
+.dom::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--dot);flex:none}
+.dom span{flex:1;min-width:0;line-height:1.25}
+.dom b{background:var(--soft);border-radius:8px;padding:2px 7px;font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.dom.on{background:var(--ink);color:var(--surface);border-color:var(--ink)}
+.dom.on::before{background:#fff}
+.dom.on b{background:var(--gold);color:var(--gold-ink)}
+
 /* checkout */
 #v-peye{max-width:640px;margin:0 auto;width:100%;gap:18px}
 .ck-hero{background:var(--hero);color:var(--hero-ink);border-radius:28px;padding:24px 22px 28px;position:relative;overflow:hidden;display:flex;flex-direction:column;gap:16px;align-items:flex-start}
@@ -415,6 +465,9 @@ nav.tabs a.on{background:var(--gold-soft);color:var(--gold)}
   <symbol id="i-tag" viewBox="0 0 24 24"><path d="M3 12V4h8l9 9-8 8z"/><circle cx="7.5" cy="8.5" r="1.3"/></symbol>
   <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
   <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></symbol>
+  <symbol id="i-grad" viewBox="0 0 24 24"><path d="m2 9 10-5 10 5-10 5z"/><path d="M6 11v5c3 2.5 9 2.5 12 0v-5"/></symbol>
+  <symbol id="i-rocket" viewBox="0 0 24 24"><path d="M5 15c-1.5 1-2 4-2 6 2 0 5-.5 6-2"/><path d="M9 15l-3-3c1.5-4.5 5-8.5 13-9-.5 8-4.5 11.5-9 13z"/><circle cx="15" cy="9" r="1.6"/></symbol>
+  <symbol id="i-login" viewBox="0 0 24 24"><path d="M14 4h4a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-4M4 12h11M11 8l4 4-4 4"/></symbol>
   <symbol id="i-left" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></symbol>
   <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
 </svg>
@@ -445,12 +498,18 @@ nav.tabs a.on{background:var(--gold-soft);color:var(--gold)}
 
 <div class="drawer" id="drawer" hidden>
   <div class="scrim" data-close></div>
-  <div class="sheet">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px"><span class="logo"><span class="mk"></span>Lekòl<b>Anliy</b></span><button class="iconbtn" data-close aria-label="Fèmen"><svg class="i"><use href="#i-x"/></svg></button></div>
-    <a href="#akey"><svg class="i"><use href="#i-home"/></svg>Akèy</a>
-    <a href="#kou"><svg class="i"><use href="#i-bag"/></svg>Tout fòmasyon yo</a>
-    <a href="#pwofese"><svg class="i"><use href="#i-user"/></svg>Espas pwofesè</a>
-    <a href="#admin"><svg class="i"><use href="#i-board"/></svg>Panèl admin</a>
+  <div class="sheet" role="dialog" aria-label="Meni">
+    <div class="dtop"><span class="logo"><span class="mk"></span>Lekòl<b>Anliy</b></span><button class="dx" data-close aria-label="Fèmen"><svg class="i"><use href="#i-x"/></svg></button></div>
+    <div class="dbody" id="dlinks">
+      <a href="#akey" data-v="akey">Akèy</a>
+      <a href="#kou" data-v="kou" data-tab="all">Fòmasyon</a>
+      <a href="#kou" data-tab="soon"><span class="rdot"></span>Rezève yon plas<span class="bdg">25 NOV</span></a>
+      <a href="#pwofese" data-v="pwofese">Espas pwofesè</a>
+      <a href="#admin" data-v="admin">Panèl admin</a>
+      <a href="#akey" data-goto="help">Kontak</a>
+      <div class="join"><h3><svg class="i"><use href="#i-rocket"/></svg>Vin jwenn Lekòl Anliy</h3><p class="muted">Devlope konpetans ou nan nouvo ekonomi dijital la.</p><a class="btn dark" href="#kou" data-tab="all">Dekouvri fòmasyon yo</a></div>
+    </div>
+    <div class="dfoot"><a class="btn gold" href="#kou" data-tab="now"><svg class="i"><use href="#i-grad"/></svg>Enskri kounye a</a><button class="btn dark" id="loginBtn"><svg class="i"><use href="#i-login"/></svg>Konekte</button></div>
   </div>
 </div>
 
@@ -462,6 +521,10 @@ nav.tabs a.on{background:var(--gold-soft);color:var(--gold)}
   <div class="head"><h2>Chwazi sa w bezwen</h2><a class="more" href="#kou">Wè tout <svg class="i" style="width:18px;height:18px"><use href="#i-chev"/></svg></a></div>
   <div class="rail" id="cats"></div>
 
+  <span class="kreyol"><span class="kc"><svg class="i"><use href="#i-chat"/></svg></span>Kou yo fèt an kreyòl</span>
+  <div class="stats3"><div><b id="stNow">05</b><small><i class="pulse" style="--pc:var(--ok)"></i>Disponib</small></div><div><b id="stSoon">06</b><small>Pou vini</small></div><div><b class="g" id="stDate"></b><small><i class="pulse" style="--pc:#e5484d"></i>Rantre</small></div></div>
+  <div class="team" id="team" aria-label="Pwofesè ak etidyan Lekòl Anliy"></div>
+
   <div class="lhead"><span class="live"></span><h2>Disponib kounye a</h2><span class="cnt" id="nowN"></span></div>
   <div class="plist" id="nowList"></div>
 
@@ -469,7 +532,7 @@ nav.tabs a.on{background:var(--gold-soft);color:var(--gold)}
   <div class="plist" id="soonList"></div>
   <button class="showmore" id="moreBtn"></button>
 
-  <div class="help">
+  <div class="help" id="help">
     <h2>Ou bezwen èd pou chwazi?</h2>
     <button class="wa" id="waBtn"><svg class="i"><use href="#i-wa"/></svg><span id="waNum"></span></button>
   </div>
@@ -487,7 +550,8 @@ nav.tabs a.on{background:var(--gold-soft);color:var(--gold)}
 
 <section class="view" id="v-kou" hidden>
   <div class="head"><div><h2>Tout fòmasyon yo</h2><p class="muted">Peze "Enskri" oswa "Rezève" pou similye yon vant. Lajan an parèt nan espas pwofesè a.</p></div></div>
-  <div class="chips" id="chips"></div>
+  <div class="tabs3" id="tabs3"></div>
+  <div class="doms" id="chips"></div>
   <div class="plist" id="allList"></div>
 </section>
 
@@ -745,7 +809,10 @@ let tx=null;$("hero").addEventListener("touchstart",e=>tx=e.touches[0].clientX,{
 $("hero").addEventListener("touchend",e=>{if(tx==null)return;const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>40){showSlide(si+(dx<0?1:-1));auto()}tx=null});
 
 /* ---------- lists ---------- */
-let filterCat=null,query="",showAll=false;
+let filterCat=null,query="",showAll=false,tabSt="all";
+const TEAM_LEAD="img/etidyan-wouj.webp";
+const TEAM=[["img/pwofese-wouj.webp","40%","5%","25%","30%"],["img/etidyan-oranj.webp","40%","38%","25%","30%"],["img/kou-grafik.webp","40%","71%","25%","25%"],["img/etidyan-sezi.webp","67%","8%","29%","58%"],["img/etidyan-kob.webp","67%","69%","14%","27%"],["img/kou-capcut.webp","82.5%","69%","13.5%","27%"]];
+$("team").innerHTML=`<img class="lead" src="${TEAM_LEAD}" alt="Etidyant Lekòl Anliy" loading="lazy">`+TEAM.map(([src,l,t,w,h],i)=>`<div class="tile" style="left:${l};top:${t};width:${w};height:${h};animation-delay:${(i*.45).toFixed(2)}s"><img src="${src}" alt="" loading="lazy"></div>`).join("")+`<span class="tl">Pwofesè nou yo</span>`;
 $("cats").innerHTML=CATS.map(c=>`<button class="cat" style="background:var(${c.bg})" data-cat="${c.id}"><span class="ic"><svg class="i"><use href="#${c.ic}"/></svg></span><div class="t"><h3>${c.t}</h3><small>${c.s}</small></div><span class="go"><svg class="i"><use href="#i-chev"/></svg></span></button>`).join("");
 function renderCourses(){
   const now=COURSES.filter(c=>c.st=="now"),soon=COURSES.filter(c=>c.st=="soon");
@@ -759,9 +826,12 @@ function renderCourses(){
   $("moreBtn").hidden=soon.length<=3;
   $("moreBtn").innerHTML=showAll?`Montre mwens <svg class="i" style="transform:rotate(180deg)"><use href="#i-down"/></svg>`:`Wè ${soon.length-3} lòt yo <svg class="i"><use href="#i-down"/></svg>`;
   const q=query.trim().toLowerCase();
-  const list=COURSES.filter(c=>(!filterCat||c.cat===filterCat)&&(!q||(c.t+" "+c.d+" "+teacher(c.tid).name+" "+cat(c.cat).t+" "+c.cv.s).toLowerCase().includes(q)));
+  const list=COURSES.filter(c=>(tabSt=="all"||c.st==tabSt)&&(!filterCat||c.cat===filterCat)&&(!q||(c.t+" "+c.d+" "+teacher(c.tid).name+" "+cat(c.cat).t+" "+c.cv.s).toLowerCase().includes(q)));
   $("allList").innerHTML=list.map(card).join("")||`<p class="muted">Pa gen fòmasyon ki koresponn ak "${query}". Eseye yon lòt mo.</p>`;
-  $("chips").innerHTML=`<button class="chip ${!filterCat?"on":""}" data-chip="">Tout</button>`+CATS.map(c=>`<button class="chip ${filterCat===c.id?"on":""}" data-chip="${c.id}">${c.t}</button>`).join("");
+  const inTab=c=>tabSt=="all"||c.st==tabSt;
+  $("chips").innerHTML=`<button class="dom ${!filterCat?"on":""}" data-chip="" style="--dot:var(--ink)"><span>Tout domèn</span><b>${String(COURSES.filter(inTab).length).padStart(2,"0")}</b></button>`+CATS.map(c=>`<button class="dom ${filterCat===c.id?"on":""}" data-chip="${c.id}" style="--dot:${c.dot}"><span>${c.t}</span><b>${String(COURSES.filter(x=>x.cat==c.id&&inTab(x)).length).padStart(2,"0")}</b></button>`).join("");
+  $("tabs3").innerHTML=[["all","Tout"],["now","Disponib"],["soon","Pwochen promosyon"]].map(([k,t])=>`<button class="${tabSt==k?"on":""}" data-tab3="${k}">${t}<small>${String(COURSES.filter(c=>k=="all"||c.st==k).length).padStart(2,"0")}</small></button>`).join("");
+  $("stNow").textContent=String(now.length).padStart(2,"0");$("stSoon").textContent=String(soon.length).padStart(2,"0");$("stDate").textContent=promoLabel;
   $("cartN").textContent=ST.cart||0;$("cartN").hidden=!ST.cart;
 }
 $("moreBtn").addEventListener("click",()=>{showAll=!showAll;renderCourses()});
@@ -779,6 +849,10 @@ function openCourse(c){
 document.addEventListener("click",e=>{
   const ct=e.target.closest("[data-cat]");if(ct){filterCat=ct.dataset.cat;renderCourses();location.hash="#kou"}
   const ch=e.target.closest("[data-chip]");if(ch){filterCat=ch.dataset.chip||null;renderCourses()}
+  const t3=e.target.closest("[data-tab3]");if(t3){tabSt=t3.dataset.tab3;renderCourses()}
+  const dt=e.target.closest("[data-tab]");if(dt){tabSt=dt.dataset.tab;filterCat=null;renderCourses()}
+  const gt=e.target.closest("[data-goto]");if(gt){$("drawer").hidden=true;setTimeout(()=>$(gt.dataset.goto).scrollIntoView({behavior:"smooth",block:"center"}),80)}
+  if(e.target.closest("#loginBtn")){$("drawer").hidden=true;toast("Koneksyon an ap mache lè backend la pare.")}
   const vw=e.target.closest("[data-view]");if(vw)openCourse(course(vw.dataset.view));
   const b=e.target.closest("[data-buy]");
   if(b)startCheckout(b.dataset.buy);
@@ -960,6 +1034,7 @@ function route(){
   if(ok=="peye"){if(CK.step==3&&!CK.last)CK.step=1;if(CK.step==2&&ckProblems().length)CK.step=1;renderCheckout()}
   document.querySelectorAll("section.view").forEach(s=>s.hidden=s.id!=="v-"+ok);
   document.querySelectorAll("nav.desk a").forEach(a=>a.classList.toggle("on",a.dataset.v===ok));
+  document.querySelectorAll("#dlinks > a[data-v]").forEach(a=>a.classList.toggle("on",a.dataset.v===ok));
   document.querySelectorAll("nav.tabs a").forEach((a,i)=>a.classList.toggle("on",a.dataset.v===ok&&!(ok==="kou"&&i===1)));
   window.scrollTo(0,0);
 }
