@@ -481,6 +481,47 @@ td.r,th.r{text-align:right}
 .sim .sb{display:flex;height:30px;border-radius:9px;overflow:hidden;font-size:12px;font-weight:800}
 .sim .sb div{display:flex;align-items:center;justify-content:center;white-space:nowrap;overflow:hidden}
 
+/* teacher space */
+.tswitch{display:flex;gap:8px;align-items:center;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.tswitch > .muted{white-space:nowrap;flex:none}
+.tsw{display:flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:4px 14px 4px 4px;font:600 14px var(--body);cursor:pointer;white-space:nowrap}
+.tsw .av{width:30px;height:30px;border-radius:50%;font-size:11px}
+.tsw.on{border-color:var(--gold);background:var(--gold-soft);box-shadow:0 0 0 2px color-mix(in srgb,var(--gold) 35%,transparent)}
+#tHero .av.lg{border:2px solid rgba(255,255,255,.2)}
+.tcgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:14px}
+.tco{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:10px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.tco.pend{border-style:dashed}
+.tco .tb{padding:10px 8px 6px;display:flex;flex-direction:column;gap:10px}
+.tco .row1{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.tco .row1 .av{width:34px;height:34px;border-radius:11px;font-size:12px}
+.tco h3{font-size:18px}
+.tnum{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.tnum div{background:var(--soft);border-radius:12px;padding:9px 10px;min-width:0}
+.tnum small{color:var(--muted);font-size:11px;display:block}
+.tnum b{font-variant-numeric:tabular-nums;font-size:15px;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.addc{border:2px dashed color-mix(in srgb,var(--gold) 55%,var(--line));background:var(--gold-soft);align-items:center;justify-content:center;text-align:center;min-height:240px;cursor:pointer;font:inherit;color:var(--ink);gap:10px;padding:20px}
+.addc .plus{width:60px;height:60px;border-radius:20px;background:var(--gold);color:var(--gold-ink);display:flex;align-items:center;justify-content:center}
+.addc .plus svg.i{width:28px;height:28px;stroke-width:2.4}
+.addc b{font-size:17px}
+.newc{border:2px solid var(--gold)}
+.ncgrid{display:grid;grid-template-columns:1.3fr 1fr;gap:18px;align-items:start}
+.ncgrid > *{min-width:0}
+@media (max-width:800px){.ncgrid{grid-template-columns:1fr}.ncp{order:-1;position:static}}
+.ncf{display:flex;flex-direction:column;gap:12px}
+.ncp{position:sticky;top:180px;display:flex;flex-direction:column;gap:10px}
+.sel2,.ta{font:600 16px var(--body);padding:11px 12px;border-radius:12px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);width:100%}
+.ta{resize:vertical;line-height:1.45}
+.sel2:focus,.ta:focus,.rule input:focus{outline:none;border-color:var(--gold)}
+.rule input + input{margin-top:0}
+.srow{display:grid;grid-template-columns:42px 1fr auto;gap:12px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:10px 12px}
+.srow > div{min-width:0}
+.srow b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.srow small{color:var(--muted);font-size:12px;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.srow .sic{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;font:400 13px var(--cond);color:#fff;background:linear-gradient(150deg,var(--a),color-mix(in srgb,var(--a) 40%,#0b1020))}
+.srow .r{text-align:right;display:flex;flex-direction:column;align-items:flex-end;gap:4px}
+.srow .r b{color:var(--ok);font-variant-numeric:tabular-nums}
+.pfhead{display:flex;gap:14px;align-items:center}
+
 /* checkout */
 #v-peye{max-width:640px;margin:0 auto;width:100%;gap:18px}
 .ck-hero{background:var(--hero);color:var(--hero-ink);border-radius:28px;padding:24px 22px 28px;position:relative;overflow:hidden;display:flex;flex-direction:column;gap:16px;align-items:flex-start}
@@ -622,6 +663,7 @@ nav.tabs a.on{background:var(--gold-soft);color:var(--gold)}
   <symbol id="i-tag" viewBox="0 0 24 24"><path d="M3 12V4h8l9 9-8 8z"/><circle cx="7.5" cy="8.5" r="1.3"/></symbol>
   <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
   <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
   <symbol id="i-up" viewBox="0 0 24 24"><path d="m4 16 6-6 4 4 6-7"/><path d="M15 7h5v5"/></symbol>
   <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c1-3.6 3.6-5.5 6.5-5.5s5.5 1.9 6.5 5.5"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14.5c2 .6 3.2 2.4 3.6 5.5"/></symbol>
   <symbol id="i-pie" viewBox="0 0 24 24"><path d="M12 3v9h9a9 9 0 1 1-9-9z"/><path d="M15 3.5A9 9 0 0 1 20.5 9H15z"/></symbol>
@@ -721,22 +763,10 @@ nav.tabs a.on{background:var(--gold-soft);color:var(--gold)}
 <section class="view" id="v-peye" hidden></section>
 
 <section class="view" id="v-pwofese" hidden>
-  <div class="head">
-    <div><span class="demo">DEMO</span><h2 style="margin-top:6px">Espas pwofesè</h2><p class="muted">Chif egzanp. Chwazi yon pwofesè pou wè sa li wè.</p></div>
-    <div class="sel"><label for="teacherSel" class="muted" style="font-size:14px">Pwofesè:</label><select id="teacherSel" style="width:auto"></select></div>
-  </div>
-  <div class="kpis" id="tKpis"></div>
-  <div class="panel">
-    <h3>Mande yon retrè</h3>
-    <div class="form">
-      <label for="wdAmount">Montan (HTG)<input id="wdAmount" type="number" min="1000" step="50" placeholder="Minimòm 1,000"></label>
-      <label for="wdMethod">Metòd<select id="wdMethod"><option>MonCash</option><option>NatCash</option><option>Virman bank</option><option>PayPal (dyaspora)</option></select></label>
-    </div>
-    <button class="btn gold" id="wdBtn">Voye demann nan</button>
-    <p class="note" id="wdNote"></p>
-  </div>
-  <div class="panel"><h3>Vant mwen yo</h3><div class="tblwrap"><table id="tSales"></table></div></div>
-  <div class="panel"><h3>Istorik retrè</h3><div class="tblwrap"><table id="tPayouts"></table></div></div>
+  <div class="tswitch" id="tSwitch"></div>
+  <div class="ahero" id="tHero"></div>
+  <div class="atabs" id="ttabs" role="tablist"></div>
+  <div id="tView" style="display:flex;flex-direction:column;gap:16px"></div>
 </section>
 
 <section class="view" id="v-admin" hidden>
@@ -860,7 +890,7 @@ const COURSES=[
 const LVL=["","Debitan","Entèmedyè","Avanse"];
 
 /* ---------- state ---------- */
-const KEY="lekol-anliy-demo-v4";
+const KEY="lekol-anliy-demo-v5";
 function seed(){
   const now=Date.now(),sales=[],orders=[];
   const PEOPLE=[["Marie Joseph","capcut","full",2,"MonCash"],["Jean-Marc Pierre","capcut","two",12,"NatCash",1],["Nadia Louis","capcut","full",20,"MonCash"],["Kervens Jean","grafik","two",3,"MonCash"],["Roselande Michel","grafik","full",18,"Kat"],["Wilfrid Charles","sitphone","two",1,"MonCash"],["Daphnée Etienne","sitphone","full",25,"MonCash"],["Ricardo Baptiste","biznis","full",4,"NatCash"],["Fabiola Desir","biznis","full",16,"MonCash"],["Stevenson Augustin","biznis","full",22,"MonCash"],["Mirlande Paul","wordpress","two",9,"MonCash"],["Junior Celestin","wordpress","full",30,"Kat"],["Guerline Noel","flutter","dep",3,"MonCash"],["Peterson Alexis","feyton","dep",6,"NatCash"],["Marie Joseph","flutter","dep",1,"MonCash"]];
@@ -872,7 +902,8 @@ function seed(){
     orders.push(o);o.pays.forEach((pp,k)=>sales.push({id:"s"+i+"-"+k,cid,at:pp.at,amt:pp.amt,kind:pp.kind,oid:o.id}));
   });
   orders.sort((x,y)=>y.at-x.at);sales.sort((x,y)=>y.at-x.at);
-  return {rules:{share:70,fee:3,hold:14,min:1000},sales,orders,cart:0,payouts:[
+  const props=[{id:"pc1",tid:"t3",t:"Python pou debitan",cat:"iadev",p:10000,dur:"1 mwa",lvl:1,d:"Aprann baz pwogramasyon ak Python, menm si ou pa janm kode anvan.",learn:["Varyab, kondisyon ak bouk","Ti pwogram ki itil chak jou","Premye pwojè ou ak Python"],status:"revizyon",at:now-1*DAY}];
+  return {rules:{share:70,fee:3,hold:14,min:1000},sales,orders,props,extra:[],tprof:{},cart:0,payouts:[
     {id:"p1",tid:"t1",amt:5000,method:"MonCash",at:now-10*DAY,status:"peye"},
     {id:"p2",tid:"t2",amt:8000,method:"NatCash",at:now-2*DAY,status:"an atant"}]};
 }
@@ -1140,29 +1171,129 @@ document.addEventListener("click",e=>{
 });
 
 /* ---------- teacher ---------- */
+let curT="t1",tTab="apesi",newOpen=false,tCf="";
+const TPROF={t1:{spec:"Videyo, kontni ak IA",bio:"Li monte videyo depi 8 lane epi li kreye kontni pou plizyè mak lokal.",doms:["video","iadev","mizik"],since:"2024"},
+  t2:{spec:"Grafik dizay ak biznis anliy",bio:"Designer grafik. Li ede ti biznis ayisyen parèt pwofesyonèl epi vann sou entènèt.",doms:["dizay","biznis"],since:"2024"},
+  t3:{spec:"Devlopman web ak mobil",bio:"Devlopè Flutter ak React. Li bati aplikasyon pou biznis ak ONG.",doms:["mobil","iadev"],since:"2025"}};
+const CAT_ART={video:"video",dizay:"design",mobil:"builder",biznis:"chart",iadev:"dashboard",mizik:"music"};
+const DURS=["3 jou","1 semèn","2 semèn","1 mwa","3 mwa"];
+const BASE_N=COURSES.length;
+function tprof(id){return Object.assign({},TPROF[id],(ST.tprof||{})[id]||{})}
+function applyExtras(){COURSES.splice(BASE_N);(ST.extra||[]).forEach(c=>COURSES.push(c));
+  TEACHERS.forEach(t=>{const o=(ST.tprof||{})[t.id];if(o&&o.pay)t.pay=o.pay})}
+function makeCourse(pr,id){const w=pr.t.trim().split(/\s+/),cat=cat0(pr.cat);
+  return {id,st:"soon",cat:pr.cat,tid:pr.tid,p:pr.p,dep:2500,dur:pr.dur,lvl:pr.lvl,t:pr.t.trim(),d:pr.d.trim(),learn:pr.learn.filter(Boolean),
+    cv:{l:w.length>1?[w[0].toUpperCase(),w.slice(1,3).join(" ").toUpperCase()]:[w[0].toUpperCase()],s:CATLABEL[pr.cat],a:cat.dot,b1:"#0b1530",b2:"#141d38",art:CAT_ART[pr.cat]}}}
+function cat0(id){return CATS.find(c=>c.id==id)||CATS[0]}
+function tSales(tid){return ST.sales.filter(x=>{const c=course(x.cid);return c&&c.tid==tid})}
+function tOrders(tid){return orders().filter(o=>{const c=course(o.cid);return c&&c.tid==tid})}
 function renderTeacher(){
-  const tid=$("teacherSel").value,b=balance(tid);
-  $("tKpis").innerHTML=`<div class="kpi"><small>Total touche</small><b>${fmt(b.total)}</b> <small>HTG</small></div>
-    <div class="kpi"><small>An atant (${ST.rules.hold} jou)</small><b>${fmt(b.pending)}</b> <small>HTG</small></div>
-    <div class="kpi hl"><small>Disponib pou retire</small><b>${fmt(b.withdrawable)}</b> <small>HTG</small></div>
-    <div class="kpi"><small>Deja peye</small><b>${fmt(b.paid)}</b> <small>HTG</small></div>`;
-  $("wdNote").textContent=`Ou ka retire ant ${fmt(ST.rules.min)} ak ${fmt(b.withdrawable)} HTG. Kont peman: ${teacher(tid).pay}.`;
-  $("wdBtn").disabled=b.withdrawable<ST.rules.min;
-  const now=Date.now();
-  const rows=ST.sales.filter(s=>course(s.cid)&&course(s.cid).tid===tid).map(s=>{const c=course(s.cid),x=split(s.amt),ok=now-s.at>=ST.rules.hold*DAY;
-    return `<tr><td>${d(s.at)}</td><td>${c.cv.l.join(" ").replace(/<[^>]+>/g,"")}</td><td>${s.kind}</td><td class="r">${fmt(s.amt)}</td><td class="r">−${fmt(x.fee)}</td><td class="r"><b>${fmt(x.tp)}</b></td><td><span class="pill ${ok?"ok":"warn"}">${ok?"Disponib":"An atant"}</span></td></tr>`}).join("");
-  $("tSales").innerHTML=`<tr><th>Dat</th><th>Fòmasyon</th><th>Tip</th><th class="r">Montan</th><th class="r">Frè</th><th class="r">Pati ou (${ST.rules.share}%)</th><th>Eta</th></tr>${rows||'<tr><td colspan="7" class="muted">Poko gen vant.</td></tr>'}`;
-  const pr=ST.payouts.filter(p=>p.tid===tid).map(p=>`<tr><td>${d(p.at)}</td><td>${p.method}</td><td class="r">${fmt(p.amt)}</td><td><span class="pill ${p.status==="peye"?"ok":"warn"}">${p.status==="peye"?"Peye":"An atant"}</span></td></tr>`).join("");
-  $("tPayouts").innerHTML=`<tr><th>Dat</th><th>Metòd</th><th class="r">Montan HTG</th><th>Eta</th></tr>${pr||'<tr><td colspan="4" class="muted">Poko gen retrè.</td></tr>'}`;
+  const t=teacher(curT),P=tprof(curT),b=balance(curT),O=tOrders(curT),mine=COURSES.filter(c=>c.tid==curT);
+  const studs=new Set(O.map(o=>o.email.toLowerCase())).size,props=(ST.props||[]).filter(x=>x.tid==curT&&x.status!="apwouve");
+  const d14=daily(14,x=>{const c=course(x.cid);return c&&c.tid==curT?split(x.amt).tp:0});
+  $("tSwitch").innerHTML=`<span class="muted small">Demo · konekte kòm</span>`+TEACHERS.map(x=>`<button class="tsw ${x.id==curT?"on":""}" data-tsw="${x.id}">${av(x.name)}<span>${x.name.split(" ")[0]}</span></button>`).join("");
+  $("tHero").innerHTML=`<div class="ahtop"><div class="who">${av(t.name,1)}<div><small>Espas pwofesè · depi ${P.since}</small><b>${t.name}</b><small style="color:var(--gold)">${esc(P.spec)}</small></div></div></div>
+    <div class="abig"><div><span class="lbl">Disponib pou retire</span><div class="num">${fmt(b.withdrawable)}<small>HTG</small></div>
+      <span class="trend"><svg class="i"><use href="#i-clock"/></svg>${fmt(b.pending)} HTG ap vin disponib</span></div>${spark(d14.map(x=>x.v),"#f0b44a",150,60)}</div>
+    <div class="qa"><button class="gold2" data-ttab="lajan"><svg class="i"><use href="#i-wallet"/></svg>Mande retrè</button><button data-ttab="kou" data-newc="1"><svg class="i"><use href="#i-plus"/></svg>Pwopoze yon kou</button><button data-ttab="etidyan"><svg class="i"><use href="#i-users"/></svg>Etidyan mwen <i>${studs}</i></button></div>`;
+  $("ttabs").innerHTML=[["apesi","Apèsi","i-pie"],["kou","Kou mwen","i-grad",props.filter(x=>x.status=="revizyon").length],["etidyan","Etidyan","i-users"],["lajan","Lajan","i-wallet"],["pwofil","Pwofil","i-user"]].map(([k,tt,ic,n])=>`<button role="tab" aria-selected="${tTab==k}" class="${tTab==k?"on":""}" data-ttab="${k}"><svg class="i"><use href="#${ic}"/></svg>${tt}${n?`<i>${n}</i>`:""}</button>`).join("");
+  const v=$("tView");
+  if(tTab=="apesi"){
+    const D=daily(14,x=>{const c=course(x.cid);return c&&c.tid==curT?split(x.amt).tp:0}),W=innerWidth>=900?620:320,H=innerWidth>=900?180:140,bw=W/14,mx=Math.max(...D.map(x=>x.v),1),nice=Math.ceil(mx/2000)*2000||2000;
+    const chart=`<svg viewBox="0 0 ${W} ${H+20}" role="img" aria-label="Sa ou touche chak jou"><defs><linearGradient id="tgold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--ok)"/><stop offset="1" style="stop-color:var(--ok);stop-opacity:.3"/></linearGradient></defs>`+
+      [0,.5,1].map(f=>`<line class="gl" x1="0" x2="${W}" y1="${(H-8)-f*(H-28)}" y2="${(H-8)-f*(H-28)}"/><text x="${W}" y="${(H-11)-f*(H-28)}" text-anchor="end">${f?fmt(nice*f/1000)+"k":""}</text>`).join("")+
+      D.map((x,i)=>{const h=x.v?Math.max(4,x.v/nice*(H-28)):3;return `<rect x="${i*bw+bw*.18}" y="${H-8-h}" width="${bw*.64}" height="${h}" rx="4" fill="${x.v?"url(#tgold)":"var(--line)"}"><title>${x.d.toLocaleDateString("fr-HT",{day:"2-digit",month:"short"})}: ${fmt(x.v)} HTG</title></rect>`}).join("")+
+      [0,7,13].map((i,k)=>`<text x="${k==0?0:k==2?W:i*bw+bw/2}" y="${H+10}" text-anchor="${k==0?"start":k==2?"end":"middle"}">${D[i].d.toLocaleDateString("fr-HT",{day:"2-digit",month:"short"})}</text>`).join("")+`</svg>`;
+    const days=Math.max(0,Math.ceil((PROMO_DATE-Date.now())/DAY)),soonC=mine.filter(c=>c.st=="soon");
+    v.innerHTML=`<div class="k4">
+      <div class="kc" style="--kcol:var(--ok)"><span class="ic"><svg class="i"><use href="#i-wallet"/></svg></span>${spark(D.map(x=>x.v),"var(--ok)")}<small>Total ou touche</small><b>${fmt(b.total)}<em>HTG</em></b><span class="sub2">${ST.rules.share}% sou chak vant</span></div>
+      <div class="kc" style="--kcol:var(--warn)"><span class="ic"><svg class="i"><use href="#i-clock"/></svg></span><small>An atant</small><b>${fmt(b.pending)}<em>HTG</em></b><span class="sub2">disponib apre ${ST.rules.hold} jou</span></div>
+      <div class="kc" style="--kcol:#6d5fd8"><span class="ic"><svg class="i"><use href="#i-users"/></svg></span><small>Etidyan</small><b>${studs}</b><span class="sub2">nan ${mine.length} kou</span></div>
+      <div class="kc" style="--kcol:var(--gold)"><span class="ic"><svg class="i"><use href="#i-cal"/></svg></span><small>Pwochen rantre</small><b>${days}<em>jou</em></b><span class="sub2">${promoLabel} · ${soonC.length} kou</span></div></div>
+    <div class="g2"><div class="card2 chart"><div class="ch"><div><h3>Sa ou touche chak jou</h3><small>14 dènye jou · pati pa w apre frè</small></div></div>${chart}</div>
+      <div class="card2"><div class="ch"><div><h3>Kou mwen yo</h3><small>Etidyan pa kou</small></div><button class="btn g sm" data-ttab="kou">Wè tout</button></div>
+      <div class="tops">${mine.map(c=>{const n=O.filter(o=>o.cid==c.id).length,mxn=Math.max(...mine.map(cc=>O.filter(o=>o.cid==cc.id).length),1);return `<div class="r" style="--a:${c.cv.a}"><span class="th">${c.cv.l[0].replace(/<[^>]+>/g,"").slice(0,3)}</span><b>${c.t}</b><span class="amt">${n}</span><div class="bar"><i style="width:${n/mxn*100}%"></i></div></div>`}).join("")}</div></div></div>`;
+  } else if(tTab=="kou"){
+    v.innerHTML=`<div class="card2"><div class="ch"><div><h3>Domèn ou ka anseye</h3><small>Ou chanje yo nan tab Pwofil la</small></div></div><div class="fchips" style="flex-wrap:wrap">${P.doms.map(id=>{const c=cat0(id);return `<span class="fchip on" style="--fc:${c.dot};cursor:default">${c.t}</span>`}).join("")||'<span class="muted">Poko gen domèn.</span>'}</div></div>
+      <div id="newWrap"></div>
+      <div class="tcgrid">${mine.map(c=>{const os=O.filter(o=>o.cid==c.id),earn=tSales(curT).filter(x=>x.cid==c.id).reduce((a,x)=>a+split(x.amt).tp,0);
+        return `<div class="tco">${cover(c)}<div class="tb"><div class="row1"><span class="bdg2" style="--bc:${c.st=="now"?"var(--ok)":"var(--gold-text)"}">${c.st=="now"?"Disponib":"Rantre "+promoLabel}</span><small class="muted">${c.dur}${c.lvl?" · "+LVL[c.lvl]:""}</small></div><h3>${c.t}</h3>
+        <div class="tnum"><div><small>Etidyan</small><b>${os.length}</b></div><div><small>Ou touche</small><b>${fmt(earn)}</b></div><div><small>Pri</small><b>${fmt(c.p)}</b></div></div>
+        <div class="pbtns" style="grid-template-columns:1fr 1fr;margin-top:4px"><button class="bout" data-view="${c.id}">Wè kou a</button><button class="benr full" data-tcs="${c.id}">Etidyan yo</button></div></div></div>`}).join("")}
+      ${props.map(pr=>{const c=makeCourse(pr,"prev-"+pr.id);return `<div class="tco pend">${cover(c)}<div class="tb"><div class="row1"><span class="bdg2" style="--bc:${pr.status=="refize"?"#e5484d":"#6d5fd8"}">${pr.status=="refize"?"Refize":"An revizyon"}</span><small class="muted">Voye ${d(pr.at)}</small></div><h3>${esc(pr.t)}</h3><p class="muted small">${pr.status=="refize"?"Admin nan pa t aksepte kou sa a. Ou ka modifye l epi voye l ankò.":"Admin nan ap revize kou sa a. L ap parèt sou sit la lè li apwouve."}</p><div class="tnum"><div><small>Domèn</small><b>${CATLABEL[pr.cat]}</b></div><div><small>Dire</small><b>${pr.dur}</b></div><div><small>Pri</small><b>${fmt(pr.p)}</b></div></div></div></div>`}).join("")}
+      <button class="tco addc" data-newc="1"><span class="plus"><svg class="i"><use href="#i-plus"/></svg></span><b>Pwopoze yon nouvo kou</b><small class="muted">Admin nan revize l anvan li parèt sou sit la.</small></button></div>`;
+    if(newOpen)openNew();
+  } else if(tTab=="etidyan"){
+    const L=O.filter(o=>!tCf||o.cid==tCf);
+    v.innerHTML=`<div class="fchips"><button class="fchip ${!tCf?"on":""}" data-tcf="">Tout<b>${O.length}</b></button>${mine.map(c=>`<button class="fchip ${tCf==c.id?"on":""}" style="--fc:${c.cv.a}" data-tcf="${c.id}">${ctitle(c)}<b>${O.filter(o=>o.cid==c.id).length}</b></button>`).join("")}</div>
+      <div class="scards">${L.map(o=>{const c=course(o.cid),S2=OST[ost(o)];return `<div class="scard" style="cursor:default"><div class="top">${av(o.name)}<div><b>${esc(o.name)}</b><small>${esc(o.wa)}</small></div></div><div class="cs"><span style="border-left:3px solid ${c.cv.a}">${c.t}</span></div><div class="ft"><span class="muted">Enskri ${d(o.at)}</span><span class="bdg2" style="--bc:${S2[1]}">${S2[0]}</span></div>
+        <a class="btn wa2 sm" style="justify-content:center" href="${waLink(o,`Bonjou ${o.name.split(" ")[0]}, se ${t.name}, pwofesè w nan "${c.t}" sou Lekòl Anliy.`)}" target="_blank" rel="noopener"><svg class="i" style="width:16px;height:16px"><use href="#i-wa"/></svg>Ekri l sou WhatsApp</a></div>`}).join("")||'<div class="empty">Poko gen etidyan nan kou sa a.</div>'}</div>`;
+  } else if(tTab=="lajan"){
+    const now=Date.now(),S=tSales(curT);
+    v.innerHTML=`<div class="g2"><div class="card2"><div class="ch"><div><h3>Mande yon retrè</h3><small>Ou ka retire ant ${fmt(ST.rules.min)} ak ${fmt(b.withdrawable)} HTG</small></div></div>
+        <div class="rules2"><div class="rule"><label for="wdAmount">Montan (HTG)</label><input id="wdAmount" type="number" min="${ST.rules.min}" step="50" placeholder="${fmt(b.withdrawable)}"></div>
+        <div class="rule"><label for="wdMethod">Metòd</label><select id="wdMethod" style="font:700 17px var(--body);padding:12px;border-radius:12px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink)">${["MonCash","NatCash","Virman bank","PayPal (dyaspora)"].map(m=>`<option>${m}</option>`).join("")}</select><small>Kont: ${esc(t.pay)}</small></div></div>
+        <button class="btn gold" id="wdBtn" ${b.withdrawable<ST.rules.min?"disabled":""}>Voye demann nan</button>${b.withdrawable<ST.rules.min?`<p class="muted small">Ou bezwen omwen ${fmt(ST.rules.min)} HTG disponib pou mande yon retrè.</p>`:""}</div>
+      <div class="card2"><div class="ch"><div><h3>Retrè mwen yo</h3><small>Istorik</small></div></div><div class="paylist">${ST.payouts.filter(p=>p.tid==curT).map(p=>`<div><span>${p.method}<br><small class="muted">${dt(p.at)}</small></span><span style="text-align:right"><b>${fmt(p.amt)} HTG</b><br><span class="bdg2" style="--bc:${p.status=="peye"?"var(--ok)":"var(--warn)"}">${p.status=="peye"?"Peye":"An atant"}</span></span></div>`).join("")||'<p class="muted small">Poko gen retrè.</p>'}</div></div></div>
+      <div class="card2"><div class="ch"><div><h3>Vant ki ba w lajan</h3><small>${ST.rules.share}% pou ou apre ${ST.rules.fee}% frè</small></div></div><div class="olist">${S.map(x=>{const c=course(x.cid),y=split(x.amt),ok=now-x.at>=ST.rules.hold*DAY;return `<div class="srow" style="--a:${c.cv.a}"><span class="sic">${c.cv.l[0].replace(/<[^>]+>/g,"").slice(0,3)}</span><div><b>${c.t}</b><small>${x.kind} · ${d(x.at)} · ${fmt(x.amt)} HTG</small></div><div class="r"><b>+${fmt(y.tp)}</b><span class="bdg2" style="--bc:${ok?"var(--ok)":"var(--warn)"}">${ok?"Disponib":"An atant"}</span></div></div>`}).join("")||'<div class="empty">Poko gen vant.</div>'}</div></div>`;
+  } else {
+    v.innerHTML=`<div class="card2"><div class="ch"><div><h3>Pwofil ou</h3><small>Etidyan yo wè enfòmasyon sa yo sou paj kou w yo</small></div></div>
+      <div class="pfhead">${av(t.name,1)}<div><b style="font-size:18px">${t.name}</b><small class="muted" style="display:block">Pwofesè depi ${P.since}</small></div></div>
+      <div class="rule"><label for="pfSpec">Espesyalite</label><input id="pfSpec" value="${esc(P.spec)}" style="font:700 17px var(--body)"></div>
+      <div class="rule"><label for="pfBio">Ti prezantasyon</label><textarea id="pfBio" rows="3" class="ta">${esc(P.bio)}</textarea></div>
+      <div class="rule"><label>Domèn ou ka anseye</label><small>Peze pou chwazi oswa retire</small><div class="fchips" style="flex-wrap:wrap" id="pfDoms">${CATS.map(c=>`<button class="fchip ${P.doms.includes(c.id)?"on":""}" style="--fc:${c.dot}" data-pdom="${c.id}">${c.t}</button>`).join("")}</div></div>
+      <div class="rule"><label for="pfPay">Kont pou resevwa lajan</label><input id="pfPay" value="${esc(t.pay)}" style="font:700 17px var(--body)"><small>Egzanp: MonCash 509-3XXX-XXXX</small></div>
+      <button class="btn gold" id="pfSave">Anrejistre pwofil la</button></div>`;
+  }
 }
-$("wdBtn").addEventListener("click",()=>{
-  const tid=$("teacherSel").value,b=balance(tid),amt=Number($("wdAmount").value);
-  if(!amt||amt<ST.rules.min){toast(`Mete omwen ${fmt(ST.rules.min)} HTG.`);return}
-  if(amt>b.withdrawable){toast(`Ou gen sèlman ${fmt(b.withdrawable)} HTG disponib.`);return}
-  ST.payouts.unshift({id:"p"+Date.now(),tid,amt,method:$("wdMethod").value,at:Date.now(),status:"an atant"});
-  save();$("wdAmount").value="";toast("Demann voye. Admin nan ap peye w.");render();
+function openNew(){const w=$("newWrap");if(!w)return;const P=tprof(curT),first=P.doms[0]||"video";
+  w.innerHTML=`<div class="card2 newc"><div class="ch"><div><h3>Pwopoze yon nouvo kou</h3><small>Ranpli fòm nan. Admin nan ap revize l anvan li parèt sou sit la.</small></div><button class="iconbtn" data-newx="1" aria-label="Fèmen"><svg class="i"><use href="#i-x"/></svg></button></div>
+    <div class="ncgrid"><div class="ncf">
+      <div class="rule"><label for="pcT">Tit kou a</label><input id="pcT" placeholder="Egzanp: Fotografi ak telefòn" style="font:700 17px var(--body)" maxlength="60"></div>
+      <div class="rules2"><div class="rule"><label for="pcCat">Domèn</label><select id="pcCat" class="sel2">${CATS.map(c=>`<option value="${c.id}" ${c.id==first?"selected":""}>${c.t}${P.doms.includes(c.id)?"":" (pa nan domèn ou)"}</option>`).join("")}</select></div>
+      <div class="rule"><label for="pcP">Pri (HTG)</label><input id="pcP" type="number" min="1000" step="500" value="10000"></div>
+      <div class="rule"><label for="pcDur">Dire</label><select id="pcDur" class="sel2">${DURS.map(x=>`<option ${x=="1 mwa"?"selected":""}>${x}</option>`).join("")}</select></div>
+      <div class="rule"><label for="pcL">Nivo</label><select id="pcL" class="sel2"><option value="1">Debitan</option><option value="2">Entèmedyè</option><option value="3">Avanse</option></select></div></div>
+      <div class="rule"><label for="pcD">Deskripsyon</label><textarea id="pcD" rows="3" class="ta" placeholder="Kisa etidyan yo ap kapab fè apre kou a?"></textarea></div>
+      <div class="rule"><label>3 bagay etidyan yo ap aprann</label>${[1,2,3].map(i=>`<input id="pcL${i}" placeholder="Pwen ${i}" style="font:600 15px var(--body)">`).join("")}</div>
+      <p class="ckerr" id="pcErr" hidden></p>
+      <button class="btn gold" id="pcSend">Voye bay admin nan</button></div>
+      <div class="ncp"><span class="k">Apèsi sou sit la</span><div id="pcPrev"></div><p class="muted small">Pou ou touche: <b id="pcEarn"></b> sou chak etidyan.</p></div></div></div>`;
+  pcPrev();w.scrollIntoView({behavior:"smooth",block:"start"})}
+function pcData(){return{tid:curT,t:($("pcT").value||"Nouvo kou").trim(),cat:$("pcCat").value,p:Math.max(0,+$("pcP").value||0),dur:$("pcDur").value,lvl:+$("pcL").value,d:$("pcD").value,learn:[1,2,3].map(i=>$("pcL"+i).value.trim())}}
+function pcPrev(){if(!$("pcPrev"))return;const pr=pcData(),c=makeCourse(pr,"preview");$("pcPrev").innerHTML=cover(c);$("pcEarn").textContent=fmt(split(pr.p).tp)+" HTG"}
+document.addEventListener("input",e=>{if(/^pc/.test(e.target.id))pcPrev()});
+document.addEventListener("change",e=>{if(/^pc/.test(e.target.id))pcPrev()});
+document.addEventListener("click",e=>{
+  const sw=e.target.closest("[data-tsw]");if(sw){curT=sw.dataset.tsw;newOpen=false;tCf="";renderTeacher();return}
+  const nc=e.target.closest("[data-newc]");if(nc){tTab="kou";newOpen=true;renderTeacher();return}
+  if(e.target.closest("[data-newx]")){newOpen=false;$("newWrap").innerHTML="";return}
+  const tt=e.target.closest("[data-ttab]");if(tt){tTab=tt.dataset.ttab;renderTeacher();if(tt.closest("#tHero,.card2"))$("ttabs").scrollIntoView({behavior:"smooth",block:"start"});return}
+  const tcs=e.target.closest("[data-tcs]");if(tcs){tTab="etidyan";tCf=tcs.dataset.tcs;renderTeacher();return}
+  const tcf=e.target.closest("[data-tcf]");if(tcf){tCf=tcf.dataset.tcf;renderTeacher();return}
+  const pd=e.target.closest("[data-pdom]");if(pd){pd.classList.toggle("on");return}
+  if(e.target.closest("#pfSave")){ST.tprof=ST.tprof||{};const doms=[...document.querySelectorAll("#pfDoms .on")].map(x=>x.dataset.pdom);
+    if(!doms.length){toast("Chwazi omwen yon domèn.");return}
+    ST.tprof[curT]=Object.assign({},(ST.tprof[curT]||{}),{spec:$("pfSpec").value.trim()||tprof(curT).spec,bio:$("pfBio").value.trim(),doms,pay:$("pfPay").value.trim()||teacher(curT).pay});
+    applyExtras();save();toast("Pwofil la anrejistre.");render();return}
+  if(e.target.closest("#pcSend")){const pr=pcData(),er=[];
+    if(!$("pcT").value.trim()||pr.t.length<4)er.push("yon tit");if(pr.p<1000)er.push("yon pri omwen 1,000 HTG");if(pr.d.trim().length<15)er.push("yon deskripsyon (omwen 15 lèt)");if(pr.learn.filter(Boolean).length<2)er.push("omwen 2 bagay yo ap aprann");
+    if(er.length){$("pcErr").hidden=false;$("pcErr").textContent="Tanpri mete "+er.join(", ")+".";return}
+    ST.props=ST.props||[];ST.props.unshift(Object.assign(pr,{id:"pc"+Date.now(),status:"revizyon",at:Date.now()}));save();newOpen=false;render();toast("Kou a voye bay admin nan pou revizyon.");return}
+  if(e.target.closest("#wdBtn")){const b=balance(curT),amt=Number($("wdAmount").value);
+    if(!amt||amt<ST.rules.min){toast(`Mete omwen ${fmt(ST.rules.min)} HTG.`);return}
+    if(amt>b.withdrawable){toast(`Ou gen sèlman ${fmt(b.withdrawable)} HTG disponib.`);return}
+    ST.payouts.unshift({id:"p"+Date.now(),tid:curT,amt,method:$("wdMethod").value,at:Date.now(),status:"an atant"});save();toast("Demann voye. Admin nan ap peye w.");render();return}
+  const ap=e.target.closest("[data-papr]");if(ap){const pr=(ST.props||[]).find(x=>x.id==ap.dataset.papr);if(!pr)return;
+    if(ap.dataset.ok=="1"){pr.status="apwouve";ST.extra=ST.extra||[];ST.extra.push(makeCourse(pr,"x"+pr.id));applyExtras();toast(`"${pr.t}" ajoute sou sit la nan Pwochen promosyon.`)}
+    else{pr.status="refize";toast("Kou a refize. Pwofesè a ap wè sa.")}
+    save();render();return}
 });
-
+function propHTML(){const L=(ST.props||[]).filter(x=>x.status=="revizyon");if(!L.length)return"";
+  return `<div class="card2"><div class="ch"><div><h3>Kou pwofesè yo pwopoze</h3><small>Apwouve yo pou yo parèt sou sit la</small></div><span class="bdg2" style="--bc:#6d5fd8">${L.length} an revizyon</span></div>
+  <div class="tcgrid">${L.map(pr=>{const c=makeCourse(pr,"ap-"+pr.id);return `<div class="tco">${cover(c)}<div class="tb"><div class="row1">${av(teacher(pr.tid).name)}<div><b>${teacher(pr.tid).name}</b><small class="muted" style="display:block">${d(pr.at)}</small></div></div><h3>${esc(pr.t)}</h3><p class="muted small">${esc(pr.d)}</p>
+    <div class="tnum"><div><small>Domèn</small><b>${CATLABEL[pr.cat]}</b></div><div><small>Dire</small><b>${pr.dur}</b></div><div><small>Pri</small><b>${fmt(pr.p)}</b></div></div>
+    <div class="pbtns" style="grid-template-columns:1fr 1.3fr;margin-top:4px"><button class="bout" data-papr="${pr.id}" data-ok="0">Refize</button><button class="benr full" data-papr="${pr.id}" data-ok="1">Apwouve</button></div></div></div>`}).join("")}</div></div>`}
 /* ---------- admin ---------- */
 let aTab="apesi",aQ="",aF="all",aRange=14;
 const ost=o=>o.paid>=o.total?"full":o.plan=="dep"?"dep":"part";
@@ -1192,7 +1323,7 @@ function aHero(){
     ${spark(d7.map(x=>x.v),"#f0b44a",150,60)}</div>
   <div class="qa"><button class="gold2" data-atab="peman" data-af2="part"><svg class="i"><use href="#i-alert"/></svg>Rès pou kolekte <i>${rest}</i></button><button data-atab="pwofese"><svg class="i"><use href="#i-wallet"/></svg>Peye pwofesè <i>${pend}</i></button><button id="csvBtn"><svg class="i"><use href="#i-copy"/></svg>Kopye CSV</button></div>`;
 }
-function aTabs(){const pend=ST.payouts.filter(p=>p.status==="an atant").length,rest=orders().filter(o=>o.paid<o.total).length;
+function aTabs(){const pend=ST.payouts.filter(p=>p.status==="an atant").length+(ST.props||[]).filter(x=>x.status=="revizyon").length,rest=orders().filter(o=>o.paid<o.total).length;
   $("atabs").innerHTML=[["apesi","Apèsi","i-pie"],["peman","Peman","i-wallet",rest],["etidyan","Etidyan","i-users"],["pwofese","Pwofesè","i-user",pend],["regl","Règ","i-gear"]].map(([k,t,ic,n])=>`<button role="tab" aria-selected="${aTab==k}" class="${aTab==k?"on":""}" data-atab="${k}"><svg class="i"><use href="#${ic}"/></svg>${t}${n?`<i>${n}</i>`:""}</button>`).join("")}
 function renderAdmin(){
   aHero();aTabs();const v=$("aView"),O=orders();
@@ -1236,6 +1367,7 @@ function renderAdmin(){
   } else if(aTab=="pwofese"){
     let owed=0;TEACHERS.forEach(t=>{const b=balance(t.id);owed+=b.total-b.paid});
     v.innerHTML=`<div class="k4" style="grid-template-columns:repeat(auto-fit,minmax(160px,1fr))"><div class="kc" style="--kcol:var(--warn)"><span class="ic"><svg class="i"><use href="#i-wallet"/></svg></span><small>Lekòl la dwe pwofesè yo</small><b>${fmt(owed)}<em>HTG</em></b></div><div class="kc" style="--kcol:var(--gold)"><span class="ic"><svg class="i"><use href="#i-alert"/></svg></span><small>Demann an atant</small><b>${ST.payouts.filter(p=>p.status==="an atant").length}</b></div></div>
+    ${propHTML()}
     <div class="tcards">${TEACHERS.map(t=>{const b=balance(t.id),reqs=ST.payouts.filter(p=>p.tid==t.id&&p.status==="an atant"),cs=COURSES.filter(c=>c.tid==t.id);
       return `<div class="tcard"><div class="top">${av(t.name,1)}<div><b style="font-size:17px">${t.name}</b><small>${t.pay}</small><small>${cs.length} fòmasyon</small></div></div>
       <div class="nums"><div><small>Total touche</small><b>${fmt(b.total)}</b></div><div><small>An atant</small><b>${fmt(b.pending)}</b></div><div><small>Disponib</small><b style="color:var(--ok)">${fmt(b.withdrawable)}</b></div></div>
@@ -1281,14 +1413,13 @@ document.addEventListener("click",e=>{
     const csv=rows.map(r=>r.map(x=>`"${String(x).replace(/"/g,'""')}"`).join(",")).join("\n");
     (navigator.clipboard?navigator.clipboard.writeText(csv):Promise.reject()).then(()=>toast("CSV kopye. Kole l nan Excel oswa Google Sheets."),()=>toast("Navigatè a pa kite m kopye. Eseye sou yon lòt navigatè."));return}
   const pb=e.target.closest("[data-pay]");if(pb){const p=ST.payouts.find(x=>x.id===pb.dataset.pay);p.status="peye";save();toast(`${fmt(p.amt)} HTG make kòm peye pou ${teacher(p.tid).name}`);render();return}
-  if(e.target.closest("#resetBtn")){ST=seed();save();toast("Demo a rekòmanse.");render();return}
+  if(e.target.closest("#resetBtn")){ST=seed();save();applyExtras();toast("Demo a rekòmanse.");render();return}
   if(e.target.closest("#saveRules")){const v2=id=>Number($(id).value);
     if(v2("rShare")<1||v2("rShare")>99){toast("Pati pwofesè a dwe ant 1 ak 99%.");return}
     ST.rules={share:v2("rShare"),fee:v2("rFee"),hold:v2("rHold"),min:v2("rMin")};save();toast("Règ yo anrejistre.");render()}
 });
 document.addEventListener("input",e=>{if(e.target.id=="aQ"){aQ=e.target.value;aList()}});
-$("teacherSel").innerHTML=TEACHERS.map(t=>`<option value="${t.id}">${t.name}</option>`).join("");
-$("teacherSel").addEventListener("change",renderTeacher);
+applyExtras();
 
 function render(){renderCourses();renderTeacher();renderAdmin()}
 function route(){
