@@ -209,7 +209,15 @@ section.view{padding-block:20px 48px;display:flex;flex-direction:column;gap:26px
 /* covers */
 .cov{position:relative;aspect-ratio:16/10.4;max-width:100%;border-radius:22px;overflow:hidden;container-type:inline-size;color:var(--cover-ink);background:radial-gradient(120% 90% at 85% 70%,color-mix(in srgb,var(--a) 34%,transparent),transparent 55%),linear-gradient(160deg,var(--b1),var(--b2))}
 .cov .art{position:absolute;right:0;bottom:0;width:64%;height:92%;z-index:1}
-.cov .phc{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;z-index:0}
+.cov .phc{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;z-index:0;transform-origin:var(--o,70% 50%);animation:kb var(--kd,16s) ease-in-out var(--d,0s) infinite alternate both;will-change:transform}
+@keyframes kb{0%{transform:scale(1.04) translate(0,0)}100%{transform:scale(1.2) translate(var(--kx,-3%),var(--ky,-2%))}}
+.cov .art{animation:floaty 6s ease-in-out var(--d,0s) infinite alternate both;transform-origin:80% 100%}
+@keyframes floaty{0%{transform:translateY(1.5%) rotate(-.6deg)}100%{transform:translateY(-2.5%) rotate(.6deg)}}
+.cov::before{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.16) 48%,rgba(255,255,255,.04) 54%,transparent 62%);transform:translateX(-120%);animation:shine 7s ease-in-out var(--d,0s) infinite}
+@keyframes shine{0%,62%{transform:translateX(-120%)}82%,100%{transform:translateX(120%)}}
+.cov .tp.st::before{animation:blink 1.6s ease-in-out infinite}
+@keyframes blink{50%{opacity:.35}}
+@media (prefers-reduced-motion:reduce){.cov .phc,.cov .art,.cov::before,.cov .tp.st::before{animation:none}}
 .cov.photo::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,var(--ov) 0%,color-mix(in srgb,var(--ov) 82%,transparent) 30%,color-mix(in srgb,var(--ov) 20%,transparent) 62%,transparent 80%),linear-gradient(0deg,color-mix(in srgb,var(--ov) 70%,transparent) 0%,transparent 35%)}
 .cov .ttl{position:absolute;left:6%;top:25%;z-index:2;display:flex;flex-direction:column;text-shadow:0 2px 14px rgba(0,0,0,.45)}
 .cov .ttl b{font:400 15.5cqw/.9 var(--cond);letter-spacing:-.005em;text-transform:uppercase;white-space:nowrap}
@@ -744,7 +752,8 @@ function cover(c){
     ?`<div class="tops"><span class="tp"><svg class="i"><use href="#i-clock"/></svg>${c.dur}</span><span class="tp w">${c.tag}</span><span class="tp st">Disponib</span></div><div class="brand">FÒMASYON LEKÒL ANLIY</div>`
     :`<div class="eye">LEKÒL ANLIY</div><div class="date">${promoLabel}</div>`;
   const media=v.img?`<img class="phc" src="${v.img}" alt="" loading="lazy" decoding="async" style="object-position:${v.pos||"50% 50%"}">`:`<svg class="art" viewBox="0 0 220 170" preserveAspectRatio="xMaxYMax meet" aria-hidden="true">${ART[v.art](v.a)}</svg>`;
-  return `<div class="cov ${v.img?"photo":""}" style="--a:${v.a};--b1:${v.b1};--b2:${v.b2};--ov:${v.ov||v.b1}">${top}<div class="ttl">${lines}<span>${v.s}</span></div>${media}</div>`;
+  const k=[...c.id].reduce((a,ch)=>a+ch.charCodeAt(0),0),dirs=[["-4%","-2%"],["3%","-3%"],["-3%","2%"],["4%","2%"]],dr=dirs[k%4];
+  return `<div class="cov ${v.img?"photo":""}" style="--a:${v.a};--b1:${v.b1};--b2:${v.b2};--ov:${v.ov||v.b1};--d:${-(k%9)}s;--kd:${14+k%5}s;--kx:${dr[0]};--ky:${dr[1]};--o:${v.pos||"60% 50%"}">${top}<div class="ttl">${lines}<span>${v.s}</span></div>${media}</div>`;
 }
 function bars(n){return `<span class="bars">${[1,2,3].map(i=>`<i class="${i<=n?"on":""}"></i>`).join("")}</span>`}
 function card(c){
