@@ -602,6 +602,73 @@ td.r,th.r{text-align:right}
 .qal svg.i{width:17px;height:17px}
 @media (max-width:820px){.auth{grid-template-columns:1fr}.aside{padding:24px 22px;gap:14px}.aside .perks{display:none}.stack{margin-top:0}}
 
+/* klas & mesaj */
+#v-klas{gap:16px}
+.khead{display:flex;flex-direction:column;gap:10px}
+.back2{display:inline-flex;align-items:center;gap:6px;color:var(--gold-text);font-weight:700;text-decoration:none;width:fit-content}
+.back2 svg.i{width:18px;height:18px}
+.qal.ghost{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);color:#fff}
+.qal i{font-style:normal;background:#e5484d;color:#fff;border-radius:999px;font-size:11px;font-weight:800;padding:1px 7px}
+.chat{display:grid;grid-template-columns:330px 1fr;height:min(78vh,740px);min-height:480px;background:var(--surface);border:1px solid var(--line);border-radius:26px;overflow:hidden;box-shadow:0 14px 40px rgba(10,15,28,.07)}
+.chat > *{min-width:0;min-height:0}
+.thl{border-right:1px solid var(--line);overflow-y:auto;display:flex;flex-direction:column}
+.thh{padding:16px 18px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:baseline;position:sticky;top:0;background:var(--surface);z-index:1}
+.thh b{font:800 18px var(--display)}
+.thi{display:flex;gap:12px;align-items:center;padding:12px 14px;border:0;border-bottom:1px solid var(--line);background:transparent;color:var(--ink);text-align:left;font:inherit;cursor:pointer;width:100%}
+.thi > div{flex:1;min-width:0}
+.thi:hover{background:var(--soft)}
+.thi.on{background:var(--gold-soft);box-shadow:inset 3px 0 0 var(--gold)}
+.thi .r1,.thi .r2{display:flex;justify-content:space-between;gap:8px;align-items:center}
+.thi b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:15px}
+.thi small{color:var(--muted);font-size:12.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.thi .r1 small{flex:none}
+.thi i{font-style:normal;background:var(--gold);color:var(--gold-ink);border-radius:999px;font-size:11px;font-weight:800;padding:1px 7px;flex:none}
+.thc{width:42px;height:42px;border-radius:14px;display:flex;align-items:center;justify-content:center;color:#fff;flex:none;background:linear-gradient(140deg,var(--a),color-mix(in srgb,var(--a) 45%,#0b1020))}
+.thc svg.i{width:20px;height:20px}
+.thc.big{width:64px;height:64px;border-radius:20px}.thc.big svg.i{width:30px;height:30px}
+.cv{display:flex;flex-direction:column;min-height:0}
+.cvh{display:flex;gap:12px;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line)}
+.cvh > div{min-width:0}
+.cvh b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cvh small{color:var(--muted);font-size:13px;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cvh .back{display:none}
+.msgs{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;background:radial-gradient(circle at 1px 1px,color-mix(in srgb,var(--muted) 18%,transparent) 1px,transparent 0) 0 0/18px 18px,var(--bg)}
+.day{text-align:center;margin:6px 0}
+.day span{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:12px;color:var(--muted);font-weight:600}
+.mrow{display:flex;gap:8px;align-items:flex-end;max-width:min(78%,520px)}
+.mrow .av{width:30px;height:30px;border-radius:50%;font-size:11px}
+.mrow.me{align-self:flex-end;flex-direction:row-reverse}
+.bub{background:var(--surface);border:1px solid var(--line);border-radius:18px 18px 18px 6px;padding:8px 12px;display:flex;flex-direction:column;gap:6px;min-width:0;box-shadow:0 2px 6px rgba(10,15,28,.05)}
+.mrow.me .bub{background:var(--gold-soft);border-color:color-mix(in srgb,var(--gold) 40%,transparent);border-radius:18px 18px 6px 18px}
+.bub p{margin:0;line-height:1.45;overflow-wrap:anywhere}
+.bub small{color:var(--muted);font-size:11px;align-self:flex-end;display:flex;align-items:center;gap:3px}
+.bub .tick{width:13px;height:13px;color:var(--ok)}
+.bub .who{font-size:12.5px;color:var(--gold-text);display:flex;align-items:center;gap:6px}
+.tb2{background:var(--gold);color:var(--gold-ink);border-radius:999px;font-size:10px;padding:1px 7px;font-weight:800}
+.bub .mimg{max-width:100%;width:300px;border-radius:12px;cursor:zoom-in;display:block}
+.bub .mvid{max-width:100%;width:320px;border-radius:12px;background:#000;display:block}
+.bub.only{padding:6px}
+.mmiss{display:flex;gap:8px;align-items:center;background:var(--soft);border-radius:12px;padding:10px;font-size:13px;color:var(--muted)}
+.nomsg{margin:auto;display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;max-width:280px}
+.nomsg small{color:var(--muted)}
+.comp{border-top:1px solid var(--line);padding:10px 12px calc(10px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:8px;background:var(--surface)}
+.crow{display:flex;gap:8px;align-items:flex-end}
+.crow textarea{flex:1;min-width:0;resize:none;font:16px/1.4 var(--body);padding:11px 14px;border-radius:20px;border:1.5px solid var(--line);background:var(--soft);color:var(--ink);max-height:140px}
+.crow textarea:focus{outline:none;border-color:var(--gold)}
+.att,.send{width:44px;height:44px;border-radius:50%;border:0;display:flex;align-items:center;justify-content:center;cursor:pointer;flex:none}
+.att{background:var(--soft);color:var(--ink)}
+.send{background:var(--gold);color:var(--gold-ink)}
+.pend{display:flex;gap:10px;align-items:center;background:var(--soft);border-radius:14px;padding:8px}
+.pend img,.pend .vthumb{width:48px;height:48px;border-radius:10px;object-fit:cover;flex:none}
+.pend .vthumb{background:#14161c;color:#fff;display:flex;align-items:center;justify-content:center}
+.pend > div{flex:1;min-width:0}
+.pend b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:14px}
+.pend small{color:var(--muted);font-size:12px}
+.ro{border-top:1px solid var(--line);padding:12px 14px calc(12px + env(safe-area-inset-bottom,0px));display:flex;gap:10px;align-items:center;flex-wrap:wrap;color:var(--muted);font-size:14px;background:var(--surface)}
+.ro span{flex:1;min-width:160px}
+.ro svg.i{width:18px;height:18px}
+@media (max-width:819px){.chat{grid-template-columns:1fr;height:calc(100dvh - 230px);min-height:460px}.chat.open .thl{display:none}.chat:not(.open) .cv{display:none}.cvh .back{display:flex}.thl{border-right:0}.mrow{max-width:88%}}
+
 /* checkout */
 #v-peye{max-width:640px;margin:0 auto;width:100%;gap:18px}
 .ck-hero{background:var(--hero);color:var(--hero-ink);border-radius:28px;padding:24px 22px 28px;position:relative;overflow:hidden;display:flex;flex-direction:column;gap:16px;align-items:flex-start}
@@ -743,6 +810,8 @@ nav.tabs a.on{background:var(--gold-soft);color:var(--gold)}
   <symbol id="i-tag" viewBox="0 0 24 24"><path d="M3 12V4h8l9 9-8 8z"/><circle cx="7.5" cy="8.5" r="1.3"/></symbol>
   <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
   <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></symbol>
+  <symbol id="i-clip" viewBox="0 0 24 24"><path d="m20 11.5-8.2 8.2a5 5 0 0 1-7.1-7.1l8.5-8.5a3.3 3.3 0 0 1 4.7 4.7l-8.5 8.5a1.7 1.7 0 0 1-2.4-2.4l7.8-7.8"/></symbol>
+  <symbol id="i-send" viewBox="0 0 24 24"><path d="M4 12 20 4l-6 16-3-7z"/><path d="m11 13 9-9"/></symbol>
   <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
   <symbol id="i-up" viewBox="0 0 24 24"><path d="m4 16 6-6 4 4 6-7"/><path d="M15 7h5v5"/></symbol>
   <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c1-3.6 3.6-5.5 6.5-5.5s5.5 1.9 6.5 5.5"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14.5c2 .6 3.2 2.4 3.6 5.5"/></symbol>
@@ -789,6 +858,7 @@ nav.tabs a.on{background:var(--gold-soft);color:var(--gold)}
       <a href="#akey" data-v="akey">Akèy</a>
       <a href="#kou" data-v="kou" data-tab="all">Fòmasyon</a>
       <a href="#kou" data-tab="soon"><span class="rdot"></span>Rezève yon plas<span class="bdg">25 NOV</span></a>
+      <a href="#klas" data-v="klas">Klas & mesaj</a>
       <a href="#pwofese" data-v="pwofese">Espas pwofesè</a>
       <a href="#admin" data-v="admin">Panèl admin</a>
       <a href="#akey" data-goto="help">Kontak</a>
@@ -845,6 +915,8 @@ nav.tabs a.on{background:var(--gold-soft);color:var(--gold)}
 <section class="view" id="v-enskri" hidden></section>
 
 <section class="view" id="v-kont" hidden></section>
+
+<section class="view" id="v-klas" hidden></section>
 
 <section class="view" id="v-pwofese" hidden>
   <div class="tswitch" id="tSwitch"></div>
@@ -974,7 +1046,7 @@ const COURSES=[
 const LVL=["","Debitan","Entèmedyè","Avanse"];
 
 /* ---------- state ---------- */
-const KEY="lekol-anliy-demo-v6";
+const KEY="lekol-anliy-demo-v7";
 function seed(){
   const now=Date.now(),sales=[],orders=[];
   const PEOPLE=[["Marie Joseph","capcut","full",2,"MonCash"],["Jean-Marc Pierre","capcut","two",12,"NatCash",1],["Nadia Louis","capcut","full",20,"MonCash"],["Kervens Jean","grafik","two",3,"MonCash"],["Roselande Michel","grafik","full",18,"Kat"],["Wilfrid Charles","sitphone","two",1,"MonCash"],["Daphnée Etienne","sitphone","full",25,"MonCash"],["Ricardo Baptiste","biznis","full",4,"NatCash"],["Fabiola Desir","biznis","full",16,"MonCash"],["Stevenson Augustin","biznis","full",22,"MonCash"],["Mirlande Paul","wordpress","two",9,"MonCash"],["Junior Celestin","wordpress","full",30,"Kat"],["Guerline Noel","flutter","dep",3,"MonCash"],["Peterson Alexis","feyton","dep",6,"NatCash"],["Marie Joseph","flutter","dep",1,"MonCash"]];
@@ -989,7 +1061,15 @@ function seed(){
   const props=[{id:"pc1",tid:"t3",t:"Python pou debitan",cat:"iadev",p:10000,dur:"1 mwa",lvl:1,d:"Aprann baz pwogramasyon ak Python, menm si ou pa janm kode anvan.",learn:["Varyab, kondisyon ak bouk","Ti pwogram ki itil chak jou","Premye pwojè ou ak Python"],status:"revizyon",at:now-1*DAY}];
   const users=[{name:"Marie Joseph",wa:"+509 3611 1000",email:"marie.joseph@example.com",h:hsh("lekol123"),interests:["video","iadev"],at:now-40*DAY,demo:1},{name:"Lovely Saint-Fort",wa:"+509 3488 2210",email:"lovely.saintfort@example.com",h:hsh("lekol123"),interests:["dizay","biznis"],at:now-2*DAY,demo:1}];
   const apps=[{id:"ap1",name:"Jameson Pierre",wa:"+509 3155 7720",email:"jameson.pierre@example.com",doms:["video"],exp:"Fotograf ak videyograf depi 6 lane, mwen fè maryaj ak evènman nan Pòtoprens.",at:now-1*DAY,status:"nouvo",demo:1}];
-  return {rules:{share:70,fee:3,hold:14,min:1000},sales,orders,props,users,apps,session:null,extra:[],tprof:{},cart:0,payouts:[
+  const jm=orders.find(o=>o.name=="Jean-Marc Pierre"),H=3600e3;
+  const msgs=[{id:"m1",th:"c:capcut",from:"t:t1",text:"Byenveni nan klas Montaj videyo a! 🎬 Chak semèn m ap poste leson yo isit la. Pou kòmanse, enstale CapCut sou telefòn ou.",at:now-3*DAY},
+    {id:"m2",th:"c:capcut",from:"t:t1",text:"Men entèfas nou pral itilize a. Byen gade kote liy tan an ye.",media:{type:"img",src:"img/kou-capcut.webp",name:"entefas-capcut.jpg"},at:now-3*DAY+6*60e3},
+    {id:"m3",th:"c:capcut",from:"t:t1",text:"Leson 1: koupe ak ranje klip yo. Gade videyo a anvan klas la, epi voye m premye montaj ou an prive.",media:{type:"vid",src:"img/leson1.mp4",name:"leson-1.mp4"},at:now-1*DAY},
+    {id:"m4",th:"d:capcut:marie.joseph@example.com",from:"s:marie.joseph@example.com",text:"Bonjou pwofesè! Èske m ka swiv tout kou a sou telefòn mwen sèlman?",at:now-20*H},
+    {id:"m5",th:"d:capcut:marie.joseph@example.com",from:"t:t1",text:"Bonjou Marie! Wi, tout leson yo fèt sou telefòn. Yon Android oswa yon iPhone ase. 👍",at:now-19*H},
+    {id:"m6",th:"c:flutter",from:"t:t3",text:"Bonjou tout moun! Klas Flutter la kòmanse 25 nov. Si w gen yon òdinatè, enstale VS Code anvan sa.",at:now-2*DAY},
+    {id:"m7",th:`d:capcut:${jm.email}`,from:`s:${jm.email}`,text:"Pwofesè, mwen pa ka ekspòte videyo a an HD. Kisa pou m fè?",at:now-2*H}];
+  return {rules:{share:70,fee:3,hold:14,min:1000},sales,orders,props,users,apps,msgs,reads:{"s:marie.joseph@example.com":{"d:capcut:marie.joseph@example.com":now-19*H+1}},session:null,extra:[],tprof:{},cart:0,payouts:[
     {id:"p1",tid:"t1",amt:5000,method:"MonCash",at:now-10*DAY,status:"peye"},
     {id:"p2",tid:"t2",amt:8000,method:"NatCash",at:now-2*DAY,status:"an atant"}]};
 }
@@ -1281,9 +1361,10 @@ function renderTeacher(){
   $("tHero").innerHTML=`<div class="ahtop"><div class="who">${av(t.name,1)}<div><small>Espas pwofesè · depi ${P.since}</small><b>${t.name}</b><small style="color:var(--gold)">${esc(P.spec)}</small></div></div></div>
     <div class="abig"><div><span class="lbl">Disponib pou retire</span><div class="num">${fmt(b.withdrawable)}<small>HTG</small></div>
       <span class="trend"><svg class="i"><use href="#i-clock"/></svg>${fmt(b.pending)} HTG ap vin disponib</span></div>${spark(d14.map(x=>x.v),"#f0b44a",150,60)}</div>
-    <div class="qa"><button class="gold2" data-ttab="lajan"><svg class="i"><use href="#i-wallet"/></svg>Mande retrè</button><button data-ttab="kou" data-newc="1"><svg class="i"><use href="#i-plus"/></svg>Pwopoze yon kou</button><button data-ttab="etidyan"><svg class="i"><use href="#i-users"/></svg>Etidyan mwen <i>${studs}</i></button></div>`;
-  $("ttabs").innerHTML=[["apesi","Apèsi","i-pie"],["kou","Kou mwen","i-grad",props.filter(x=>x.status=="revizyon").length],["etidyan","Etidyan","i-users"],["lajan","Lajan","i-wallet"],["pwofil","Pwofil","i-user"]].map(([k,tt,ic,n])=>`<button role="tab" aria-selected="${tTab==k}" class="${tTab==k?"on":""}" data-ttab="${k}"><svg class="i"><use href="#${ic}"/></svg>${tt}${n?`<i>${n}</i>`:""}</button>`).join("");
+    <div class="qa"><button class="gold2" data-ttab="lajan"><svg class="i"><use href="#i-wallet"/></svg>Mande retrè</button><button data-ttab="kou" data-newc="1"><svg class="i"><use href="#i-plus"/></svg>Pwopoze yon kou</button><button data-ttab="mesaj"><svg class="i"><use href="#i-chat"/></svg>Mesaj ${unreadAll({kind:"t",tid:curT})?`<i>${unreadAll({kind:"t",tid:curT})}</i>`:""}</button><button data-ttab="etidyan"><svg class="i"><use href="#i-users"/></svg>Etidyan <i>${studs}</i></button></div>`;
+  $("ttabs").innerHTML=[["apesi","Apèsi","i-pie"],["mesaj","Mesaj","i-chat",unreadAll({kind:"t",tid:curT})],["kou","Kou mwen","i-grad",props.filter(x=>x.status=="revizyon").length],["etidyan","Etidyan","i-users"],["lajan","Lajan","i-wallet"],["pwofil","Pwofil","i-user"]].map(([k,tt,ic,n])=>`<button role="tab" aria-selected="${tTab==k}" class="${tTab==k?"on":""}" data-ttab="${k}"><svg class="i"><use href="#${ic}"/></svg>${tt}${n?`<i>${n}</i>`:""}</button>`).join("");
   const v=$("tView");
+  if(tTab=="mesaj"){v.innerHTML=`<div id="tChat"></div>`;renderChat($("tChat"),{kind:"t",tid:curT});return}
   if(tTab=="apesi"){
     const D=daily(14,x=>{const c=course(x.cid);return c&&c.tid==curT?split(x.amt).tp:0}),W=innerWidth>=900?620:320,H=innerWidth>=900?180:140,bw=W/14,mx=Math.max(...D.map(x=>x.v),1),nice=Math.ceil(mx/2000)*2000||2000;
     const chart=`<svg viewBox="0 0 ${W} ${H+20}" role="img" aria-label="Sa ou touche chak jou"><defs><linearGradient id="tgold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--ok)"/><stop offset="1" style="stop-color:var(--ok);stop-opacity:.3"/></linearGradient></defs>`+
@@ -1351,10 +1432,10 @@ function pcPrev(){if(!$("pcPrev"))return;const pr=pcData(),c=makeCourse(pr,"prev
 document.addEventListener("input",e=>{if(/^pc/.test(e.target.id))pcPrev()});
 document.addEventListener("change",e=>{if(/^pc/.test(e.target.id))pcPrev()});
 document.addEventListener("click",e=>{
-  const sw=e.target.closest("[data-tsw]");if(sw){curT=sw.dataset.tsw;newOpen=false;tCf="";renderTeacher();return}
+  const sw=e.target.closest("[data-tsw]");if(sw){curT=sw.dataset.tsw;newOpen=false;tCf="";chSel=null;chOpen=false;renderTeacher();return}
   const nc=e.target.closest("[data-newc]");if(nc){tTab="kou";newOpen=true;renderTeacher();return}
   if(e.target.closest("[data-newx]")){newOpen=false;$("newWrap").innerHTML="";return}
-  const tt=e.target.closest("[data-ttab]");if(tt){tTab=tt.dataset.ttab;renderTeacher();if(tt.closest("#tHero,.card2"))$("ttabs").scrollIntoView({behavior:"smooth",block:"start"});return}
+  const tt=e.target.closest("[data-ttab]");if(tt){tTab=tt.dataset.ttab;chOpen=false;renderTeacher();if(tt.closest("#tHero,.card2"))$("ttabs").scrollIntoView({behavior:"smooth",block:"start"});return}
   const tcs=e.target.closest("[data-tcs]");if(tcs){tTab="etidyan";tCf=tcs.dataset.tcs;renderTeacher();return}
   const tcf=e.target.closest("[data-tcf]");if(tcf){tCf=tcf.dataset.tcf;renderTeacher();return}
   const pd=e.target.closest("[data-pdom]");if(pd){pd.classList.toggle("on");return}
@@ -1429,9 +1510,10 @@ function renderAuth(){
 function renderKont(){
   const u=me(),v=$("v-kont");if(!u){v.innerHTML="";return}
   const O=myOrders(),paid=O.reduce((a,o)=>a+o.paid,0),rest=O.reduce((a,o)=>a+o.total-o.paid,0),days=Math.max(0,Math.ceil((PROMO_DATE-Date.now())/DAY));
+  setTimeout(updBadges);
   v.innerHTML=`<div class="ahero"><div class="ahtop"><div class="who">${av(u.name,1)}<div><small>Espas etidyan · manm depi ${dt(u.at)}</small><b>Bonjou, ${esc(u.name.split(" ")[0])}</b><small style="color:var(--gold)">${esc(u.email)}</small></div></div><button class="reset2" data-logout="1">Dekonekte</button></div>
     <div class="abig"><div><span class="lbl">Klas yo kòmanse nan</span><div class="num">${days}<small>jou</small></div><span class="trend"><svg class="i"><use href="#i-cal"/></svg>Rantre ${promoLabel}</span></div></div>
-    <div class="qa"><a class="gold2 qal" href="#kou"><svg class="i"><use href="#i-plus"/></svg>Chwazi yon lòt fòmasyon</a>${rest?`<button data-kpay="${O.find(o=>o.paid<o.total).id}"><svg class="i"><use href="#i-wallet"/></svg>Peye rès la <i>${fmt(rest)}</i></button>`:""}</div></div>
+    <div class="qa"><a class="gold2 qal" href="#klas"><svg class="i"><use href="#i-chat"/></svg>Klas & mesaj <i data-msgn hidden></i></a><a class="qal ghost" href="#kou"><svg class="i"><use href="#i-plus"/></svg>Lòt fòmasyon</a>${rest?`<button data-kpay="${O.find(o=>o.paid<o.total).id}"><svg class="i"><use href="#i-wallet"/></svg>Peye rès la <i>${fmt(rest)}</i></button>`:""}</div></div>
   <div class="k4"><div class="kc" style="--kcol:#6d5fd8"><span class="ic"><svg class="i"><use href="#i-grad"/></svg></span><small>Fòmasyon mwen</small><b>${O.length}</b></div>
     <div class="kc" style="--kcol:var(--ok)"><span class="ic"><svg class="i"><use href="#i-check"/></svg></span><small>Mwen peye</small><b>${fmt(paid)}<em>HTG</em></b></div>
     <div class="kc" style="--kcol:var(--warn)"><span class="ic"><svg class="i"><use href="#i-alert"/></svg></span><small>Rès pou peye</small><b>${fmt(rest)}<em>HTG</em></b></div>
@@ -1439,7 +1521,7 @@ function renderKont(){
   <div class="card2"><div class="ch"><div><h3>Fòmasyon mwen yo</h3><small>Peman ak pwochen etap pou chak fòmasyon</small></div></div>
     ${O.length?`<div class="tcgrid">${O.map(o=>{const c=course(o.cid),r=o.total-o.paid,S2=OST[ost(o)];return `<div class="tco">${cover(c)}<div class="tb"><div class="row1"><span class="bdg2" style="--bc:${S2[1]}">${S2[0]}</span><small class="muted">Resi ${o.id}</small></div><h3>${c.t}</h3><small class="muted">Pwofesè: ${teacher(c.tid).name} · ${c.dur}</small>
       <div class="prog"><i style="width:${o.paid/o.total*100}%"></i></div><div class="rrow"><span>Peye ${fmt(o.paid)} / ${fmt(o.total)} HTG</span><b>${Math.round(o.paid/o.total*100)}%</b></div>
-      ${r?`<button class="benr full" data-kpay="${o.id}">Peye rès la · ${fmt(r)} HTG</button>`:`<button class="benr full" data-learn="${o.id}">Kòmanse aprann</button>`}</div></div>`}).join("")}</div>`
+      <div class="pbtns" style="grid-template-columns:1fr 1.2fr;margin-top:2px"><button class="bout" data-goklas="c:${c.id}">Klas la</button>${r?`<button class="benr full" data-kpay="${o.id}">Peye rès · ${fmt(r)}</button>`:`<button class="benr full" data-goklas="d:${c.id}:${u.email}">Ekri pwofesè a</button>`}</div></div></div>`}).join("")}</div>`
       :`<div class="empty"><b style="display:block;color:var(--ink);font-size:17px;margin-bottom:6px">Ou poko enskri nan okenn fòmasyon</b>Chwazi youn epi peye ak MonCash, NatCash oswa kat.<br><a class="btn gold" href="#kou" style="margin-top:14px;display:inline-flex">Wè fòmasyon yo</a></div>`}</div>`;
 }
 function payRest(id){const o=orders().find(x=>x.id==id);if(!o)return;const c=course(o.cid),r=o.total-o.paid;let m="moncash";
@@ -1489,6 +1571,73 @@ function appsHTML(){const L=(ST.apps||[]).filter(x=>x.status=="nouvo");if(!L.len
     <div class="actrow"><a class="btn wa2 sm" href="${waLink(x,`Bonjou ${x.name.split(" ")[0]}, se Lekòl Anliy. Nou resevwa demann ou pou anseye. Ann pale!`)}" target="_blank" rel="noopener" data-appok="${x.id}" data-v="kontakte">Kontakte sou WhatsApp</a><button class="btn g sm" data-appok="${x.id}" data-v="achive">Achive</button></div>${x.demo?'<small class="muted">Egzanp fiktif</small>':""}</div>`).join("")}</div></div>`}
 function accHTML(){const U=users().filter(u=>!orders().some(o=>o.email.toLowerCase()==u.email));if(!U.length)return"";
   return `<div class="card2"><div class="ch"><div><h3>Kont ki poko achte</h3><small>Bon moun pou voye yon ti mesaj</small></div></div><div class="scards">${U.map(u=>`<div class="scard" style="cursor:default"><div class="top">${av(u.name)}<div><b>${esc(u.name)}</b><small>${esc(u.wa)} · ${esc(u.email)}</small></div></div><div class="cs">${(u.interests||[]).map(i=>`<span>${cat0(i).t}</span>`).join("")||"<span>Pa gen enterè</span>"}</div><a class="btn wa2 sm" style="justify-content:center" href="${waLink(u,`Bonjou ${u.name.split(" ")[0]}, se Lekòl Anliy! Mèsi paske ou kreye kont ou. Èske w bezwen èd pou chwazi yon fòmasyon?`)}" target="_blank" rel="noopener">Ekri l sou WhatsApp</a></div>`).join("")}</div></div>`}
+/* ---------- klas & mesaj ---------- */
+const MEDIA={};let chSel=null,chOpen=false,chPend=null,CHAT=null;
+const idKey=I=>I.kind=="s"?"s:"+I.email:"t:"+I.tid;
+const tm=ts=>new Date(ts).toLocaleTimeString("fr-HT",{hour:"2-digit",minute:"2-digit"});
+function msgsOf(th){return (ST.msgs||[]).filter(m=>m.th==th).sort((a,b)=>a.at-b.at)}
+function threadsFor(I){const L=[];
+  if(I.kind=="s"){const seen=new Set();orders().filter(o=>o.email.toLowerCase()==I.email).forEach(o=>{if(seen.has(o.cid))return;seen.add(o.cid);const c=course(o.cid),t=teacher(c.tid);
+    L.push({th:"c:"+c.id,title:c.t,sub:"Klas · leson ak anons",c,kind:"c"});L.push({th:`d:${c.id}:${I.email}`,title:t.name,sub:"Pwofesè · "+ctitle(c),av:t.name,c,kind:"d"})})}
+  else COURSES.filter(c=>c.tid==I.tid).forEach(c=>{const os=orders().filter(o=>o.cid==c.id),seen=new Set();
+    L.push({th:"c:"+c.id,title:c.t,sub:`Klas · ${new Set(os.map(o=>o.email.toLowerCase())).size} etidyan`,c,kind:"c"});
+    os.forEach(o=>{const e=o.email.toLowerCase();if(seen.has(e))return;seen.add(e);L.push({th:`d:${c.id}:${e}`,title:o.name,sub:ctitle(c),av:o.name,c,kind:"d"})})});
+  const last=th=>{const m=msgsOf(th);return m.length?m[m.length-1].at:0};
+  return L.sort((a,b)=>last(b.th)-last(a.th))}
+function unread(I,th){const r=((ST.reads||{})[idKey(I)]||{})[th]||0;return msgsOf(th).filter(m=>m.from!=idKey(I)&&m.at>r).length}
+function unreadAll(I){return threadsFor(I).reduce((a,t)=>a+unread(I,t.th),0)}
+function markRead(I,th){ST.reads=ST.reads||{};const k=idKey(I);(ST.reads[k]=ST.reads[k]||{})[th]=Date.now();saveSafe()}
+function saveSafe(){try{localStorage.setItem(KEY,JSON.stringify(ST));return true}catch(e){return false}}
+function whoName(from){if(from.startsWith("t:"))return teacher(from.slice(2)).name;const e=from.slice(2),o=orders().find(x=>x.email.toLowerCase()==e),u=users().find(x=>x.email==e);return (u&&u.name)||(o&&o.name)||e}
+function mediaHTML(m){if(!m.media)return"";const M=m.media;
+  if(M.type=="img")return `<img class="mimg" src="${M.src}" alt="${esc(M.name||"Foto")}" data-zoom="1" loading="lazy">`;
+  const src=M.src||MEDIA[M.key];return src?`<video class="mvid" src="${src}" controls playsinline preload="metadata"></video>`:`<div class="mmiss"><svg class="i"><use href="#i-video"/></svg>Videyo "${esc(M.name||"")}" pa disponib ankò. Nan demo a, videyo yo rete sèlman jiskaske w rafrechi paj la.</div>`}
+function renderChat(el,I){CHAT={el,I};
+  const T=threadsFor(I),wide=innerWidth>=820;
+  if(!T.length){el.innerHTML=`<div class="empty"><b style="display:block;color:var(--ink);font-size:17px;margin-bottom:6px">Poko gen klas</b>${I.kind=="s"?"Enskri nan yon fòmasyon pou w ka pale ak pwofesè a.":"Ou poko gen fòmasyon."}${I.kind=="s"?'<br><a class="btn gold" href="#kou" style="margin-top:14px;display:inline-flex">Wè fòmasyon yo</a>':""}</div>`;return}
+  if(!T.find(t=>t.th==chSel))chSel=T[0].th;
+  const cur=T.find(t=>t.th==chSel),open=wide||chOpen;if(open)markRead(I,chSel);
+  const me_=idKey(I),M=msgsOf(chSel);let lastDay="";
+  const list=T.map(t=>{const m=msgsOf(t.th),lm=m[m.length-1],u=unread(I,t.th);
+    return `<button class="thi ${t.th==chSel?"on":""}" data-th="${t.th}">${t.kind=="c"?`<span class="thc" style="--a:${t.c.cv.a}"><svg class="i"><use href="#i-grad"/></svg></span>`:av(t.av)}
+      <div><div class="r1"><b>${esc(t.title)}</b><small>${lm?(Date.now()-lm.at<DAY?tm(lm.at):d(lm.at)):""}</small></div><div class="r2"><small>${lm?esc((lm.from==me_?"Ou: ":"")+(lm.text||(lm.media?(lm.media.type=="img"?"📷 Foto":"🎬 Videyo"):""))):esc(t.sub)}</small>${u?`<i>${u}</i>`:""}</div></div></button>`}).join("");
+  const body=M.map(m=>{const day=new Date(m.at).toDateString(),sep=day!=lastDay?`<div class="day"><span>${new Date(m.at).toLocaleDateString("fr-HT",{weekday:"long",day:"numeric",month:"long"})}</span></div>`:"";lastDay=day;const mine=m.from==me_;
+    return sep+`<div class="mrow ${mine?"me":""}">${!mine?av(whoName(m.from)):""}<div class="bub ${m.media&&!m.text?"only":""}">${!mine&&cur.kind=="c"?`<b class="who">${esc(whoName(m.from))}${m.from.startsWith("t:")?' <span class="tb2">Pwofesè</span>':""}</b>`:""}${mediaHTML(m)}${m.text?`<p>${esc(m.text).replace(/\n/g,"<br>")}</p>`:""}<small>${tm(m.at)}${mine?' <svg class="i tick"><use href="#i-check"/></svg>':""}</small></div></div>`}).join("")||`<div class="nomsg"><span class="thc big" style="--a:${cur.c.cv.a}"><svg class="i"><use href="#i-chat"/></svg></span><b>Poko gen mesaj</b><small>${cur.kind=="c"?(I.kind=="t"?"Poste premye leson an, yon foto oswa yon videyo pou klas la.":"Pwofesè a poko poste anyen."):"Ekri premye mesaj la."}</small></div>`;
+  const canPost=!(cur.kind=="c"&&I.kind=="s");
+  const comp=canPost?`<div class="comp">${chPend?`<div class="pend">${chPend.type=="img"?`<img src="${chPend.src}" alt="">`:`<span class="vthumb"><svg class="i"><use href="#i-video"/></svg></span>`}<div><b>${esc(chPend.name)}</b><small>${chPend.type=="img"?"Foto":"Videyo"} pare pou voye</small></div><button class="iconbtn" data-unpend="1" aria-label="Retire"><svg class="i"><use href="#i-x"/></svg></button></div>`:""}
+      <div class="crow"><button class="att" data-attach="1" aria-label="Ajoute foto oswa videyo"><svg class="i"><use href="#i-clip"/></svg></button><textarea id="chText" rows="1" placeholder="${cur.kind=="c"?"Ekri yon anons oswa yon leson…":"Ekri yon mesaj…"}"></textarea><button class="send" data-send="1" aria-label="Voye"><svg class="i"><use href="#i-send"/></svg></button></div>
+      <input type="file" id="chFile" accept="image/*,video/*" hidden></div>`
+    :`<div class="ro"><svg class="i"><use href="#i-lock"/></svg><span>Se pwofesè a sèlman ki ka poste nan klas la.</span><button class="btn gold sm" data-th="d:${cur.c.id}:${I.email}">Ekri pwofesè a</button></div>`;
+  el.innerHTML=`<div class="chat ${chOpen?"open":""}"><div class="thl"><div class="thh"><b>${I.kind=="s"?"Klas mwen":"Mesaj"}</b><small class="muted">${T.length} konvèsasyon</small></div>${list}</div>
+    <div class="cv"><div class="cvh"><button class="iconbtn back" data-chback="1" aria-label="Retounen"><svg class="i"><use href="#i-left"/></svg></button>${cur.kind=="c"?`<span class="thc" style="--a:${cur.c.cv.a}"><svg class="i"><use href="#i-grad"/></svg></span>`:av(cur.av)}<div><b>${esc(cur.title)}</b><small>${esc(cur.sub)}</small></div></div>
+    <div class="msgs" id="chMsgs">${body}</div>${comp}</div></div>`;
+  const ms=$("chMsgs");if(ms)ms.scrollTop=ms.scrollHeight}
+function chRefresh(){if(CHAT&&document.body.contains(CHAT.el))renderChat(CHAT.el,CHAT.I);updBadges()}
+function updBadges(){const u=me(),n=u?unreadAll({kind:"s",email:u.email}):0;document.querySelectorAll("[data-msgn]").forEach(x=>{x.textContent=n;x.hidden=!n})}
+function compress(file){return new Promise((ok,ko)=>{const r=new FileReader();r.onload=()=>{const im=new Image();im.onload=()=>{const k=Math.min(1,1000/Math.max(im.width,im.height)),cv=document.createElement("canvas");cv.width=Math.round(im.width*k);cv.height=Math.round(im.height*k);cv.getContext("2d").drawImage(im,0,0,cv.width,cv.height);ok(cv.toDataURL("image/jpeg",.78))};im.onerror=ko;im.src=r.result};r.onerror=ko;r.readAsDataURL(file)})}
+function chSend(){if(!CHAT)return;const I=CHAT.I,txt=($("chText").value||"").trim();if(!txt&&!chPend){$("chText").focus();return}
+  ST.msgs=ST.msgs||[];const m={id:"m"+Date.now(),th:chSel,from:idKey(I),text:txt,at:Date.now()};if(chPend)m.media=chPend.type=="img"?{type:"img",src:chPend.src,name:chPend.name}:{type:"vid",key:chPend.key,name:chPend.name};
+  ST.msgs.push(m);if(!saveSafe()){if(m.media&&m.media.src){m.media.src_mem=m.media.src}toast("Foto a twò gwo pou memwa demo a. Li parèt jiskaske w rafrechi paj la.")}
+  chPend=null;chRefresh()}
+document.addEventListener("click",e=>{
+  const th=e.target.closest("[data-th]");if(th){chSel=th.dataset.th;chOpen=true;chPend=null;chRefresh();return}
+  if(e.target.closest("[data-chback]")){chOpen=false;chRefresh();return}
+  if(e.target.closest("[data-attach]")){$("chFile").click();return}
+  if(e.target.closest("[data-unpend]")){chPend=null;chRefresh();return}
+  if(e.target.closest("[data-send]")){chSend();return}
+  const z=e.target.closest("[data-zoom]");if(z){$("mbox").innerHTML=`<div style="display:flex;justify-content:flex-end"><button class="iconbtn" data-mclose aria-label="Fèmen"><svg class="i"><use href="#i-x"/></svg></button></div><img src="${z.src}" alt="${esc(z.alt)}" style="width:100%;border-radius:16px">`;$("modal").hidden=false;return}
+  const gk=e.target.closest("[data-goklas]");if(gk){chSel=gk.dataset.goklas;chOpen=true;location.hash="#klas";return}
+});
+document.addEventListener("keydown",e=>{if(e.target.id=="chText"&&e.key=="Enter"&&!e.shiftKey&&innerWidth>=820){e.preventDefault();chSend()}});
+document.addEventListener("input",e=>{if(e.target.id=="chText"){e.target.style.height="auto";e.target.style.height=Math.min(140,e.target.scrollHeight)+"px"}});
+document.addEventListener("change",async e=>{if(e.target.id!="chFile")return;const f=e.target.files[0];if(!f)return;
+  if(f.type.startsWith("image/")){try{chPend={type:"img",src:await compress(f),name:f.name}}catch(_){toast("Nou pa ka li foto sa a. Eseye yon lòt.");return}}
+  else if(f.type.startsWith("video/")){if(f.size>60*1024*1024){toast("Videyo a twò gwo (plis pase 60 MB). Eseye yon pi kout.");return}const k="v"+Date.now();MEDIA[k]=URL.createObjectURL(f);chPend={type:"vid",key:k,name:f.name}}
+  else{toast("Ou ka voye foto oswa videyo sèlman.");return}
+  const keep=$("chText").value;chRefresh();$("chText").value=keep;$("chText").focus()});
+function renderKlas(){const u=me(),v=$("v-klas");if(!u)return;
+  v.innerHTML=`<div class="khead"><a class="back2" href="#kont"><svg class="i"><use href="#i-left"/></svg>Espas mwen</a><div><h2>Klas mwen</h2><p class="muted">Leson, foto ak videyo pwofesè yo, ak mesaj prive ou.</p></div></div><div id="sChat"></div>`;
+  renderChat($("sChat"),{kind:"s",email:u.email})}
 /* ---------- admin ---------- */
 let aTab="apesi",aQ="",aF="all",aRange=14;
 const ost=o=>o.paid>=o.total?"full":o.plan=="dep"?"dep":"part";
@@ -1616,10 +1765,11 @@ document.addEventListener("click",e=>{
 document.addEventListener("input",e=>{if(e.target.id=="aQ"){aQ=e.target.value;aList()}});
 applyExtras();
 
-function render(){renderCourses();renderTeacher();renderAdmin();updUser()}
+function render(){renderCourses();renderTeacher();renderAdmin();updUser();updBadges()}
 function route(){
-  const v0=(location.hash||"#akey").slice(1);if(v0=="kont"&&!me()){auTab="login";location.replace("#enskri");return}
-  const v=v0,ok=["akey","kou","peye","enskri","kont","pwofese","admin"].includes(v)?v:"akey";
+  const v0=(location.hash||"#akey").slice(1);if((v0=="kont"||v0=="klas")&&!me()){auTab="login";location.replace("#enskri");return}
+  const v=v0,ok=["akey","kou","peye","enskri","kont","klas","pwofese","admin"].includes(v)?v:"akey";
+  if(ok=="klas")renderKlas();
   if(ok=="enskri")renderAuth();if(ok=="kont")renderKont();
   if(ok=="peye"){if(CK.step==3&&!CK.last)CK.step=1;if(CK.step==2&&ckProblems().length)CK.step=1;renderCheckout()}
   document.querySelectorAll("section.view").forEach(s=>s.hidden=s.id!=="v-"+ok);
