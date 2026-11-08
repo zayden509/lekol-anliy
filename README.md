@@ -27,3 +27,13 @@ Sa se yon **demo**: tout done yo rete nan navigatè a (localStorage), pa gen vr�
 
 ## Kijan pou louvri l
 Louvri `index.html` nan navigatè a. Oswa aktive **GitHub Pages** (Settings → Pages → branch `main`).
+
+## Koneksyon Google (pou aktive l pou tout bon)
+1. Ale sou https://console.cloud.google.com → kreye yon pwojè (egzanp: "Lekol Anliy").
+2. **APIs & Services → OAuth consent screen**: chwazi "External", mete non sit la, imèl ou, epi pibliye l.
+3. **APIs & Services → Credentials → Create credentials → OAuth client ID** → tip **Web application**.
+4. Nan **Authorized JavaScript origins**, mete: `https://zayden509.github.io` (epi domèn ou si w genyen youn, egzanp `https://lekolanliy.com`).
+5. Kopye **Client ID** a (li fini ak `.apps.googleusercontent.com`).
+6. Nan `index.html`, chèche `const GOOGLE_CLIENT_ID="";` epi kole ID a ant gimè yo.
+
+⚠️ Sou yon vrè sit, backend la dwe verifye token Google la anvan li louvri kont lan.
